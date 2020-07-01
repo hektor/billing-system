@@ -1,0 +1,19 @@
+{
+  "info": {
+    "name": "Document"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    }
+  },
+  "connection": "default",
+  "collectionName": "documents"
+}
