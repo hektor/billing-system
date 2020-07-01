@@ -6,7 +6,7 @@ import withApollo from 'next-with-apollo'
 import fetch from 'isomorphic-unfetch'
 import cookies from 'js-cookie'
 
-const GRAPHQL_URL = process.env.GRAPHQL_URL || 'http://localhost:1337/graphql'
+const GRAPHQL_URL = process.env.GRAPHQL_URL
 
 const httpLink = createHttpLink({
 	fetch,
