@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import Link from 'next/link'
-import { signin } from '../auth'
-import Layout from '../components/Layout'
+import { useState } from 'react'
+import {signin} from '../../auth'
+import Layout from '../../components/Layout'
+import AuthSwitch from './auth-switch.component'
 
 export default () => {
 	const [user, setUser] = useState({
@@ -20,7 +20,7 @@ export default () => {
 
 	return (
 		<Layout wrap col>
-			<h1>Sign in</h1>
+			<h1>Get started</h1>
 			<form>
 				<label htmlFor="email">Email</label>
 				<input
@@ -34,6 +34,9 @@ export default () => {
 					type="password"
 					name="password"
 				/>
+				{/* <Link href="forgot-password">
+					<a className="forgot-password">Forgot password?</a>
+				</Link> */}
 				<button
 					onClick={e => handleSubmit(e)}
 					type="submit"
@@ -41,10 +44,18 @@ export default () => {
 				>
           Log in
 				</button>
-				<Link href="signup">
-					<a>Sign up</a>
-				</Link>
+				<AuthSwitch to="up"/>
 			</form>
+			<style jsx>{`
+        button {
+          margin-top: auto;
+        }
+
+        .forgot-password {
+          text-align: right;
+          padding-bottom: 1.6rem;
+        }
+      `}</style>
 		</Layout>
 	)
 }
