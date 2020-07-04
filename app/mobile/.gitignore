@@ -1,6 +1,6 @@
 # Service worker
-**/public/workbox-*.js
-**/public/sw.js
+**/public/workbox-*.*
+**/public/sw.*
 
 node_modules
 .next# Logs
