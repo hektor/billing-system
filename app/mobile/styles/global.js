@@ -28,7 +28,7 @@ export default css.global`
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-    padding: 1rem;
+    padding: 1.6rem;
     outline: none;
 		border: none;
     border-radius: var(--border-radius); 
@@ -65,32 +65,33 @@ export default css.global`
 	}
 
 	form {
+    flex: 1;
 		display: flex;
 		flex-direction: column;
     max-width: 32rem;
 	}
 
 	label {
-    margin: 0.5rem 0;
+    margin: 0.8rem 0;
 	}
 
 	input,
 	select,
 	textarea {
     box-sizing: border-box;
-		padding: 1rem;
+		padding: 1.6rem;
 		border-radius: var(--border-radius);
 		border: 1px solid #eee;
-    margin-bottom: 1rem;
+    margin-bottom: 1.6rem;
 	}
 
   h1,h2,h3,h4,h5,h6 {
     margin-top: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 2.4rem;
     font-weight: 400;
   }
 
   h1 {
-    margin-bottom: 3rem;
+    margin-bottom: 3.2rem;
   }
 `
