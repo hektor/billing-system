@@ -9,13 +9,7 @@ export default ({children, wrap}) => {
 			<div className="page-container">
 				<Nav />
 				<main className="content">
-					{wrap ? (
-						<div className="wrapper">
-							{children}
-						</div>
-					) : 
-						children
-					}
+					{children}
 				</main>
 			</div>
 			<style>{globalStyles}</style>
@@ -40,10 +34,9 @@ export default ({children, wrap}) => {
 					order: -1;
 					display: flex;
 					flex-direction: column;
-					margin: 1rem;
-					padding: 1rem;
 					background: #fff;
 					border-radius: var(--border-radius);
+					padding: 1.6rem;
 				}
 
 				@media (min-width: 768px) {
@@ -53,14 +46,8 @@ export default ({children, wrap}) => {
 
 					.content {
 						order: 1;
+					  margin: 1.2rem;
 					}
-
-        .wrapper {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          margin: 4vh 8vw;
-        }
 			`}</style>
 		</div>
 	)
