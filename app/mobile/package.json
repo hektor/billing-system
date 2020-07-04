@@ -18,7 +18,6 @@
     "next-with-apollo": "^5.0.0",
     "nuka-carousel": "^4.6.3",
     "react": "^16.12.0",
-    "react-big-calendar": "^0.24.0",
     "react-dom": "^16.12.0",
     "react-feather": "^2.0.3"
   },
