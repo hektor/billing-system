@@ -65,7 +65,6 @@ export default css.global`
 	}
 
 	form {
-    flex: 1;
 		display: flex;
 		flex-direction: column;
     max-width: 32rem;
@@ -79,19 +78,15 @@ export default css.global`
 	select,
 	textarea {
     box-sizing: border-box;
-		padding: 1.6rem;
 		border-radius: var(--border-radius);
 		border: 1px solid #eee;
+    background: inherit;
+		padding: 1.6rem;
     margin-bottom: 1.6rem;
 	}
 
   h1,h2,h3,h4,h5,h6 {
-    margin-top: 0;
-    margin-bottom: 2.4rem;
+    margin: 0;
     font-weight: 400;
-  }
-
-  h1 {
-    margin-bottom: 3.2rem;
   }
 `
