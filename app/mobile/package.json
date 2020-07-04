@@ -15,11 +15,10 @@
     "moment": "^2.24.0",
     "next": "^9.3.4",
     "next-cookies": "^2.0.3",
+    "next-pwa": "^3.0.1",
     "next-with-apollo": "^5.0.0",
-    "nuka-carousel": "^4.6.3",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-feather": "^2.0.3"
+    "react-dom": "^16.12.0"
   },
   "scripts": {
     "dev": "next",
