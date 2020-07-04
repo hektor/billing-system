@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import Search from '../components/Search'
 import NavLink from '../components/NavLink'
-import {Menu, X, Home} from 'react-feather'
 
 export default () => {
 	const [toggle, setToggle] = useState(false)
@@ -11,12 +9,12 @@ export default () => {
 				className="toggle"
 				onClick={() => setToggle(!toggle)}
 			>
-				<div className="icon">{toggle ? <X /> : <Menu />} </div>
+				<div className="icon">{toggle ? 'x' : 'menu'}</div>
 			</button>
 			<nav>
-        <div className="nav-scroll">
-          <NavLink title="Home" href="/" icon={<Home />} />
-          <NavLink title="Documents" href="/documents, /document" />
+				<div className="nav-scroll">
+					<NavLink title="Home" href="/" />
+					<NavLink title="Documents" href="/documents, /document" />
 				</div>
 			</nav>
 			<style jsx>{`

@@ -1,11 +1,9 @@
 import React from 'react'
-import { Search } from 'react-feather'
 
 export default () => {
 	return (
 		<div className="search">
-      <Search strokeWidth={1} />
-      <input type="search" placeholder="Search" />
+			<input type="search" placeholder="Search" />
 			<style jsx>{`
         .search {
           display: flex;

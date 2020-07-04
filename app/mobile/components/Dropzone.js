@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react'
 import cookie from 'js-cookie'
-import { UploadCloud } from 'react-feather'
 
 export default () => {
 	const [dragging, setDragging] = useState(false)
@@ -58,9 +57,8 @@ export default () => {
 			onDrop={handleDrop}
 		>
 			<div className="status">
-        <UploadCloud />
-        <h2>{dragging ? 'Drop' : 'Upload file'}</h2>
-        <p>Drag file in here to upload</p>
+				<h2>{dragging ? 'Drop' : 'Upload file'}</h2>
+				<p>Drag file in here to upload</p>
 			</div>
 			<style jsx>{`
         .dropzone {
