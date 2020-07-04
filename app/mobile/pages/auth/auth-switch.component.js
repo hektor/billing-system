@@ -7,8 +7,12 @@ export default ({ to }) => (
 			<a>{to === 'up' ? 'Sign up' : 'Sign in'}</a>
 		</Link>
 		<style jsx>{`
+        a {
+          text-decoration: underline;
+        }
+
         .switch-sign-type {
-          padding: 1.2rem;
+          padding: 1.6rem 1.6rem 0 1.6rem;
           display: flex;
           justify-content: space-between;
         } 

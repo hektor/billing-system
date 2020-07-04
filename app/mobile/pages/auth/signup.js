@@ -18,13 +18,18 @@ export default () => {
 
 	return (
 		<Layout col>
-			<h1>Account aanmaken</h1>
+			<div className="heading-group">
+				<h1>Get started</h1>
+				<h2>Sign up</h2>
+			</div>
 			<form>
 				<label htmlFor="email">Email</label>
 				<input
 					onChange={e => handleInput(e)}
 					type="email"
 					name="email"
+					placeholder="Choose an email"
+					autoComplete="email"
 				/>
 				<label htmlFor="contract-type">Contract type</label>
 				<select>
@@ -38,6 +43,8 @@ export default () => {
 					onChange={e => handleInput(e)}
 					type="password"
 					name="password"
+					placeholder="Choose a password"
+					autoComplete="new-password"
 				/>
 				<button
 					onClick={e => handleSubmit(e)}
@@ -47,9 +54,26 @@ export default () => {
 				</button>
 				<AuthSwitch to="in"/>
 			</form>
-			<style>{`
-        button {
+			<style jsx>{`
+        .heading-group {
+          margin: 3.2rem 0 0 1.6rem;
+        }
+
+        form {
           margin-top: auto;
+        }
+
+        label {
+          margin-left: 1.6rem;
+        }
+
+        button {
+          margin-top: 4.8rem;
+        }
+
+        .forgot-password {
+          text-align: right;
+          padding-bottom: 0.8rem;
         }
       `}</style>
 		</Layout>
