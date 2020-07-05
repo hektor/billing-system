@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Query from '../apollo/query'
 import DOCUMENT_QUERY from '../apollo/queries/document'
 
-import Layout from '../components/Layout'
+import { Layout } from '../components'
 
 export default () => (
 	<Layout>

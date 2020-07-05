@@ -1,6 +1,5 @@
 import {signin} from '../../auth'
-import {Layout, Button} from '../../components'
-import Form from '../../components/form.component'
+import {Layout, Form, Button} from '../../components'
 import AuthSwitch from './auth-switch.component'
 import form  from './signinFormData'
 
