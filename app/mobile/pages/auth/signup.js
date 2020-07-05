@@ -1,4 +1,5 @@
-import {useState} from 'react'
+import { useState } from 'react'
+import { signin } from '../../auth'
 import Layout from '../../components/Layout'
 import AuthSwitch from './auth-switch.component'
 
@@ -14,6 +15,7 @@ export default () => {
 
 	const handleSubmit = e => {
 		e.preventDefault()
+		signup(user)
 	}
 
 	return (
@@ -68,7 +70,7 @@ export default () => {
         }
 
         button {
-          margin-top: 4.8rem;
+          margin-top: 3.2rem;
         }
 
         .forgot-password {
