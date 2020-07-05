@@ -1,10 +1,10 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import * as eva from 'eva-icons'
 
 import { useInput } from '../hooks'
-import {Input, Dropdown} from '.'
+import {Input, Dropdown, Modal } from '.'
 
 export const inputTypes = {
 	DROPDOWN: 'dropdown',
@@ -25,6 +25,7 @@ const FormField = ({
 }) => {
 	const { DROPDOWN } = inputTypes
 	const { showFeedback, setShowFeedback, setValue, bind } = useInput('')
+	const [showInfo, setShowInfo] = useState(false)
 
 	useEffect(() => {
 		eva.replace()
@@ -97,7 +98,24 @@ const FormField = ({
 						</div>
 					</div>
 					{label && <label htmlFor={name}>{label}</label>}
-					{info && <a className="info-text">{info}</a>}
+					<Modal toggle={showInfo}>
+						<div className="modal-header">
+							<h3>{info}</h3>
+							<a className="close-modal" onClick={() => setShowInfo(false)}>
+								<span>Close</span>
+								<i
+									data-eva="close-circle-outline"
+									data-eva-animation="pulse"
+									data-eva-hover="true"
+									data-eva-infinite="true"
+									data-eva-fill="var(--color-primary-500)"
+									data-eva-width="32"
+									data-eva-height="32"
+								/>
+							</a>
+						</div>
+					</Modal>
+					{info && <a className="open-modal" onClick={() => setShowInfo(!showInfo)} className="info-text">Info</a>}
 				</div>
 			</div>
 			{getInputByType()}
@@ -146,6 +164,22 @@ const FormField = ({
             min-height: 2rem;
             padding: 0.4rem 0;
             margin: 0 1.6rem;
+          }
+
+          .modal-header {
+            display: flex;
+            align-items: center;
+          }
+
+          .close-modal {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+          }
+
+          .close-modal > span {
+            margin-right: 0.8rem;
+            margin-bottom: 0.2rem;
           }
         `}
 			</style>
