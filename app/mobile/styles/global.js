@@ -1,6 +1,13 @@
 import css from 'styled-jsx/css'
 
 export default css.global`
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
 	:root {
 		--base: 1rem;
 		--font: Inter, Helvetica, Arial;
