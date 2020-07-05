@@ -19,7 +19,7 @@ export default () => {
 	}
 
 	return (
-		<Layout wrap col>
+		<Layout col>
 			<div className="heading-group">
 				<h1>Get started</h1>
 				<h2>Sign in</h2>
@@ -56,10 +56,6 @@ export default () => {
 			<style jsx>{`
         .heading-group {
           margin: 3.2rem 0 0 1.6rem;
-        }
-
-        .reset-password {
-          text-align: left;
         }
 
         form {

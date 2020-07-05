@@ -72,11 +72,6 @@ export default () => {
         button {
           margin-top: 3.2rem;
         }
-
-        .forgot-password {
-          text-align: right;
-          padding-bottom: 0.8rem;
-        }
       `}</style>
 		</Layout>
 	)
