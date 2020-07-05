@@ -9,7 +9,7 @@ const Input = ({ type, name, placeholder, required, error, value, icon, ...rest 
 					data-eva-animation="pulse"
 					data-eva-hover="true"
 					data-eva-infinite="true"
-					data-eva-fill="#aaaaaa"
+					data-eva-fill="var(--color-primary-300)"
 				/>
 			</div>
 		)}
@@ -29,11 +29,7 @@ const Input = ({ type, name, placeholder, required, error, value, icon, ...rest 
 
         input {
           flex: 1;
-        }
-
-        input::placeholder {
-          color: #aaa;
-          padding-left: ${icon ? '2rem' : '0' };
+          padding-left: ${icon ? '3.6rem' : '0' };
         }
 
         .icon {

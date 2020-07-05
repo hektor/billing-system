@@ -142,9 +142,9 @@ const FormField = ({
           }
 
           .feedback {
-            color: var(--color-warning);
+            color: var(--color-warning-500);
             min-height: 2rem;
-            padding: 0.4rem;
+            padding: 0.4rem 0;
             margin: 0 1.6rem;
           }
         `}

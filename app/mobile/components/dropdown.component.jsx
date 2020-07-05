@@ -5,7 +5,7 @@ const Dropdown = ({ name, placeholder, options, value, required, icon, ...rest }
 		<div className="icon">
 			<i
 				data-eva={icon}
-				data-eva-fill="#aaaaaa"
+				data-eva-fill="var(--color-primary-300)"
 			/>
 		</div>
 		<select name={name} {...rest} defaultValue="" value={value}>
@@ -28,14 +28,13 @@ const Dropdown = ({ name, placeholder, options, value, required, icon, ...rest }
         .icon {
           padding: 1.2rem 1.4rem;
           padding-top: 1.4rem;
-		      border: 1px solid #eee;
+		      border: 1px solid var(--color-primary-300);
           border-right: 0;
           border-radius: var(--border-radius) 0 0 var(--border-radius);
         }
 
         select {
           flex: 1;
-          color: #aaa;
           border-radius: 0 var(--border-radius) var(--border-radius) 0;
         }
       `}
