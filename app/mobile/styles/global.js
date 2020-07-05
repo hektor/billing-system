@@ -5,12 +5,13 @@ export default css.global`
 		--base: 1rem;
 		--font: Inter, Helvetica, Arial;
 		--border-radius: 0.25rem;
-    --color-primary: #555 }
+    --color-primary: #555;
+  }
 
 	body {
 		font-family: var(--font);
 		font-size: var(--base);
-	}
+  }
 
   .hidden,
   [hidden] {
@@ -23,20 +24,17 @@ export default css.global`
     display: block;
   }
  
-  .btn,
 	button {
+    box-sizing: border-box;
 		display: flex;
 		flex-direction: row;
-		align-items: center;
     padding: 1.6rem;
     outline: none;
 		border: none;
     border-radius: var(--border-radius); 
     font-weight: 500;
-    transition: .1s cubic-bezier(0.2, 0, 0,38, 0.9);
 	}
   
-  .btn,
 	button > svg {
 		height: 1rem;
 		margin-right: 0.5rem;
