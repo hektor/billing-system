@@ -16,7 +16,7 @@ export default () => {
 				fields={form.fields}
 				onSubmit={handleSubmit}
 			>
-				<Button type="submit">Sign up</Button>
+				<Button primary type="submit">Sign up</Button>
 				<AuthSwitch to="in"/>
 			</Form>
 			<style jsx>{`

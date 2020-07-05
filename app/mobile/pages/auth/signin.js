@@ -14,13 +14,13 @@ export default () => {
 			</div>
 			<div className="forgot-password">
 				<label htmlFor="forgot-password" className="forgot-password-label">Forgot password?</label>
-				<input name="forgot-password" className="forgot-password-action" type="button" value="Reset password" />
+				<Button name="forgot-password" className="forgot-password-action" type="button" title="Reset password" />
 			</div>
 			<Form
 				fields={form.fields}
 				onSubmit={handleSubmit}
 			>
-				<Button type="submit">Sign in</Button>
+				<Button primary type="submit">Sign in</Button>
 				<AuthSwitch to="up"/>
 			</Form>
 			<style jsx>{`
