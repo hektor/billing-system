@@ -1,4 +1,4 @@
-import globalStyles from '../styles/global'
+import { globalStyles } from '../styles'
 import Header from './Header'
 export default ({ children }) => (
 	<div className="container">
