@@ -3,6 +3,8 @@ import Router from 'next/router'
 import nextCookie from 'next-cookies'
 import cookie from 'js-cookie'
 
+export const signup = async({ email, password }) => console.log({ email, password })
+
 export const signin = async ({ email, password }) => {
 	const url = 'http://localhost:1337/auth/local'
 	try {
