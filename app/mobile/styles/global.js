@@ -15,6 +15,13 @@ export default css.global`
     --color-primary: #555;
   }
 
+  /* hide scrollbar */
+  ::-webkit-scrollbar {
+    width: 0; /* scrollbar space */
+    background: transparent; /*   make scrollbar invisible */
+  }
+
+
 	body {
 		font-family: var(--font);
 		font-size: var(--base);
@@ -32,7 +39,6 @@ export default css.global`
   }
  
 	button {
-    box-sizing: border-box;
 		display: flex;
 		flex-direction: row;
     padding: 1.6rem;
@@ -82,7 +88,6 @@ export default css.global`
 	input,
 	select,
 	textarea {
-    box-sizing: border-box;
 		border-radius: var(--border-radius);
 		border: 1px solid #eee;
     background: inherit;
