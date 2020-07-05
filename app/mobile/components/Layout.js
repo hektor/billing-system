@@ -1,22 +1,20 @@
 import globalStyles from '../styles/global'
 import Header from './Header'
-import Nav from './Nav'
-
-export default ({children, wrap}) => {
-	return (
-		<div className="container">
-			<Header />
-			<div className="page-container">
-				<Nav />
-				<main className="content">
-					{children}
-				</main>
-			</div>
-			<style>{globalStyles}</style>
-			<style jsx>{`
+export default ({ children }) => (
+	<div className="container">
+		<Header />
+		<div className="page-container">
+			{/*<Nav />*/}
+			<main className="content">
+				{children}
+			</main>
+		</div>
+		<style>{globalStyles}</style>
+		<style jsx>{`
 				.container {
-					min-height: 100vh;
 					background: #eee;
+          min-height: 100vh;
+          min-height: -webkit-fill-available;
 				}
 
 				.container,
@@ -25,8 +23,6 @@ export default ({children, wrap}) => {
 					flex-direction: column;
           flex-grow: 1;
           position: relative;
-          height: 100%;
-          overflow: hidden;
 				}
 
 				.content {
@@ -40,6 +36,11 @@ export default ({children, wrap}) => {
 				}
 
 				@media (min-width: 768px) {
+          .container {
+            justify-content: center;
+            align-items: center;
+          }
+
 					.page-container {
 						flex-direction: row;
 					}
@@ -47,8 +48,8 @@ export default ({children, wrap}) => {
 					.content {
 						order: 1;
 					  margin: 1.2rem;
+            min-width: 32rem;
 					}
 			`}</style>
-		</div>
-	)
-}
+	</div>
+)
