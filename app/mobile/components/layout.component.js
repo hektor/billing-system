@@ -1,8 +1,6 @@
 import { globalStyles } from '../styles'
-import Header from './Header'
 export default ({ children }) => (
 	<div className="container">
-		<Header />
 		<div className="page-container">
 			{/*<Nav />*/}
 			<main className="content">
