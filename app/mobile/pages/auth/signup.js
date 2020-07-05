@@ -1,76 +1,35 @@
-import { useState } from 'react'
-import { signin } from '../../auth'
-import Layout from '../../components/Layout'
+import {signup} from '../../auth'
+import {Layout, Button} from '../../components'
+import Form from '../../components/form.component'
 import AuthSwitch from './auth-switch.component'
+import form from './signupFormData'
 
 export default () => {
-	const [user, setUser] = useState({
-		email: '',
-		password: ''
-	})
-
-	const handleInput = e => {
-		setUser({ ...user, [e.target.name]: e.target.value })
-	}
-
-	const handleSubmit = e => {
-		e.preventDefault()
-		signup(user)
-	}
-
+	const handleSubmit = e => console.log(e)
 	return (
 		<Layout col>
 			<div className="heading-group">
 				<h1>Get started</h1>
 				<h2>Sign up</h2>
 			</div>
-			<form>
-				<label htmlFor="email">Email</label>
-				<input
-					onChange={e => handleInput(e)}
-					type="email"
-					name="email"
-					placeholder="Choose an email"
-					autoComplete="email"
-				/>
-				<label htmlFor="contract-type">Contract type</label>
-				<select>
-					<option>Employee</option>
-					<option>Subcontractor</option>
-				</select>
-				<label htmlFor="password">
-          Password
-				</label>
-				<input
-					onChange={e => handleInput(e)}
-					type="password"
-					name="password"
-					placeholder="Choose a password"
-					autoComplete="new-password"
-				/>
-				<button
-					onClick={e => handleSubmit(e)}
-					type="submit"
-				>
-          Sign up
-				</button>
+			<Form
+				fields={form.fields}
+				onSubmit={handleSubmit}
+			>
+				<Button type="submit">Sign up</Button>
 				<AuthSwitch to="in"/>
-			</form>
+			</Form>
 			<style jsx>{`
         .heading-group {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
           margin: 3.2rem 0 0 1.6rem;
         }
 
-        form {
-          margin-top: auto;
-        }
-
-        label {
-          margin-left: 1.6rem;
-        }
-
-        button {
+        form :global(button) {
           margin-top: 3.2rem;
+          border: 1px solid red;
         }
       `}</style>
 		</Layout>
