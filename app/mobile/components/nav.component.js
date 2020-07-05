@@ -26,7 +26,7 @@ export default () => {
 					height: 50vh;
 					transform: translateY(${toggle ? '0' : '50vh'});
 					flex-direction: column;
-					background: #fff;
+					background: var(--color-white);
           transition:  0.15s cubic-bezier(0.4, 0.14, 0.3, 1); 
 				}
 
