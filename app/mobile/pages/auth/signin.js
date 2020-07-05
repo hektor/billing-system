@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {signin} from '../../auth'
+import { signin } from '../../auth'
 import Layout from '../../components/Layout'
 import AuthSwitch from './auth-switch.component'
 
@@ -25,6 +25,10 @@ export default () => {
 				<h2>Sign in</h2>
 			</div>
 			<form>
+				<div className="forgot-password">
+					<label htmlFor="forgot-password" className="forgot-password-label">Forgot password?</label>
+					<input name="forgot-password" className="forgot-password-action" type="button" value="Reset password" />
+				</div>
 				<label htmlFor="email">Email</label>
 				<input
 					onChange={e => handleInput(e)}
@@ -41,20 +45,21 @@ export default () => {
 					placeholder="Enter your password"
 					autoComplete="current-password"
 				/>
-				{/* <Link href="forgot-password">
-					<a className="forgot-password">Forgot password?</a>
-				</Link> */}
 				<button
 					onClick={e => handleSubmit(e)}
 					type="submit"
 				>
-          Log in
+          Sign in
 				</button>
 				<AuthSwitch to="up"/>
 			</form>
 			<style jsx>{`
         .heading-group {
           margin: 3.2rem 0 0 1.6rem;
+        }
+
+        .reset-password {
+          text-align: left;
         }
 
         form {
@@ -66,12 +71,13 @@ export default () => {
         }
 
         button {
-          margin-top: 4.8rem;
+          margin-top: 3.2rem;
         }
 
         .forgot-password {
-          text-align: right;
-          padding-bottom: 0.8rem;
+          display: flex;
+          align-items: baseline;
+          justify-content: space-between;
         }
       `}</style>
 		</Layout>
