@@ -8,10 +8,10 @@ const Dropdown = ({ name, placeholder, options, value, required, icon, ...rest }
 				data-eva-fill="var(--color-primary-300)"
 			/>
 		</div>
-		<select name={name} {...rest} defaultValue="" value={value}>
+		<select name={name} {...rest} value={value}>
 			{placeholder && (
-				<option 
-					value="" disabled={required} hidden={required}>
+				<option
+					value={placeholder} disabled={required} hidden={required}>
 					{placeholder}
 				</option>
 			)}
