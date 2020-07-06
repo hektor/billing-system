@@ -1187,16 +1187,11 @@
       "Users-PermissionsUser": {
         "required": [
           "id",
-          "username",
           "email"
         ],
         "properties": {
           "id": {
             "type": "string"
-          },
-          "username": {
-            "type": "string",
-            "minLength": 3
           },
           "email": {
             "type": "string",
@@ -1249,14 +1244,9 @@
       },
       "NewUsers-PermissionsUser": {
         "required": [
-          "username",
           "email"
         ],
         "properties": {
-          "username": {
-            "type": "string",
-            "minLength": 3
-          },
           "email": {
             "type": "string",
             "minLength": 6
