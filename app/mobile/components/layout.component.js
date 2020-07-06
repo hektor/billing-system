@@ -1,13 +1,14 @@
+import { Header } from '.'
 import { globalStyles } from '../styles'
 export default ({ children }) => (
 	<div className="container">
 		<div className="page-container">
-			{/*<Nav />*/}
 			<main className="content">
+				<Header />
 				{children}
 			</main>
 		</div>
-		<style>{globalStyles}</style>
+		<style jsx global>{globalStyles}</style>
 		<style jsx>{`
 				.container {
 					background: #eee;
