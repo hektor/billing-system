@@ -1,20 +1,27 @@
-import Link from 'next/link'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router' 
 import { Layout } from '../components'
+import cookie from 'js-cookie'
 
 /* TODO: routes from constant */
-export default () => <Layout wrap row>
-	<h1>Welcome</h1>
-	<div>
-		<Link href="auth/signin"><a>Get started</a></Link>
-	</div>
-	<style jsx>
-		{`
-      div {
-        margin-top: auto;
-        padding: 1.6rem 0;
-        border-top: 1px solid #000;
+
+
+export default () => {
+	const router = useRouter()
+	useEffect(() => {
+		cookie.get('token') ? router.push('/dashboard') :
+			router.push('/auth/signin')
+	}, [])
+	return (<Layout>
+		<h1>Loading</h1>
+		<style jsx>
+			{`
+      h1 {
+        margin: auto;
       }
     `}
-	</style>
-</Layout>
+		</style>
+	</Layout>
+	)
+}
 
