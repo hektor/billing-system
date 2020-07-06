@@ -3,10 +3,7 @@ import PropTypes from 'prop-types'
 const Dropdown = ({ name, placeholder, options, value, required, icon, ...rest }) => (
 	<div className="dropdown">
 		<div className="icon">
-			<i
-				data-eva={icon}
-				data-eva-fill="var(--color-primary-300)"
-			/>
+			{icon}
 		</div>
 		<select name={name} {...rest} value={value}>
 			{placeholder && (
