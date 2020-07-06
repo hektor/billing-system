@@ -14,10 +14,10 @@
     "js-cookie": "^2.2.1",
     "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
-    "next": "^9.3.4",
+    "next": "latest",
     "next-cookies": "^2.0.3",
     "next-pwa": "^3.0.1",
-    "next-with-apollo": "^5.0.0",
+    "next-with-apollo": "latest",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
