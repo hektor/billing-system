@@ -42,7 +42,7 @@ export const signin = async ({ email, password }) => {
 	} catch (error) {
 		return error
 	}
-	Router.push('/')
+	Router.push('/dashboard')
 }
 
 export const auth = ctx => {
@@ -59,10 +59,10 @@ export const auth = ctx => {
 export const signout = () => {
 	cookie.remove('token')
 	window.localStorage.setItem('signout', Date.now().toString())
-	Router.push('/signin')
+	Router.push('/auth/signin')
 }
 
-export const withAuthSync = WrappedComponent => {
+export const withAuthSync = Component => {
 	const Wrapper = props => {
 		const syncSignout = event => {
 			if (event.key === 'signout') {
@@ -81,14 +81,14 @@ export const withAuthSync = WrappedComponent => {
 				window.localStorage.removeItem('signout')
 			}
 		}, [])
-		return <WrappedComponent {...props} />
+		return <Component {...props} />
 	}
 
 	Wrapper.getInitialProps = async ctx => {
 		const token = auth(ctx)
 		const componentProps =
-			WrappedComponent.getInitialProps &&
-			(await WrappedComponent.getInitialProps(ctx))
+      Component.getInitialProps &&
+      (await Component.getInitialProps(ctx))
 
 		return { ...componentProps, token }
 	}
