@@ -154,6 +154,10 @@ export default css.global`
     max-width: 32rem;
 	}
 
+  form:last-child button {
+    margin-top: 3.2rem; 
+  }
+
 	label {
     margin: 0.8rem 0;
 	}
