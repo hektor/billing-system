@@ -1,16 +1,10 @@
 import PropTypes from 'prop-types'
 
-const Input = ({ type, name, placeholder, required, error, value, icon, ...rest }) => (
+const Input = ({ type, name, placeholder, required, color, value, icon, ...rest }) => (
 	<div className="input">
 		{icon && (
-			<div className="icon">
-				<i
-					data-eva={icon}
-					data-eva-animation="pulse"
-					data-eva-hover="true"
-					data-eva-infinite="true"
-					data-eva-fill="var(--color-primary-300)"
-				/>
+			<div className="icon-container">
+				{icon}
 			</div>
 		)}
 		<input
@@ -29,13 +23,21 @@ const Input = ({ type, name, placeholder, required, error, value, icon, ...rest 
 
         input {
           flex: 1;
-          padding-left: ${icon ? '3.6rem' : '0' };
+          padding-left: ${icon ? '3.6rem' : '0'};
+          border-color: ${color || 'var(--color-primary-300)'};
         }
 
-        .icon {
+        input::placeholder {
+          color: ${color || 'var(--color-primary-300)'};
+        }
+
+        .icon-container {
           position: absolute;
           margin: 1.4rem;
-          margin-bottom: 1.2rem;
+        }
+
+        .input :global(.icon) {
+          color: ${color || 'var(--color-primary-300)'};
         }
       `}
 		</style>
