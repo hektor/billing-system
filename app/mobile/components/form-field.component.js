@@ -1,7 +1,6 @@
+import { GoCheck, GoX, GoInfo } from 'react-icons/go'
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-
-import * as eva from 'eva-icons'
 
 import { useInput } from '../hooks'
 import {Input, Dropdown, Modal } from '.'
@@ -28,10 +27,6 @@ const FormField = ({
 	const [showInfo, setShowInfo] = useState(false)
 
 	useEffect(() => {
-		eva.replace()
-	}, [])
-
-	useEffect(() => {
 		if (value) setValue(value)
 		if (showSubmitFeedback) setShowFeedback(true)
 	}, [showSubmitFeedback])
@@ -50,6 +45,7 @@ const FormField = ({
 					value={value}
 					required={required}
 					icon={icon}
+					color={showFeedback && (error ? 'var(--color-warning-600)' : 'var(--color-success-600)')}
 					{...rest}
 					{...bind}
 					onChange={handleChange}
@@ -62,6 +58,7 @@ const FormField = ({
 					name={name}
 					value={value}
 					required={required}
+					color={showFeedback && (error ? 'var(--color-warning-600)' : 'var(--color-success-600)')}
 					icon={icon}
 					{...rest}
 					{...bind}
@@ -78,7 +75,7 @@ const FormField = ({
 					<div className="feedback-badge">
 						<div className="feedback-icon">
 							{showFeedback && (
-								error ? <span>&#xE161;</span> : <span>&#xE13C;</span>
+								error ? <GoX/> : <GoCheck/>
 							)}
 						</div>
 					</div>
@@ -88,26 +85,11 @@ const FormField = ({
 							<h3>{info}</h3>
 							<a className="close-modal" onClick={() => setShowInfo(false)}>
 								<span>Close</span>
-								<i
-									data-eva="close-circle-outline"
-									data-eva-animation="pulse"
-									data-eva-hover="true"
-									data-eva-infinite="true"
-									data-eva-fill="var(--color-primary-500)"
-									data-eva-width="32"
-									data-eva-height="32"
-								/>
+								<GoX/>
 							</a>
 						</div>
 					</Modal>
-					{info && <a className="open-modal" onClick={() => setShowInfo(!showInfo)}>
-						<i
-							data-eva="question-mark-circle-outline"
-							data-eva-animation="pulse"
-							data-eva-infinite="true"
-							data-eva-fill="var(--color-primary-500)"
-						/>
-					</a>}
+					{info && <a className="open-modal" onClick={() => setShowInfo(!showInfo)}><GoInfo/></a>}
 				</div>
 			</div>
 			{getInputByType()}
@@ -126,6 +108,7 @@ const FormField = ({
 
           label {
             padding: 0.8rem 0;
+            color: ${showFeedback ? (error ? 'var(--color-warning-700)' : 'var(--color-success-700)') : 'inherit'};
             margin-right: auto;
           }
 
@@ -133,7 +116,7 @@ const FormField = ({
             position: relative;
             display: flex;
             width: 1.6rem;
-            height: 1.2rem;
+            height: 1.5rem;
             border-radius: 50%;
             color: ${error ? 'var(--color-warning-500)' : 'var(--color-success-500)'};
             opacity: ${showFeedback ? 1 : 0};
@@ -142,7 +125,7 @@ const FormField = ({
           }
 
           .feedback {
-            color: var(--color-warning-500);
+            color: var(--color-warning-700);
             min-height: 2rem;
             padding: 0.4rem 0;
             margin: 0 1.6rem;
