@@ -1,19 +1,16 @@
 export default ({ title, type, onClick, loading, children, primary, icon }) => (
 	<button onClick={onClick} type={type}>
-		<i
-			data-eva={icon}
-			data-eva-animation="pulse"
-			data-eva-hover="true"
-			data-eva-infinite="true"
-			data-eva-fill={primary ? 'var(--color-primary-100)' : 'var(--color-primary-300)'}
-			style={{marginRight: '.2rem'}}
-		/>
+		{icon && (
+			<i>
+				{icon}
+			</i>
+		)}
 		{children}
 		{title}
 		{loading && 'loading'}
 		<style jsx>{`
       button :global(i) {
-        margin-right: 0.4rem;
+        margin-right: 0.8rem;
       }
 
       button {
