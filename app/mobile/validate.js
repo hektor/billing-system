@@ -70,5 +70,6 @@ export const validator = {
 	expectations: (expectations) => validate(expectations).minLength(50).maxLength(500).isRequired(),
 	level: (level) => validate(level).isRequired(),
 	website: (website) => validate(website).isUrl().minLength(5).maxLength(500),
-	email: (email) => validate(email).maxLength(100).isEmail()
+	email: (email) => validate(email).maxLength(100).isEmail(),
+	password: (password) => validate(password).minLength(8).maxLength(100).isRequired()
 }
