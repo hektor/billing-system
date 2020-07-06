@@ -1,26 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 
 export default (initialValue) => {
-  const [value, setValue] = useState(initialValue);
-  const [showFeedback, setShowFeedback] = useState(false);
+	const [value, setValue] = useState(initialValue)
+	const [showFeedback, setShowFeedback] = useState(false)
 
-  const onChange = (e) => {
-    setValue(e.target.value);
-    setShowFeedback(true);
-  };
+	const onChange = e => {
+		setValue(e.target.value)
+	}
 
-  const onBlur = (e) => {
-    setShowFeedback(true);
-  };
+	const onBlur = e => {
+		setShowFeedback(true)
+	}
 
-  return {
-    setShowFeedback,
-    showFeedback,
-    setValue,
-    bind: {
-      value,
-      onChange,
-      onBlur
-    }
-  };
-};
+	return {
+		setShowFeedback,
+		showFeedback,
+		setValue,
+		bind: {
+			value,
+			onChange,
+			onBlur
+		}
+	}
+}
