@@ -1,3 +1,5 @@
+import { GoMail, GoLock } from 'react-icons/go'
+
 export const inputTypes = {
 	EMAIL: 'email',
 	PASSWORD: 'password'
@@ -14,7 +16,7 @@ export default {
 			autoComplete: 'email',
 			type: EMAIL,
 			placeholder: 'Enter your email',
-			icon: 'email-outline',
+			icon: <GoMail/>,
 			required: true
 		},
 		{
@@ -23,7 +25,7 @@ export default {
 			autoComplete: 'current-password',
 			type: PASSWORD,
 			placeholder: 'Enter your password',
-			icon: 'lock-outline',
+			icon: <GoLock/>,
 			required: true
 		}
 	]
