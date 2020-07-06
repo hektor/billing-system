@@ -128,7 +128,7 @@ export default css.global`
 	button {
 		display: flex;
 		flex-direction: row;
-    padding: 1.6rem;
+    padding: 1.6rem 1.4rem;
     outline: none;
 		border: none;
     border-radius: var(--border-radius); 
