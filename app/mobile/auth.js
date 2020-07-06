@@ -3,12 +3,31 @@ import Router from 'next/router'
 import nextCookie from 'next-cookies'
 import cookie from 'js-cookie'
 
-export const signup = async({ email, password }) => console.log({ email, password })
+import { api } from './config'
+
+export const signup = async({ email, password }) => {
+	try {
+		const res = await fetch(api.SIGNUP, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ email, password })
+		})
+		if (res.status === 200) {
+			let { jwt, user } = await res.json()
+			console.log(user)
+			cookie.set('token', jwt, { expires: 1 })
+			cookie.set('user', user, { expires: 1 })
+		} else {
+			throw Error(res.statusText)
+		}
+	} catch (error) {
+		return error
+	}
+} 
 
 export const signin = async ({ email, password }) => {
-	const url = 'http://localhost:1337/auth/local'
 	try {
-		const res = await fetch(url, {
+		const res = await fetch(api.SIGNIN, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ identifier: email, password })
