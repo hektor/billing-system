@@ -1,7 +1,7 @@
 import {signup} from '../../auth'
 import {Layout, Form, Button} from '../../components'
 import AuthSwitch from './auth-switch.component'
-import form from './signupFormData'
+import {signupForm} from '../../data'
 
 export default () => {
 	const handleSubmit = e => signup(e) 
@@ -12,10 +12,10 @@ export default () => {
 				<h2>Sign up</h2>
 			</div>
 			<Form
-				fields={form.fields}
+				fields={signupForm.fields}
 				onSubmit={handleSubmit}
 			>
-				<Button primary type="submit">Sign up</Button>
+				<Button primary type="submit" icon="person-add-outline">Sign up</Button>
 				<AuthSwitch to="in"/>
 			</Form>
 			<style jsx>{`
