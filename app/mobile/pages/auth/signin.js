@@ -31,11 +31,6 @@ export default () => {
           margin: 3.2rem 0 0 1.6rem;
         }
 
-        form :global(button) {
-          margin-top: 3.2rem;
-          border: 1px solid red;
-        }
-
         .forgot-password {
           display: flex;
           justify-content: space-between;
