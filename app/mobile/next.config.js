@@ -8,10 +8,7 @@ module.exports = withPWA({
 	pwa: {
 		dest: 'public'
 	},
-	/*
-  * Add environment variables
-  */
 	env: {
-		GRAPHQL_URL: process.env.GRAPHQL_URL,
+		BASE_URL: process.env.BASE_URL
 	}
 })
