@@ -1,7 +1,7 @@
 import {signin} from '../../auth'
 import {Layout, Form, Button} from '../../components'
 import AuthSwitch from './auth-switch.component'
-import form  from './signinFormData'
+import {signinForm}  from '../../data'
 
 export default () => {
 	const handleSubmit = e => signin(e) 
@@ -13,13 +13,13 @@ export default () => {
 			</div>
 			<div className="forgot-password">
 				<label htmlFor="forgot-password" className="forgot-password-label">Forgot password?</label>
-				<Button name="forgot-password" className="forgot-password-action" type="button" title="Reset password" />
+				<Button name="forgot-password" className="forgot-password-action" type="button" title="Recover" icon="refresh-outline" />
 			</div>
 			<Form
-				fields={form.fields}
+				fields={signinForm.fields}
 				onSubmit={handleSubmit}
 			>
-				<Button primary type="submit">Sign in</Button>
+				<Button primary type="submit" icon="log-in-outline">Sign in</Button>
 				<AuthSwitch to="up"/>
 			</Form>
 			<style jsx>{`
