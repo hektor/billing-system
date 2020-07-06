@@ -115,7 +115,14 @@ const FormField = ({
 							</a>
 						</div>
 					</Modal>
-					{info && <a className="open-modal" onClick={() => setShowInfo(!showInfo)} className="info-text">Info</a>}
+					{info && <a className="open-modal" onClick={() => setShowInfo(!showInfo)}>
+						<i
+							data-eva="question-mark-circle-outline"
+							data-eva-animation="pulse"
+							data-eva-infinite="true"
+							data-eva-fill="var(--color-primary-500)"
+						/>
+					</a>}
 				</div>
 			</div>
 			{getInputByType()}
@@ -135,10 +142,6 @@ const FormField = ({
           label {
             padding: 0.8rem 0;
             margin-right: auto;
-          }
-
-          .info-text {
-            text-decoration: underline;
           }
 
           .feedback-badge {
@@ -169,6 +172,10 @@ const FormField = ({
           .modal-header {
             display: flex;
             align-items: center;
+          }
+
+          .open-modal {
+            margin-right: 0.6rem;
           }
 
           .close-modal {
