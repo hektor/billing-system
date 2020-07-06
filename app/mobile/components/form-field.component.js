@@ -78,22 +78,7 @@ const FormField = ({
 					<div className="feedback-badge">
 						<div className="feedback-icon">
 							{showFeedback && (
-								error ? 
-									<i
-										data-eva={icon}
-										data-eva-animation="pulse"
-										data-eva-hover="true"
-										data-eva-infinite="true"
-										data-eva-fill="#555"
-									/>
-									: 
-									<i
-										data-eva={icon}
-										data-eva-animation="pulse"
-										data-eva-hover="true"
-										data-eva-infinite="true"
-										data-eva-fill="#555"
-									/>
+								error ? <span>&#xE161;</span> : <span>&#xE13C;</span>
 							)}
 						</div>
 					</div>
@@ -148,18 +133,12 @@ const FormField = ({
             position: relative;
             display: flex;
             width: 1.6rem;
-            height: 1.6rem;
-            background: red;
+            height: 1.2rem;
             border-radius: 50%;
-            background: ${error ? 'var(--color-warning)' : 'var(--color-success)'};
-            border: 1px solid #eee;
+            color: ${error ? 'var(--color-warning-500)' : 'var(--color-success-500)'};
             opacity: ${showFeedback ? 1 : 0};
             transform: scale(${showFeedback ? 1 : 0});
             transition: 150ms ease;
-          }
-
-          .feedback-icon {
-            color: var(--color-white);
           }
 
           .feedback {
