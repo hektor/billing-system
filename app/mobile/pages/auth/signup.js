@@ -15,7 +15,7 @@ export default () => {
 				fields={signupForm.fields}
 				onSubmit={handleSubmit}
 			>
-				<Button primary type="submit" icon="person-add-outline">Sign up</Button>
+				<Button primary type="submit" icon="person-add-outline">Create account</Button>
 				<AuthSwitch to="in"/>
 			</Form>
 			<style jsx>{`
