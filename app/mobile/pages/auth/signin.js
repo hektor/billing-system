@@ -4,7 +4,7 @@ import AuthSwitch from './auth-switch.component'
 import form  from './signinFormData'
 
 export default () => {
-	const handleSubmit = e => console.log(e)
+	const handleSubmit = e => signin(e) 
 	return (
 		<Layout col>
 			<div className="heading-group">
