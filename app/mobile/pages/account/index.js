@@ -12,11 +12,16 @@ export default () => (
 				<span>Back</span>
 			</a>
 		</Header>
-		<h2>Account settings</h2>
-		<Link href="/account/settings">
-			<Button icon={<GoGear />}>Account settings</Button>
-		</Link>
-		<Button icon={<GoSignOut />} onClick={signout}>Sign out</Button>
+		<div className="account-details">
+			<div className="avatar"/>
+			<h2>First name</h2>
+		</div>
+		<div className="account-actions">
+			<Button icon={<GoSignOut />} onClick={signout} color='var(--color-danger-900)'>Sign out</Button>
+			<Link href="/account/settings">
+				<Button icon={<GoGear />}>Account settings</Button>
+			</Link>
+		</div>
 		<style jsx>
 			{`
         a {
@@ -33,8 +38,30 @@ export default () => (
           width: 2rem;
         }
 
-        h2 {
-          padding: 1.6rem; 
+        .account-details {
+          flex: 1;
+          display: flex; 
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin-top: 3.2rem;
+        }
+
+        .account-details > h2 {
+           margin: 1.6rem;
+        }
+
+        .avatar {
+          width: 9.6rem;
+          height: 9.6rem;
+          border-radius: 50%;
+          background: var(--color-primary-300);
+        }
+        
+        .account-actions {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
         }
 
         span {
@@ -42,7 +69,7 @@ export default () => (
         }
 
         :global(button) {
-          margin: 0.8rem 0;
+          margin-top: 1.6rem;
         }
     `}
 		</style>
