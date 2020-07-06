@@ -1,10 +1,8 @@
-import { Header } from '.'
 import { globalStyles } from '../styles'
 export default ({ children }) => (
 	<div className="container">
 		<div className="page-container">
 			<main className="content">
-				<Header />
 				{children}
 			</main>
 		</div>
@@ -20,12 +18,11 @@ export default ({ children }) => (
 				.page-container {
 					display: flex;
 					flex-direction: column;
-          flex-grow: 1;
-          position: relative;
+          flex: 1;
 				}
 
 				.content {
-					flex: 1 1 auto;
+					flex: 1;
 					order: -1;
 					display: flex;
 					flex-direction: column;
@@ -46,7 +43,7 @@ export default ({ children }) => (
 
 					.content {
 						order: 1;
-					  margin: 1.2rem;
+					  margin: 0 1.2rem;
             min-width: 32rem;
 					}
 			`}</style>
