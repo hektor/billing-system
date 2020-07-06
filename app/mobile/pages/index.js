@@ -5,7 +5,7 @@ import { Layout } from '../components'
 export default () => <Layout wrap row>
 	<h1>Welcome</h1>
 	<div>
-		<Link href="/auth/signin"><a>Get started</a></Link>
+		<Link href="auth/signin"><a>Get started</a></Link>
 	</div>
 	<style jsx>
 		{`
