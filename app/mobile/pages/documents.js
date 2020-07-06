@@ -1,10 +1,9 @@
-import React from 'react'
 import nextCookie from 'next-cookies'
 import { withAuthSync } from '../auth'
 
-import { Layout, DocumentsList, Dropzone } from '../components'
+import {Layout, Documents as DocumentsList, Dropzone} from '../components'
 
-const Documents = () => (
+const Documents= () => (
 	<Layout>
 		<h1>Document</h1>
 		<div className="list-overview">
