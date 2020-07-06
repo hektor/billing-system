@@ -7,5 +7,3 @@ export default {
 	SIGNIN: `${BASE_URL}auth/local`,
 	SIGNUP: `${BASE_URL}auth/local/register`
 }
-
-console.log(`${BASE_URL}auth/local`)
