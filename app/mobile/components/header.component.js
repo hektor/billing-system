@@ -1,18 +1,20 @@
-import React from 'react'
-import { signout } from '../auth'
-import cookie from 'js-cookie'
-
-export default () => (
-  <header>
-    {cookie.get('token') && <button onClick={signout}>Sign out</button>}
-			<style jsx>{`
+export default ({ title, children }) => (
+	<header>
+		{title && <h1>{title}</h1>}
+		{children}
+		<style jsx>{`
 				header {
+          flex: 1;
 					display: flex;
-					align-items: center;
 					justify-content: space-between;
-					background: #fff;
-					border-bottom: 1px solid #eee;
+          align-items: center;
+          max-height: 4.8rem;
 				}
+
+        h1 {
+          margin: auto;
+          margin-left: 1.6rem;
+        }
 			`}</style>
-		</header>
-	)
+	</header>
+)
