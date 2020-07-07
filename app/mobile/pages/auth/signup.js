@@ -1,7 +1,7 @@
 import {signup} from '../../auth'
 import {Layout, Form, Button} from '../../components'
 import AuthSwitch from './auth-switch.component'
-import {signupForm} from '../../data'
+import {signupForm as form} from '../../data'
 import { GoPlus } from 'react-icons/go'
 
 export default () => {
@@ -13,7 +13,7 @@ export default () => {
 				<h2>Sign up</h2>
 			</div>
 			<Form
-				fields={signupForm.fields}
+				fields={form.fields}
 				onSubmit={handleSubmit}
 			>
 				<Button primary type="submit" icon={<GoPlus/>}>Create account</Button>
