@@ -51,7 +51,7 @@ Input.propTypes = {
 	required: PropTypes.bool,
 	error: PropTypes.string,
 	value: PropTypes.string,
-	icon: PropTypes.string
+	icon: PropTypes.element
 }
 
 Input.defaultProps = {
