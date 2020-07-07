@@ -4,7 +4,7 @@ import { validator } from '../validate'
 export default (fields, initialIsValid) => {
 	const [values, setValues] = useState({})
 	const [errors, setErrors] = useState({})
-	const [showFeedback, setShowFeedback] = useState(false)
+	const [showFeedback, setShowFeedback] = useState()
 	const [isValid, setIsValid] = useState(initialIsValid)
 	const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -48,7 +48,9 @@ export default (fields, initialIsValid) => {
 		values,
 		setValues,
 		errors,
+		setErrors,
 		showFeedback,
+		setShowFeedback,
 		onSubmit: () => {
 			if (isValid) {
 				setIsSubmitting(true)
