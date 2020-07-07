@@ -1,5 +1,6 @@
+import { useEffect } from 'react'
 import { GoCheck, GoX, GoInfo } from 'react-icons/go'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import { useInput } from '../hooks'
@@ -22,19 +23,18 @@ const FormField = ({
 	showFeedback: showSubmitFeedback,
 	...rest
 }) => {
-	const { DROPDOWN } = inputTypes
-	const { showFeedback, setShowFeedback, setValue, bind } = useInput('')
+	const {DROPDOWN} = inputTypes
+	const {showFeedback, setShowFeedback, setValue, bind} = useInput({value: '' })
 	const [showInfo, setShowInfo] = useState(false)
-
-	useEffect(() => {
-		if (value) setValue(value)
-		if (showSubmitFeedback) setShowFeedback(true)
-	}, [showSubmitFeedback])
 
 	const handleChange = (e) => {
 		setField(e.target)
 		bind.onChange(e)
 	}
+
+	useEffect(() => {
+		if (showSubmitFeedback !== undefined) setShowFeedback(showSubmitFeedback)
+	}, [showSubmitFeedback])
 
 	const getInputByType = () => {
 		switch (type) {
@@ -157,7 +157,7 @@ const FormField = ({
 }
 
 FormField.propTypes = {
-	icon: PropTypes.string,
+	icon: PropTypes.element,
 	type: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
 	value: PropTypes.string,
