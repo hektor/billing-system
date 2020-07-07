@@ -1,16 +1,12 @@
 import Link from 'next/link'
-import Router from 'next/router'
-import {GoChevronLeft, GoGear, GoSignOut } from 'react-icons/go'
+import {GoGear, GoSignOut } from 'react-icons/go'
 import { signout } from '../../auth'
-import { Layout, Header, Button} from '../../components'
+import { Layout, Header, Button, GoBack} from '../../components'
 
 export default () => (
 	<Layout>
 		<Header title="My account">
-			<a onClick={() => Router.back()}>
-				<GoChevronLeft />
-				<span>Back</span>
-			</a>
+			<GoBack/>
 		</Header>
 		<div className="account-details">
 			<div className="avatar"/>
@@ -24,19 +20,6 @@ export default () => (
 		</div>
 		<style jsx>
 			{`
-        a {
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: var(--color-primary-300);
-          padding: 1.6rem;
-        }
-
-        a > :global(.icon) {
-          height: 2rem;
-          width: 2rem;
-        }
 
         .account-details {
           flex: 1;
@@ -62,10 +45,6 @@ export default () => (
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
-        }
-
-        span {
-          padding: 0.4rem;
         }
 
         :global(button) {
