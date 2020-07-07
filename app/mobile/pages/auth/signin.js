@@ -1,24 +1,36 @@
+import { useState } from 'react'
+import Link from 'next/link'
+import  { GoSignIn } from 'react-icons/go'
 import {signin} from '../../auth'
 import {Layout, Form, Button} from '../../components'
 import AuthSwitch from './auth-switch.component'
-import {signinForm}  from '../../data'
-import  { GoSignIn } from 'react-icons/go'
+import {signinForm as form}  from '../../data'
+import {RECOVER_PASSWORD} from '../../routes'
 
 export default () => {
-	const handleSubmit = e => signin(e) 
+	const [errors, setErrors] = useState()
+	const handleSubmit = async e => setErrors(await signin(e)) 
 	return (
 		<Layout col>
 			<div className="heading-group">
 				<h1>Get started</h1>
 				<h2>Sign in</h2>
 			</div>
-			<div className="forgot-password">
-				<label htmlFor="forgot-password" className="forgot-password-label">Forgot password?</label>
-				<Button name="forgot-password" className="forgot-password-action" type="button" title="Recover password" />
-			</div>
+			{errors && errors.map((error, i) => 
+				<span className="error" key={i}>{error}</span>
+			)}
+			{errors && (
+				<div className="recover-password">
+					<label htmlFor="recover-password">Forgot password?</label>
+					<Link href={RECOVER_PASSWORD}>
+						<Button name="recover-password" type="button" title="Recover password" />
+					</Link>
+				</div>
+			)} 
 			<Form
-				fields={signinForm.fields}
+				fields={form.fields}
 				onSubmit={handleSubmit}
+				generalErrors={errors} 
 			>
 				<Button primary type="submit" icon={<GoSignIn/>}>Sign in</Button>
 				<AuthSwitch to="up"/>
@@ -31,7 +43,16 @@ export default () => {
           margin: 3.2rem 0 0 1.6rem;
         }
 
-        .forgot-password {
+        .error {
+          padding: 1.6rem;
+          margin: 1.6rem 0;
+          font-weight: bold;
+          color: var(--color-warning-500);
+          border: 1px solid var(--color-warning-500);
+          border-radius: var(--border-radius);
+        }
+
+        .recover-password {
           display: flex;
           justify-content: space-between;
           align-items: baseline;
