@@ -29,6 +29,7 @@ export default ({ children }) => (
 					background: #fff;
 					border-radius: var(--border-radius);
 					padding: 1.6rem;
+          max-width: 32rem;
 				}
 
 				@media (min-width: 768px) {
