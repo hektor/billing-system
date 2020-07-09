@@ -4,7 +4,7 @@ import { useForm } from '../hooks'
 import { FormField } from '../components'
 
 const Form = ({ fields, children, onSubmit, generalErrors }) => {
-	const { onChange, values, errors, setErrors, onSubmit: onFormSubmit, showFeedback, setShowFeedback } = useForm(fields)
+	const { onChange, values, errors, onSubmit: onFormSubmit, showFeedback, setShowFeedback } = useForm(fields)
 
 	useEffect(() => {
 		if(generalErrors) setShowFeedback(false)
@@ -21,17 +21,7 @@ const Form = ({ fields, children, onSubmit, generalErrors }) => {
 
 	return (
 		<form onSubmit={handleSubmit} noValidate>
-			{fields && 
-        fields.map(field => (
-        	<FormField
-        		key={field.name}
-        		{...field}
-        		setField={onChange}
-        		value={values[field.name]}
-        		error={errors[field.name]}
-        		showFeedback={showFeedback}
-        	/>))
-			}
+			{fields && fields.map(field => <FormField key={field.name} {...field} setField={onChange} value={values[field.name]} error={errors[field.name]} showFeedback={showFeedback} />)}
 			{children}
 		</form>
 	)
