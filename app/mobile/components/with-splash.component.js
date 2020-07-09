@@ -1,19 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Layout } from '.'
 
-const Splash = () => (
-	<Layout>
-		<h1>Loading</h1>
-		<style jsx>
-			{`
-      h1 {
-        margin: auto;
-      }
-    `}
-		</style>
-	</Layout>
-)
-
 export default ({Component, ...rest}) => {
 	const [loading, setLoading] = useState(true)
 	useEffect(() => {
@@ -27,5 +14,19 @@ export default ({Component, ...rest}) => {
 			setLoading(false)
 		}
 	})
-	return loading ? <Splash/> : <Component {...rest} />
+	return loading ?
+		(
+			<Layout>
+				<h1>Loading</h1>
+				<style jsx>
+					{`
+      h1 {
+        margin: auto;
+      }
+    `}
+				</style>
+			</Layout>
+		)
+		: 
+		<Component {...rest} />
 }
