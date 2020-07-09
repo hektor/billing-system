@@ -1,9 +1,11 @@
+import { BottomNav } from '../components'
 import { globalStyles } from '../styles'
-export default ({ children }) => (
+export default ({ children, bottomNav }) => (
 	<div className="container">
 		<div className="page-container">
 			<main className="content">
 				{children}
+				{bottomNav && <BottomNav/>}
 			</main>
 		</div>
 		<style jsx global>{globalStyles}</style>
