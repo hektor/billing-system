@@ -1,7 +1,7 @@
-import {Layout, Header} from '../components'
-import cookie from 'js-cookie'
-import { GoPerson } from 'react-icons/go'
 import Link from 'next/link'
+import cookie from 'js-cookie'
+import { GoPerson, GoClippy, GoPlus, GoOrganization } from 'react-icons/go'
+import {Layout, Header} from '../components'
 
 export default () => (
 	<Layout>
@@ -15,6 +15,26 @@ export default () => (
       </Link>
 			}
 		</Header>
+		<nav>
+			<Link href="/logs">
+				<a>
+					<GoClippy/>
+			    <span>My logs</span>
+				</a>
+			</Link>
+			<Link href="/logs/create">
+				<a className="add-log">
+					<GoPlus/>
+			    <span>Add log</span>
+				</a>
+			</Link>
+			<Link href="/clients">
+				<a>
+					<GoOrganization/>
+			    <span>My clients</span>
+				</a>
+			</Link>
+		</nav>
 		<style jsx>
 			{`
         a {
@@ -30,8 +50,24 @@ export default () => (
           width: 2rem;
         }
 
-        span {
-          padding: 0.4rem;
+        nav {
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          margin: -1.6rem;
+          padding: 1.6rem;
+          margin-top: auto;
+        }
+
+        nav > a {
+          flex: 1;
+          text-align: center;
+          flex-direction: column;
+          padding: 0;
+        }
+
+        nav > a > span {
+          margin-top: 0.4rem;
         }
     `}
 		</style>
