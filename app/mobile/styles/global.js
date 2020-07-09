@@ -1,12 +1,5 @@
+import { getPrimaryColors, getHeadingSizes } from './helpers'
 import css from 'styled-jsx/css'
-
-const getPrimaryColors = () => {
-	let colors = ''
-	for (let i = 1; i <= 9; i++) {
-		colors += `--color-primary-${i}00: hsl(0, 0%, ${100 - i*10}%); `
-	}
-	return colors
-}
 
 export default css.global`
 
@@ -18,27 +11,17 @@ export default css.global`
 
 	:root {
 		--base: 1rem;
-		--font: Inter, Helvetica, Arial;
+		--font-family: Inter, Helvetica, Arial;
+    --font-size: 16px;
+    --font-size-h1: calc(var(--base) * 3.2 );
+    --font-size-h2: calc(var(--base) * 2.8);
+    --font-size-h3: calc(var(--base) * 2.4);
+    --font-size-h4: calc(var(--base) * 2);
+    --font-size-h5: calc(var(--base) * 1.6);
+    --font-size-h6: calc(var(--base) * 1.2);
 		--border-radius: 0.25rem;
     --color-white: #fff;
     ${getPrimaryColors()}
-    /*
-    --color-primary-100: #CCEDF8;
-    --color-primary-200: #9CD8F2;
-    --color-primary-300: #66AFD9;
-    --color-primary-400: #3C82B3;
-    --color-primary-500: #0F4C81;
-    --color-primary-600: #0A3B6E;
-    --color-primary-700: #072C5C;
-    --color-primary-800: #041F4A;
-    --color-primary-900: #02153D;
-    --color-primary-transparent-100: rgba(15, 76, 129, 0.08);
-    --color-primary-transparent-200: rgba(15, 76, 129, 0.16);
-    --color-primary-transparent-300: rgba(15, 76, 129, 0.24);
-    --color-primary-transparent-400: rgba(15, 76, 129, 0.32);
-    --color-primary-transparent-500: rgba(15, 76, 129, 0.4);
-    --color-primary-transparent-600: rgba(15, 76, 129, 0.48);
-    */
     --color-success-100: #F1FCDA;
     --color-success-200: #DFF9B7;
     --color-success-300: #C4EE90;
@@ -99,18 +82,26 @@ export default css.global`
     --color-danger-transparent-400: rgba(242, 107, 91, 0.32);
     --color-danger-transparent-500: rgba(242, 107, 91, 0.4);
     --color-danger-transparent-600: rgba(242, 107, 91, 0.48);
+
+    @custom-media --mobile-viewport (max-width: 767px);
+    @custom-media --desktop-viewport (min-width: 768px);
   }
 
-  /* hide scrollbar */
+  h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+    font-weight: 400;
+  }
+
+  ${getHeadingSizes()}
+
   ::-webkit-scrollbar {
-    width: 0; /* scrollbar space */
-    background: transparent; /*   make scrollbar invisible */
+    width: 0;
+    background: transparent;
   }
-
 
 	body {
-		font-family: var(--font);
-		font-size: var(--base);
+		font-family: var(--font-family);
+		font-size: var(--font-size);
     color: var(--color-primary-700);
   }
 
@@ -170,13 +161,4 @@ export default css.global`
     background: inherit;
 		padding: 1.6rem;
 	}
-
-  ::placeholder {
-    color: var(--color-primary-300);
-  }
-
-  h1,h2,h3,h4,h5,h6 {
-    margin: 0;
-    font-weight: 400;
-  }
 `
