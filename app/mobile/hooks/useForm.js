@@ -34,14 +34,6 @@ export default (fields, initialIsValid) => {
 		validate()
 	}, [values])
 
-	/*
-	useEffect(() => {
-		const fieldNames = fields.reduce((all, field) => all.concat(field.name), [])
-		console.log(fieldNames.find(({ name }) => name === values[name]))
-		setIsValid(false)
-	}, [isSubmitting])
-  */
-
 	return {
 		isValid,
 		setIsValid,
