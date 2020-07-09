@@ -1,25 +1,25 @@
-import Link from 'next/link'
+import {useRouter} from 'next/router'
 import {GoGear, GoSignOut } from 'react-icons/go'
 import { signout } from '../../auth'
 import { Layout, Header, Button, GoBack} from '../../components'
 
-export default () => (
-	<Layout>
-		<Header title="My account">
-			<GoBack/>
-		</Header>
-		<div className="account-details">
-			<div className="avatar"/>
-			<h2>First name</h2>
-		</div>
-		<div className="account-actions">
-			<Button icon={<GoSignOut />} onClick={signout} color='var(--color-danger-900)'>Sign out</Button>
-			<Link href="/account/settings">
-				<Button icon={<GoGear />}>Account settings</Button>
-			</Link>
-		</div>
-		<style jsx>
-			{`
+export default () => {
+	const router = useRouter()
+	return (
+		<Layout>
+			<Header title="My account">
+				<GoBack/>
+			</Header>
+			<div className="account-details">
+				<div className="avatar"/>
+				<h2>First name</h2>
+			</div>
+			<div className="account-actions">
+				<Button icon={<GoSignOut />} onClick={signout} color='var(--color-danger-900)'>Sign out</Button>
+				<Button icon={<GoGear />} onClick={() => router.replace('/account/settings')}>Account settings</Button>
+			</div>
+			<style jsx>
+				{`
 
         .account-details {
           flex: 1;
@@ -51,6 +51,7 @@ export default () => (
           margin-top: 1.6rem;
         }
     `}
-		</style>
-	</Layout>
-)
+			</style>
+		</Layout>
+	)
+}
