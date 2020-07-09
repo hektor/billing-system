@@ -5,20 +5,20 @@ import cookie from 'js-cookie'
 
 import { api } from './config'
 
-const handleSuccess = ({ jwt, user}) => {
-	cookie.set('token', jwt, { expires: 1 })
-	cookie.set('user', user, { expires: 1 })
-	Router.push('/dashboard')
-}
-
 const flattenMessages = messages => {
 	let flattened = []
 	messages.map(({messages}) => messages.map(({message}) => flattened.push(message)))
 	return flattened
 }
 
+const handleSuccess = ({ jwt, user}) => {
+	cookie.set('token', jwt, { expires: 1 })
+	cookie.set('user', user, { expires: 1 })
+	Router.push('/dashboard')
+	return null
+}
+
 const handleInvalid = ({ /* statusCode, error, */ message}) => flattenMessages(message)
-const handleFailed = res => console.log(res)
 
 const postOptions = body => ({
 	method: 'POST',
@@ -41,12 +41,16 @@ export const signin = async ({ email, password }) => {
 	if (res.status === 429) return ['Too many failed signin attempts, try again later or reset password'] 
 }
 
-export const forgotPassword = async body => {
-	const res = await (await fetch(api.FORGOT_PASSWORD, postOptions(body))).json()
-	/*
-   * TODO: Proper error handling
-   */
-	if(res.status !== 200) return res.statusText
+export const sendRecoveryLink = async ({ email }) => {
+	const res = await fetch(api.FORGOT_PASSWORD, postOptions({ email }))
+	if (res.status === 400) return { message: 'We could not send a recovery link at this time', type: 'warning'}
+	if (res.status === 200) return { message: 'We sent a recovery link to this email address', type: 'success'}
+}
+
+export const resetPassword = async ({ password, passwordConfirmation, code }) => {
+	const res = await fetch(api.RESET_PASSWORD, postOptions({ password, passwordConfirmation, code }))
+	if (res.status === 400) return { message: 'This recovery link is invalid', type: 'warning'}
+	if (res.status === 200) return handleSuccess(await res.json()) 
 }
 
 export const auth = ctx => {
@@ -74,7 +78,6 @@ export const withAuthSync = Component => {
 				Router.push('/signin')
 			}
 		}
-
 		useEffect(() => {
 			window.addEventListener('storage', syncSignout)
 			return () => {
@@ -90,10 +93,7 @@ export const withAuthSync = Component => {
 
 	Wrapper.getInitialProps = async ctx => {
 		const token = auth(ctx)
-		const componentProps =
-      Component.getInitialProps &&
-      (await Component.getInitialProps(ctx))
-
+		const componentProps = Component.getInitialProps && (await Component.getInitialProps(ctx))
 		return { ...componentProps, token }
 	}
 	return Wrapper

@@ -1,11 +1,5 @@
 import { GoMail } from 'react-icons/go'
 
-export const inputTypes = {
-	EMAIL: 'email',
-}
-
-const EMAIL = inputTypes
-
 export default {
 	title: 'Get password recovery link',
 	fields: [
@@ -13,7 +7,7 @@ export default {
 			label: 'Email',
 			name: 'email',
 			autoComplete: 'email',
-			type: EMAIL,
+			type: 'email',
 			placeholder: 'Enter your email',
 			icon: <GoMail/>,
 			required: true
