@@ -6,10 +6,6 @@ import PropTypes from 'prop-types'
 import { useInput } from '../hooks'
 import {Input, Dropdown, Modal } from '.'
 
-export const inputTypes = {
-	DROPDOWN: 'dropdown',
-}
-
 const FormField = ({
 	type,
 	name,
@@ -23,8 +19,7 @@ const FormField = ({
 	showFeedback: showSubmitFeedback,
 	...rest
 }) => {
-	const {DROPDOWN} = inputTypes
-	const {showFeedback, setShowFeedback, setValue, bind} = useInput({value: '' })
+	const {showFeedback, setShowFeedback, bind} = useInput({value: '' })
 	const [showInfo, setShowInfo] = useState(false)
 
 	const handleChange = (e) => {
@@ -38,7 +33,7 @@ const FormField = ({
 
 	const getInputByType = () => {
 		switch (type) {
-		case DROPDOWN:
+		case 'dropdown':
 			return (
 				<Dropdown
 					name={name}
