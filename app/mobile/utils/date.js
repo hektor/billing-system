@@ -28,10 +28,27 @@ export const months = [
 export let monthsShort = months.map(month => month.substr(0, 3))
 monthsShort[2] = 'mrt'
 
-const human = {
-	weekday: 'long',
-	day: 'numeric',
-	month: 'long'
+const dateFormat = {
+	human: {
+		weekday: 'long',
+		day: 'numeric',
+		month: 'long'
+	},
+	short: {
+		weekday: 'short',
+		day: 'numeric',
+		month: 'short'
+	}
 }
 
-export const formatDate = date => new Date(date).toLocaleDateString('en-BE', human)
+
+export const formatDate = (date,type) => new Date(date).toLocaleDateString('en-BE', dateFormat[type] || dateFormat.human)
+export const formatTime = time => new Date(time).toLocaleTimeString('en-BE')
+
+export const calculateWorkday = (start, end, breakMinutes) =>
+	new Date((new Date(end) - new Date(start) - new Date(breakMinutes * 60000))).toISOString().substr(11, 5)
+
+export const timeToDecimal = time => {
+	time = time.split(':')
+	return parseInt(time[0], 10)*1 + parseInt(time[1], 10)/60
+}
