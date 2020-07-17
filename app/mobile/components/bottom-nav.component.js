@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import {  GoClippy, GoDashboard, GoOrganization } from 'react-icons/go'
+import {  GoClippy, GoDashboard, GoBriefcase } from 'react-icons/go'
 
 
 export default () => {
@@ -8,7 +8,7 @@ export default () => {
 	const tabs = [
 		{href: '/logs', title: 'Logs', icon: <GoClippy />},
 		{ href: '/dashboard', title: 'Dashboard', icon: <GoDashboard/>},
-		{ href: '/clients', title: 'Clients', icon: <GoOrganization/>},
+		{ href: '/clients', title: 'Clients', icon: <GoBriefcase/>},
 	]
   
 	return (
@@ -47,7 +47,7 @@ export default () => {
           padding: 1.6rem 0.8rem;
           margin-top: auto;
           background: var(--color-primary-100);
-          border-radius: 3.2rem 3.2rem 0 0;
+          border-radius: var(--border-radius) var(--border-radius-lg) 0 0;
         }
 
         nav > a {
