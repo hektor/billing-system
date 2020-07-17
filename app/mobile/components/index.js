@@ -20,6 +20,7 @@ export {default as Modal} from './modal.component'
  */
 
 export {default as Documents} from './documents.component'
+export {default as Logs} from './logs.component'
 
 /*
  * Higher order components
