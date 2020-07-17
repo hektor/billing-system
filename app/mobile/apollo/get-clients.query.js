@@ -8,7 +8,7 @@ export default gql`
     phone
     address
     logs {
-      startTime
+      id
     }
   }
 }`
