@@ -604,6 +604,15 @@
                 },
                 "role": {
                   "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "logs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }

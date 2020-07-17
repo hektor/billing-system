@@ -45,6 +45,15 @@
       "via": "users",
       "plugin": "users-permissions",
       "configurable": false
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "required": false
+    },
+    "logs": {
+      "via": "employee_id",
+      "collection": "log"
     }
   }
 }

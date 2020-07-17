@@ -1239,6 +1239,55 @@
                 }
               }
             }
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "logs": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "startTime",
+                "endTime"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "startTime": {
+                  "type": "datetime"
+                },
+                "endTime": {
+                  "type": "datetime"
+                },
+                "employee_id": {
+                  "type": "string"
+                },
+                "totalBreakDuration": {
+                  "type": "integer"
+                },
+                "activitiesPerformed": {
+                  "type": "string"
+                },
+                "resourcesUsed": {
+                  "type": "string"
+                },
+                "distance": {
+                  "type": "integer"
+                },
+                "billingRate": {
+                  "type": "number"
+                },
+                "transportationCost": {
+                  "type": "number"
+                },
+                "client_id": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -1271,6 +1320,16 @@
           },
           "role": {
             "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "logs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }
