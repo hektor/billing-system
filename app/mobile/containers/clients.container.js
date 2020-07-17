@@ -7,8 +7,8 @@ export default () => (
 	<div className="list">
 		<Query query={GET_CLIENTS} id={null}>
 			{({clients}) =>
-				clients.map(({ id, name, phone }) => (
-					<Link key={id} href={{pathname: 'log', query: id }}>
+				clients.map(({id, name, phone}) => (
+					<Link key={id} href={`/clients/${id}`}>
 						<div className="item">
 							<span>{name}</span>
 							<span>{phone}</span>
