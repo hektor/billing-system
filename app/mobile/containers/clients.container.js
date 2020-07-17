@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from 'next/link'
 import Query from '../apollo/query'
 import { GET_CLIENTS } from '../apollo'
