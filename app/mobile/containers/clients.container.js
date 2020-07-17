@@ -6,7 +6,7 @@ import { GET_CLIENTS } from '../apollo'
 export default () => (
 	<div className="list">
 		<Query query={GET_CLIENTS} id={null}>
-			{({data: {clients}}) =>
+			{({clients}) =>
 				clients.map(({ id, name, phone }) => (
 					<Link key={id} href={{pathname: 'log', query: id }}>
 						<div className="item">

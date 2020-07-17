@@ -7,26 +7,13 @@ import { formatDate } from '../utils/date'
 export default () => (
 	<div className="list">
 		<Query query={GET_LOGS} id={null}>
-			{({data: {logs}}) =>
-				logs.map(({id, employee_id, client_id, startTime, endTime, activitiesPerformed, totalBreakDuration, resourcesUsed, billingRate, distance, transportationCost}) => (
-					<Link key={id} href={{pathname: 'log', query: { id }}}>
-						<div className="item">
-							{/*
-							<span>{employee_id.email}</span>
-							<span>{employee_id.name}</span>
-              */}
+			{({logs}) =>
+				logs.map(({id, client_id, startTime}) => (
+					<Link key={id} href={`logs/${id}`}>
+						<a className="item">
 							<span>{client_id.name}</span>
 							<span>{formatDate(startTime)}</span>
-							{/*
-							<span>{formatDate(endTime)}</span>
-							<span>{activitiesPerformed}</span>
-							<span>{resourcesUsed}</span>
-							<span>{totalBreakDuration} minutes</span>
-							<span>&euro;{billingRate}/hour</span>
-							<span>{distance} km</span>
-							<span>&euro;{transportationCost}/km</span>
-              */}
-						</div>
+						</a>
 					</Link>
 				))
 			}
@@ -38,6 +25,13 @@ export default () => (
           justify-content: space-between;
           padding: 3.2rem 1.6rem;
           border-bottom: 1px solid var(--color-primary-300);
+          transition: .16s;
+        }
+
+        .item:hover {
+          background: var(--color-primary-100);
+          padding: 3.2rem;
+          margin: 0 -1.6rem;
         }
       `}
 		</style>
