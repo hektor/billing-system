@@ -1,5 +1,5 @@
-import { Layout, Header, Form, Button, GoBack} from '../../components'
-import {GoCheck, GoX} from 'react-icons/go'
+import {Layout, Header, Form, Button, GoBack} from '../../components'
+import {GoCheck} from 'react-icons/go'
 import {settingsForm} from '../../data'
 
 export default () => {

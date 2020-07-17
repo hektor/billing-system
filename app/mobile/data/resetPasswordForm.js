@@ -1,4 +1,4 @@
-import { GoKey, GoLock } from 'react-icons/go'
+import { GoLock } from 'react-icons/go'
 
 export default {
 	title: 'Reset password',

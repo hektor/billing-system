@@ -6,7 +6,6 @@ export default (fields, initialIsValid) => {
 	const [errors, setErrors] = useState({})
 	const [showFeedback, setShowFeedback] = useState()
 	const [isValid, setIsValid] = useState(initialIsValid)
-	const [isSubmitting, setIsSubmitting] = useState(false)
 
 	const validate = () => {
 		const validateErrors = {}
@@ -45,7 +44,6 @@ export default (fields, initialIsValid) => {
 		setShowFeedback,
 		onSubmit: () => {
 			if (isValid) {
-				setIsSubmitting(true)
 				setShowFeedback(false)
 				return values
 			} else {
