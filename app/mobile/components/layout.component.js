@@ -1,5 +1,6 @@
 import { BottomNav } from '../components'
 import { globalStyles } from '../styles'
+
 export default ({ children, bottomNav }) => (
 	<div className="container">
 		<div className="page-container">
