@@ -1,22 +1,25 @@
 import Link from 'next/link'
-import cookie from 'js-cookie'
-import {GoPerson} from 'react-icons/go'
+import { GoPerson } from 'react-icons/go'
+import { useContext } from 'react'
+import {AuthCtx} from './_app'
 import {Layout, Header} from '../components'
 
-export default () => (
-	<Layout bottomNav>
-		<Header title="Welcome">
-			{/* FIXME: fix ssr {cookie.get('token') && */}
-			<Link href="/account">
-        	<a className="avatar">
-        		<span>My account</span>
-        		<GoPerson/>
-        	</a>
-			</Link>
-			{/*}*/}
-		</Header>
-		<style jsx>
-			{`
+export default () => {
+	const { user } = useContext(AuthCtx)
+	const getGreeting = () => user && user.name ? user.name : 'Welcome'
+
+	return(
+		<Layout bottomNav>
+			<Header title={getGreeting()}>
+				<Link href="/account">
+					<a className="avatar">
+						<span>My account</span>
+						<GoPerson/>
+					</a>
+				</Link>
+			</Header>
+			<style jsx>
+				{`
         a {
           display: flex;
           align-items: center;
@@ -30,6 +33,7 @@ export default () => (
           width: 2rem;
         }
     `}
-		</style>
-	</Layout>
-)
+			</style>
+		</Layout>
+	)
+}
