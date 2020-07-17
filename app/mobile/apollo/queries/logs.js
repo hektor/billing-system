@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 
-const GET_LOGS = gql`
+export default gql`
 { 
   logs {
     id
@@ -22,5 +22,3 @@ const GET_LOGS = gql`
   }
 }
 `
-
-export default GET_LOGS
