@@ -11,8 +11,11 @@ export default () => (
 				logs.map(({id, employee_id, client_id, startTime, endTime, activitiesPerformed, totalBreakDuration, resourcesUsed, billingRate, distance, transportationCost}) => (
 					<Link key={id} href={{pathname: 'log', query: { id }}}>
 						<div className="item">
+							{/*
+							<span>{employee_id.email}</span>
 							<span>{employee_id.name}</span>
-							<span>{client_id}</span>
+              */}
+							<span>{client_id.name}</span>
 							<span>{formatDate(startTime)}</span>
 							{/*
 							<span>{formatDate(endTime)}</span>
@@ -32,6 +35,9 @@ export default () => (
 			{`
         .item {
           display: flex;
+          justify-content: space-between;
+          padding: 3.2rem 1.6rem;
+          border-bottom: 1px solid var(--color-primary-300);
         }
       `}
 		</style>
