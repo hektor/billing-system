@@ -10,6 +10,9 @@ export default gql`
     }
     client_id {
       id
+      name
+      phone
+      address
     }
     startTime
     endTime
