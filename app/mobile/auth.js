@@ -69,32 +69,3 @@ export const signout = () => {
 	window.localStorage.setItem('signout', Date.now().toString())
 	Router.push('/auth/signin')
 }
-
-export const withAuthSync = Component => {
-	const Wrapper = props => {
-		const syncSignout = event => {
-			if (event.key === 'signout') {
-				console.log('logged out from storage!')
-				Router.push('/signin')
-			}
-		}
-		useEffect(() => {
-			window.addEventListener('storage', syncSignout)
-			return () => {
-				window.removeEventListener(
-					'storage',
-					syncSignout
-				)
-				window.localStorage.removeItem('signout')
-			}
-		}, [])
-		return <Component {...props} />
-	}
-
-	Wrapper.getInitialProps = async ctx => {
-		const token = auth(ctx)
-		const componentProps = Component.getInitialProps && (await Component.getInitialProps(ctx))
-		return { ...componentProps, token }
-	}
-	return Wrapper
-}
