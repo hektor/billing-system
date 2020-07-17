@@ -1,0 +1,48 @@
+{
+  "connection": "default",
+  "collectionName": "logs",
+  "info": {
+    "name": "Log"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "startTime": {
+      "type": "datetime",
+      "required": true
+    },
+    "endTime": {
+      "type": "datetime",
+      "required": true
+    },
+    "employee_id": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "logs"
+    },
+    "totalBreakDuration": {
+      "type": "integer"
+    },
+    "activitiesPerformed": {
+      "type": "richtext"
+    },
+    "resourcesUsed": {
+      "type": "richtext"
+    },
+    "distance": {
+      "type": "integer"
+    },
+    "billingRate": {
+      "type": "decimal"
+    },
+    "transportationCost": {
+      "type": "decimal"
+    },
+    "client_id": {
+      "via": "logs",
+      "model": "client"
+    }
+  }
+}

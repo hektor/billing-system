@@ -1,0 +1,26 @@
+{
+  "connection": "default",
+  "collectionName": "clients",
+  "info": {
+    "name": "Client"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "logs": {
+      "collection": "log",
+      "via": "client_id"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "address": {
+      "type": "json"
+    }
+  }
+}
