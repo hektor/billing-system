@@ -1,10 +1,11 @@
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import Query from '../apollo/query'
 import { GET_LOG } from '../apollo'
 import { Header } from '../components'
 import { formatDate, calculateWorkday, timeToDecimal } from '../utils/date'
-import { GoClock } from 'react-icons/go'
-import { FaRoad, FaEquals} from 'react-icons/fa'
+import { GoClock, GoBriefcase } from 'react-icons/go'
+import { FaRoad, FaEquals, FaEuroSign} from 'react-icons/fa'
 
 export default () => (
 	<>
@@ -18,7 +19,14 @@ export default () => (
 							{/*JSON.stringify(employee_id,0,2)*/}
 							{/*JSON.stringify(client_id,0,2)*/}
 							<div className="header">
-								<span>{client_id.name}</span>
+								<div className="client-name">
+									<GoBriefcase size="32"/>
+									<span>{client_id.name}</span>
+									<span>{client_id.id}</span>
+									<Link href={`/clients/${client_id.id}`}>
+										<button>View details</button>
+									</Link>
+								</div>
 								<span>
 								</span>
 							</div>
@@ -28,21 +36,28 @@ export default () => (
 							<p>{activitiesPerformed}</p>
 							<p>{resourcesUsed}</p>
 							<div className="costs">
-								<div className="cost">
+								<div className="cost hourly-cost">
 									<div className="amount">
-										<GoClock size="48"/>
+										<GoClock size="32"/>
 										<span>{calculateWorkday(startTime, endTime, totalBreakDuration)}</span>
 									</div>
-									<span className="rate">&euro;{billingRate}/hour</span>
-									<span className="total">&euro;{timeToDecimal(calculateWorkday(startTime, endTime, totalBreakDuration)) * billingRate}</span>
+									{/*<span className="rate">&euro;{billingRate}/hour</span>*/}
+									{/*<span className="total">&euro;{timeToDecimal(calculateWorkday(startTime, endTime, totalBreakDuration)) * billingRate}</span>*/}
 								</div>
-								<div className="cost">
+								<div className="cost transport-cost">
 									<div className="amount">
-										<FaRoad size="48"/>
+										<FaRoad size="32"/>
 										<span>{distance} km</span>
 									</div>
-									<span className="rate">&euro;{transportationCost}/km</span>
-									<span className="total">&euro;{distance * transportationCost}</span>
+									{/*<span className="rate">&euro;{transportationCost}/km</span>*/}
+									{/*<span className="total">&euro;{distance * transportationCost}</span>*/}
+								</div>
+							</div>
+							<div className="cost total-cost">
+								<span>Total</span>
+								<div className="amount">
+									<FaEuroSign size="32"/>
+									<span>{timeToDecimal(calculateWorkday(startTime, endTime, totalBreakDuration)) * billingRate + distance * transportationCost}</span>
 								</div>
 							</div>
 						</div>
@@ -61,8 +76,7 @@ export default () => (
         .header {
           display: flex; 
           justify-content: space-between;
-          padding: 1.6rem;
-          border-bottom: 1px solid var(--color-primary-300);
+          padding: 1.6rem 0;
         }
 
         .costs {
@@ -70,26 +84,58 @@ export default () => (
           margin-top: auto;
         }
 
-        .cost {
+        .client-name {
           flex: 1;
           display: flex;
-          flex-direction: column;
+          align-items: center;
+        }
+
+        .client-name > span {
+          margin: auto 1.6rem;
+          font-size: 1.6rem;
+        }
+
+        .client-name > button {
+          margin-left: auto;
+        }
+
+        .cost {
+          display: flex;
           padding: 1.6rem;
-          border: 1px solid var(--color-primary-300)
+          margin-bottom: 1.6rem;
+          background: var(--color-primary-100);
+          border-radius: var(--border-radius);
+        }
+
+        .hourly-cost { 
+          margin-right: 0.8rem; 
+        }
+
+        .transport-cost { 
+          margin-left: 0.8rem; 
+        }
+
+        .hourly-cost,
+        .transport-cost { 
+          flex: 1;
+        }
+
+        .total-cost > span {
+          flex: 1;
+          margin: auto 0;
+          font-size: 1.6rem;
+        }
+
+        .total-cost > .amount {
+          justify-content: flex-end
         }
 
         .amount {
-          font-size: 2.4rem;
+          flex: 1;
           display: flex;
-          flex-direction: column;
-        }
-
-        .amount > span {
-          margin: 1.6rem;
-        }
-
-        .cost span {
-          margin: 0.4rem 0;
+          align-items: center;
+          justify-content: space-between;
+          font-size: 1.6rem;
         }
       `}
 		</style>
