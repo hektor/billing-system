@@ -1,4 +1,4 @@
-import {  createContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect } from 'react'
 import Head from 'next/head'
 import Cookie from 'js-cookie'
 import {ApolloProvider} from '@apollo/react-hooks'
