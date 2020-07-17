@@ -16,13 +16,6 @@ export {default as Layout} from './layout.component'
 export {default as Modal} from './modal.component'
 
 /*
- * Containers
- */
-
-export {default as Logs} from './logs.component'
-export {default as Clients} from './clients.component'
-
-/*
  * Higher order components
  */
 

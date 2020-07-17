@@ -1,4 +1,5 @@
-import {Layout, Header, Clients} from '../../components'
+import {Layout, Header} from '../../components'
+import {Clients} from '../../containers'
 
 export default () => (
 	<Layout bottomNav>

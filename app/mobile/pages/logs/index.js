@@ -1,5 +1,6 @@
 import {GoPlus} from 'react-icons/go'
-import {Layout, Header, FloatingButton, Logs} from '../../components'
+import {Layout, Header, FloatingButton} from '../../components'
+import {Logs} from '../../containers'
 
 export default () => (
 	<Layout bottomNav>
