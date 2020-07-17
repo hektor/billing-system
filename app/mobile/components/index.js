@@ -5,7 +5,6 @@
 export {default as Button} from './button.component'
 export {default as BottomNav} from './bottom-nav.component'
 export {default as Dropdown} from './dropdown.component'
-export {default as Dropzone} from './dropzone.component'
 export {default as FloatingButton} from './floating-button.component'
 export {default as Form} from './form.component'
 export {default as FormField} from './form-field.component'
