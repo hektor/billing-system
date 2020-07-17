@@ -19,7 +19,6 @@ export {default as Modal} from './modal.component'
  * Containers
  */
 
-export {default as Documents} from './documents.component'
 export {default as Logs} from './logs.component'
 
 /*
