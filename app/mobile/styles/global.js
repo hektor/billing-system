@@ -19,7 +19,8 @@ export default css.global`
     --font-size-h4: calc(var(--base) * 2);
     --font-size-h5: calc(var(--base) * 1.6);
     --font-size-h6: calc(var(--base) * 1.2);
-		--border-radius: 0.25rem;
+		--border-radius: 0.4rem;
+		--border-radius-lg: 0.8rem;
     --color-white: #fff;
     ${getPrimaryColors()}
     --color-success-100: #F1FCDA;
