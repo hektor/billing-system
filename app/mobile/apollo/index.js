@@ -1,1 +1,1 @@
-export { default as GET_LOGS } from './queries/logs'
+export { default as GET_LOGS } from './log.query'
