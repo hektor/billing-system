@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Query from '../apollo/query'
-import GET_LOGS from '../apollo/queries/logs'
+import { GET_LOGS } from '../apollo'
 import { formatDate } from '../utils/date'
 
 export default () => (
