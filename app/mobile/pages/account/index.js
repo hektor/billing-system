@@ -1,53 +1,56 @@
-import { useRouter } from 'next/router'
-import { GoGear, GoSignOut } from 'react-icons/go'
-import { signout } from '../../auth'
-import { Layout, Header, Button } from '../../components'
+import {useContext} from 'react'
+import {useRouter} from 'next/router'
+import {RiUserSettingsLine, RiLogoutCircleLine, RiUserLine} from 'react-icons/ri'
+import {signout} from '../../auth'
+import {Layout, Header, Button} from '../../components'
+import {AuthCtx} from '../_app'
 
 export default () => {
+	const {user} = useContext(AuthCtx)
 	const router = useRouter()
 	return (
 		<Layout>
 			<Header title="My account">
 			</Header>
 			<div className="account-details">
-				<div className="avatar"/>
-				<h2>First name</h2>
+				<div className="avatar">
+					<RiUserLine size="100%"/>
+				</div>
+				<h2>{user && user.name || user && user.email}</h2>
 			</div>
 			<div className="account-actions">
-				<Button icon={<GoSignOut />} onClick={signout} color='var(--color-danger-900)'>Sign out</Button>
-				<Button icon={<GoGear />} onClick={() => router.replace('/account/settings')}>Account settings</Button>
+				<Button icon={<RiLogoutCircleLine />} onClick={signout} color='var(--color-danger-900)'>Sign out</Button>
+				<Button icon={<RiUserSettingsLine />} onClick={() => router.replace('/account/settings')}>Account settings</Button>
 			</div>
 			<style jsx>
 				{`
-
         .account-details {
-          flex: 1;
-          display: flex; 
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          margin-top: 3.2rem;
-        }
-
-        .account-details > h2 {
-           margin: 1.6rem;
+          color: var(--color-primary-100);
+          margin: auto;
         }
 
         .avatar {
-          width: 9.6rem;
-          height: 9.6rem;
-          border-radius: 50%;
-          background: var(--color-primary-300);
+          max-width: 16rem;
         }
-        
+
+        h2 {
+          text-align: center;
+          color: var(--color-primary-300);
+        }
+
         .account-actions {
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
         }
 
-        :global(button) {
-          margin-top: 1.6rem;
+        :global(button:first-child) {
+          border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+          border-bottom: 0;
+        }
+
+        :global(button:last-child) {
+          border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
         }
     `}
 			</style>
