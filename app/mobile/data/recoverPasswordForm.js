@@ -1,4 +1,4 @@
-import { GoMail } from 'react-icons/go'
+import {RiAtLine} from 'react-icons/ri'
 
 export default {
 	title: 'Get password recovery link',
@@ -9,7 +9,7 @@ export default {
 			autoComplete: 'email',
 			type: 'email',
 			placeholder: 'Enter your email',
-			icon: <GoMail/>,
+			icon: <RiAtLine/>,
 			required: true
 		}
 	]

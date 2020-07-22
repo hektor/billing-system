@@ -1,4 +1,4 @@
-import { GoLock } from 'react-icons/go'
+import {RiLockPasswordLine} from 'react-icons/ri'
 
 export default {
 	title: 'Reset password',
@@ -8,7 +8,7 @@ export default {
 			name: 'password',
 			type: 'password',
 			placeholder: 'Enter your new password',
-			icon: <GoLock />,
+			icon: <RiLockPasswordLine/>,
 			required: true
 		}
 	]

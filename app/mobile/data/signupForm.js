@@ -1,4 +1,4 @@
-import { GoMail, GoLock, GoPerson } from 'react-icons/go'
+import {RiAtLine, RiLockPasswordLine, RiQuillPenLine} from 'react-icons/ri'
 
 export const inputTypes = {
 	EMAIL: 'email',
@@ -17,7 +17,7 @@ export default {
 			autoComplete: 'email',
 			type: EMAIL,
 			placeholder: 'Choose an email',
-			icon: <GoMail/>,
+			icon: <RiAtLine/>,
 			required: true
 		},
 		{
@@ -30,7 +30,7 @@ export default {
 				'Employee',
 				'Subcontractor'
 			],
-			icon: <GoPerson/>,
+			icon: <RiQuillPenLine/>,
 			required: true
 		},
 		{
@@ -39,7 +39,7 @@ export default {
 			autoComplete: 'new-password',
 			type: PASSWORD,
 			placeholder: 'Choose a password',
-			icon: <GoLock/>,
+			icon: <RiLockPasswordLine/>,
 			required: true
 		}
 	]
