@@ -1,14 +1,13 @@
 import {useRouter} from 'next/router'
 import Query from '../apollo/query'
-import { GET_CLIENT } from '../apollo'
-import { Header, Button } from '../components'
-import { FaPhone } from 'react-icons/fa'
-import { GoClippy } from 'react-icons/go'
+import {GET_CLIENT} from '../apollo'
+import {Header, Button} from '../components'
+import {RiPhoneLine, RiClipboardLine} from 'react-icons/ri'
 
 export default () => (
 	<Query query={GET_CLIENT} id={useRouter().query.id}>
 		{({client}) => {
-			const {name, phone, address, logs} = client
+			const {name, phone, address} = client
 			return (
 				<>
 					<Header title={name} />
@@ -35,9 +34,9 @@ export default () => (
 						</div>
 					</div>
 					<div className="actions">
-						<Button title="View logs" icon={<GoClippy/>} className="action-left"/>
+						<Button title="View logs" icon={<RiClipboardLine/>} className="action-left"/>
 						<a href={`tel:${phone}`}>
-							<Button title="Call" icon={<FaPhone/>}  className="action-right"/>
+							<Button title="Call" icon={<RiPhoneLine/>}  className="action-right"/>
 						</a>
 					</div>
 					<style jsx>
