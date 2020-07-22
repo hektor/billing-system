@@ -7,61 +7,63 @@ import {formatDate, formatTime, calculateWorkday, timeToDecimal} from '../utils/
 
 
 
-export default () => (
-	<>
-		<Query query={GET_LOG} id={useRouter().query.id}>
-			{({log}) => {
-				const { id, client_id,startTime, endTime, activitiesPerformed, totalBreakDuration, resourcesUsed, billingRate, distance, transportationCost} = log
-				return (
-					<>
-						<Header title={formatDate(startTime, 'short')} />
-						<div className="log" key={id}>
-							<div className="header">
-								<div className="client-name">
-									<h2>{client_id.name}</h2>
-									<Button onClick={() => useRouter().replace(`/clients/${client_id.id}`)} title="View client" icon={<RiContactsBook2Line size="32"/>} />
+export default () => {
+	const router = useRouter()
+	return (
+		<>
+			<Query query={GET_LOG} id={router.query.id}>
+				{({log}) => {
+					const { id, client_id,startTime, endTime, activitiesPerformed, totalBreakDuration, resourcesUsed, billingRate, distance, transportationCost} = log
+					return (
+						<>
+							<Header title={formatDate(startTime, 'short')} />
+							<div className="log" key={id}>
+								<div className="header">
+									<div className="client-name">
+										<h2>{client_id.name}</h2>
+										<Button onClick={() => router.replace(`/clients/${client_id.id}`)} title="View client" icon={<RiContactsBook2Line size="32"/>} />
+									</div>
+									<span>
+									</span>
 								</div>
 								<span>
-								</span>
-							</div>
-							<span>
 								Worked from {`${formatTime(startTime)} until ${formatTime(endTime)}`}
-							</span>
-							<span>Paused for {totalBreakDuration} minutes</span>
-							<p>{activitiesPerformed}</p>
-							<p>{resourcesUsed}</p>
-							<div className="costs">
-								<div className="cost hourly-cost">
-									<div className="amount">
-										<RiTimeLine size="32"/>
-										<span>{calculateWorkday(startTime, endTime, totalBreakDuration)}</span>
+								</span>
+								<span>Paused for {totalBreakDuration} minutes</span>
+								<p>{activitiesPerformed}</p>
+								<p>{resourcesUsed}</p>
+								<div className="costs">
+									<div className="cost hourly-cost">
+										<div className="amount">
+											<RiTimeLine size="32"/>
+											<span>{calculateWorkday(startTime, endTime, totalBreakDuration)}</span>
+										</div>
+										{/*<span className="rate">&euro;{billingRate}/hour</span>*/}
+										{/*<span className="total">&euro;{timeToDecimal(calculateWorkday(startTime, endTime, totalBreakDuration)) * billingRate}</span>*/}
 									</div>
-									{/*<span className="rate">&euro;{billingRate}/hour</span>*/}
-									{/*<span className="total">&euro;{timeToDecimal(calculateWorkday(startTime, endTime, totalBreakDuration)) * billingRate}</span>*/}
+									<div className="cost transport-cost">
+										<div className="amount">
+											<RiPinDistanceLine size="32"/>
+											<span>{distance} km</span>
+										</div>
+										{/*<span className="rate">&euro;{transportationCost}/km</span>*/}
+										{/*<span className="total">&euro;{distance * transportationCost}</span>*/}
+									</div>
 								</div>
-								<div className="cost transport-cost">
+								<div className="cost total-cost">
+									<span>Total</span>
 									<div className="amount">
-										<RiPinDistanceLine size="32"/>
-										<span>{distance} km</span>
+										<RiMoneyEuroCircleLine size="32"/>
+										<span>{timeToDecimal(calculateWorkday(startTime, endTime, totalBreakDuration)) * billingRate + distance * transportationCost}</span>
 									</div>
-									{/*<span className="rate">&euro;{transportationCost}/km</span>*/}
-									{/*<span className="total">&euro;{distance * transportationCost}</span>*/}
 								</div>
 							</div>
-							<div className="cost total-cost">
-								<span>Total</span>
-								<div className="amount">
-									<RiMoneyEuroCircleLine size="32"/>
-									<span>{timeToDecimal(calculateWorkday(startTime, endTime, totalBreakDuration)) * billingRate + distance * transportationCost}</span>
-								</div>
-							</div>
-						</div>
-					</>
-				)
-			}}
-		</Query>
-		<style jsx>
-			{`
+						</>
+					)
+				}}
+			</Query>
+			<style jsx>
+				{`
         .log {
           flex: 1;
           display: flex;
@@ -128,6 +130,6 @@ export default () => (
           font-size: 1.6rem;
         }
       `}
-		</style>
-	</>
-)
+			</style>
+		</>
+	)}
