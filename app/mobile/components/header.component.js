@@ -11,7 +11,7 @@ export default ({ title, children }) => (
 					justify-content: space-between;
           align-items: center;
           max-height: 4.8rem;
-          padding: 1.6rem;
+          padding: 1.6rem 0 0.8rem 1.6rem;
           background: var(--color-white);
           border-bottom: 1px solid var(--color-primary-100);
 				}
