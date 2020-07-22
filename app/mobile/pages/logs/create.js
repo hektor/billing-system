@@ -1,7 +1,7 @@
-import { useRouter } from 'next/router'
-import { GoX } from 'react-icons/go'
-import { Layout, Header, Form, BottomNav, Button } from '../../components'
-import { createLogForm as form }  from '../../data'
+import {useRouter} from 'next/router'
+import {RiCloseLine} from 'react-icons/ri'
+import {Layout, Header, Form, BottomNav, Button} from '../../components'
+import {createLogForm as form}  from '../../data'
 
 export default () => { 
 	const handleSubmit = async e => console.log(e)
@@ -12,7 +12,7 @@ export default () => {
 			<Header title="Create new log" />
 			<Form fields={form.fields} onSubmit={handleSubmit}/>
 			<BottomNav>
-				<Button onClick={() => router.replace('/logs')} title="Cancel" icon={<GoX/>}/>
+				<Button onClick={() => router.replace('/logs')} title="Cancel" icon={<RiCloseLine />} />
 			</BottomNav>
 			<style jsx>
 				{`
