@@ -3,36 +3,35 @@ import Link from 'next/link'
 import Query from '../apollo/query'
 import { GET_LOG } from '../apollo'
 import { Header } from '../components'
-import { formatDate, calculateWorkday, timeToDecimal } from '../utils/date'
+import { formatDate, formatTime, calculateWorkday, timeToDecimal } from '../utils/date'
 import { GoClock, GoBriefcase } from 'react-icons/go'
-import { FaRoad, FaEquals, FaEuroSign} from 'react-icons/fa'
+import { FaRoad, FaEuroSign } from 'react-icons/fa'
 
 export default () => (
 	<>
 		<Query query={GET_LOG} id={useRouter().query.id}>
 			{({log}) => {
-				const { id, employee_id, client_id,startTime, endTime, activitiesPerformed, totalBreakDuration, resourcesUsed, billingRate, distance, transportationCost} = log
+				const { id, client_id,startTime, endTime, activitiesPerformed, totalBreakDuration, resourcesUsed, billingRate, distance, transportationCost} = log
 				return (
 					<>
 						<Header title={formatDate(startTime, 'short')} />
 						<div className="log" key={id}>
-							{/*JSON.stringify(employee_id,0,2)*/}
-							{/*JSON.stringify(client_id,0,2)*/}
 							<div className="header">
 								<div className="client-name">
 									<GoBriefcase size="32"/>
 									<span>{client_id.name}</span>
 									<span>{client_id.id}</span>
 									<Link href={`/clients/${client_id.id}`}>
-										<button>View details</button>
+										<button>View client</button>
 									</Link>
 								</div>
 								<span>
 								</span>
 							</div>
-							<span>{startTime}</span>
-							<span>{endTime}</span>
-							<span>{totalBreakDuration} minutes</span>
+							<span>
+								Worked from {`${formatTime(startTime)} until ${formatTime(endTime)}`}
+							</span>
+							<span>Paused for {totalBreakDuration} minutes</span>
 							<p>{activitiesPerformed}</p>
 							<p>{resourcesUsed}</p>
 							<div className="costs">

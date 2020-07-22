@@ -52,6 +52,8 @@ export default () => {
         }
 
         nav {
+          position: sticky;
+          bottom: 0;
           display: flex;
           margin: -1.6rem;
           padding: 1.6rem 0.8rem;

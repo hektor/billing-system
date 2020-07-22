@@ -4,17 +4,17 @@ export default ({ title, children }) => (
 		{children}
 		<style jsx>{`
 				header {
+          position: sticky;
+          top: 0;
           flex: 1;
 					display: flex;
 					justify-content: space-between;
           align-items: center;
           max-height: 4.8rem;
+          padding: 1.6rem;
+          background: var(--color-white);
+          border-bottom: 1px solid var(--color-primary-100);
 				}
-
-        h1 {
-          margin: auto;
-          margin-left: 1.6rem;
-        }
 			`}</style>
 	</header>
 )
