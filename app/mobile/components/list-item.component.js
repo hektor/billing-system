@@ -9,13 +9,15 @@ export default ({ href, id, children }) => (
         .item {
           display: flex;
           justify-content: space-between;
-          padding: 3.2rem 1.6rem;
-          border-bottom: 1px solid var(--color-primary-300);
+          padding: 2.4rem 1.6rem;
+          margin: 0.8rem 0;
+          background: var(--color-primary-100);
+          border-radius: var(--border-radius);
           transition: .16s;
         }
 
         .item:hover {
-          background: var(--color-primary-100);
+          background: var(--color-primary-300);
         }
       `}
 			</style>
