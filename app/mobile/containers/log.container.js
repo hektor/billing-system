@@ -96,6 +96,7 @@ export default () => (
 
         .client-name > button {
           margin-left: auto;
+          cursor: pointer;
         }
 
         .cost {
