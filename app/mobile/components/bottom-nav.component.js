@@ -1,24 +1,24 @@
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 import Link from 'next/link'
-import {  RiClipboardLine, RiDashboardLine, RiContactsBook2Line } from 'react-icons/ri'
+import {RiClipboardLine, RiDashboardLine, RiContactsBook2Line} from 'react-icons/ri'
 
 
 export default ({ children }) => {
 	const router = useRouter()
 	const tabs = [
-		{ href: '/logs', title: 'Logs', icon: <RiClipboardLine /> },
-		{ href: '/dashboard', title: 'Dashboard', icon: <RiDashboardLine/> },
-		{ href: '/clients', title: 'Clients', icon: <RiContactsBook2Line/> },
+		{ href: '/logs', title: 'Logs', icon: <RiClipboardLine size="32"/> },
+		{ href: '/dashboard', title: 'Dashboard', icon: <RiDashboardLine size="32"/> },
+		{ href: '/clients', title: 'Clients', icon: <RiContactsBook2Line size="32"/> },
 	]
   
 	return (
 		<>
 			<nav>
-				{tabs.map(({ href, title, icon, className }, i) => (
+				{tabs.map(({href, title, icon}, i) => (
 					<Link href={href} key={i}>
-						<a className={`${className} ${`/${router.pathname.split('/')[1]}` === href && 'active'}`}>
+						<a className={`/${router.pathname.split('/')[1]}` === href && 'active'}>
 							{icon}
-							<span className={router.basePath === href && 'active-title'}>{title}</span>
+							<span>{title}</span>
 						</a>
 					</Link>
 				))}
@@ -28,55 +28,56 @@ export default ({ children }) => {
 			</nav>
 			<style jsx>
 				{`
-          a {
-            display: flex;
-            align-items: center;
-          }
-
-          a > :global(.icon) {
-            height: 2.4rem;
-            width: 2.4rem;
-          }
-
-          nav > .active {
-            color: var(--color-primary-700);
-            transform: translateY(-0.4rem);
-            opacity: 1;
-          }
-
-          nav > .active::after {
-            content: '';
-            position: absolute;
-            bottom: -1.6rem;
-            height: .8rem;
-            width: .8rem;
-            border-radius: 50%;
-            background: var(--color-primary-700);
-          }
-
           nav {
             position: sticky;
             bottom: 0;
             display: flex;
+            align-items: center;
             margin: -1.6rem;
-            padding: 1.6rem 0.8rem;
             margin-top: auto;
+            padding: 0 0.8rem;
+            min-height: 6.4rem;
             border-top: 1px solid var(--color-primary-100);
-            border-radius: var(--border-radius) var(--border-radius-lg) 0 0;
             background: var(--color-white);
           }
 
-          nav > a {
+          a {
             flex: 1;
-            text-align: center;
-            flex-direction: column;
-            padding: 0;
+            display: flex;
+            padding: 0.8rem;
+            margin: 0.8rem;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--color-white);
             opacity: 0.5;
-            transform: translateY(0);
+            transition: .16s;
           }
 
-          nav > a > span {
-            margin-top: 0.4rem;
+          a:hover {
+            opacity: 1;
+            color: var(--color-primary-700);
+            background: var(--color-primary-100);
+          }
+
+          a > span {
+            margin-left: 0.4rem;
+          }
+
+          .active {
+            color: var(--color-primary-700);
+            border: 1px solid var(--color-primary-100);
+            opacity: 1;
+          }
+
+          .active::after {
+            content: '';
+            position: absolute;
+            bottom: 1.1rem;
+            height: .4rem;
+            width: 3.2rem;
+            border-radius: var(--border-radius);
+            background: var(--color-primary-700);
           }
 
           .nav-secondary {
