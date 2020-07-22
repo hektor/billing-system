@@ -1,8 +1,7 @@
 import {useRouter} from 'next/router'
-import {GoPlus} from 'react-icons/go'
+import {RiFileAddLine, RiFilter2Line, RiSearch2Line} from 'react-icons/ri'
 import {Layout, Header, BottomNav, Button } from '../../components'
 import {Logs} from '../../containers'
-import { FaFilter, FaSearch } from 'react-icons/fa'
 
 export default () => {
 	const router = useRouter()
@@ -13,46 +12,45 @@ export default () => {
 			<BottomNav>
 				<div className="actions">
 					<div className="action search">
-						<FaSearch/>
+						<RiSearch2Line/>
+						<span>Search</span>
 					</div>
 					<div className="action filter">
-						<FaFilter/>
+						<RiFilter2Line/>
+						<span>Filter</span>
 					</div>
 				</div>
-				<Button primary onClick={() => router.replace('/logs/create')} title="New log" icon={<GoPlus/>}/>
+				<Button primary onClick={() => router.replace('/logs/create')} title="New log" icon={<RiFileAddLine />} />
 			</BottomNav>
 			<style jsx>
 				{`
+
         :global(button) {
-          justify-content: center;
           margin-left: auto;
           min-width: 9.6rem;
+          border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0 !important;
         } 
-
-        .container {
-          display: flex;
-          flex-direction: column;
-          margin-right: auto;
-          color: var(--color-primary-400);
-        }
 
         .actions {
           display: flex;
           background: var(--color-primary-100);
           color: var(--color-primary-400);
-          border-radius: var(--border-radius-lg);
-        }
-
-        .search {
-          border-right: .2rem solid var(--color-white);
+          border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
         }
 
         .action {
           display: flex;
-          flex-direction: column;
           align-items: center;
           justify-content: center;
           padding: 1.6rem;
+        }
+
+        .action > span {
+          margin-left: 0.8rem;
+        }
+
+        .search {
+          border-right: .2rem solid var(--color-white);
         }
      `}
 			</style>

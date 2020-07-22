@@ -83,7 +83,7 @@ export default ({ children }) => {
             position absolute;
             padding: 1.6rem;
             display: flex;
-            top: -8rem;
+            top: -6.4rem;
             left: 0;
             right: 0;
             height: 8rem;
