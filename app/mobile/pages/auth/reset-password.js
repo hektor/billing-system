@@ -1,10 +1,10 @@
 import {useState} from 'react'
-import { useRouter} from 'next/router'
-import { RECOVER_PASSWORD } from '../../routes'
-import {Layout, Header, Form, Button, GoBack} from '../../components'
+import {useRouter} from 'next/router'
+import {RECOVER_PASSWORD} from '../../routes'
+import {Layout, Header, Form, Button} from '../../components'
 import {resetPasswordForm as form} from '../../data'
 import {resetPassword} from '../../auth'
-import {GoCheck} from 'react-icons/go'
+import {RiCheckLine} from 'react-icons/ri'
 
 export default () => {
 	const [feedback, setFeedback] = useState({ message: null, type: null})
@@ -13,9 +13,7 @@ export default () => {
 	const handleSubmit = ({ password }) => resetPassword({ password, passwordConfirmation: password, code}).then(data => setFeedback(data))
 	return (
 		<Layout col>
-			<Header title="Reset password">
-				<GoBack/>
-			</Header>
+			<Header title="Reset password"/>
 			<h2>Reset your password</h2>
 			{(feedback && feedback.message) && <h3>{feedback.message}</h3>}
 			{feedback && feedback.type === 'warning' && (
@@ -28,7 +26,7 @@ export default () => {
 				fields={form.fields}
 				onSubmit={handleSubmit}
 			>
-				<Button primary type="submit" icon={<GoCheck/>}>Confirm</Button>
+				<Button primary type="submit" icon={<RiCheckLine/>}>Confirm</Button>
 			</Form>
 			<style jsx>{`
         h2 {
