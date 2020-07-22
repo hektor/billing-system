@@ -23,7 +23,7 @@ const Input = ({ type, name, placeholder, required, color, value, icon, ...rest 
 
         input {
           flex: 1;
-          padding-left: ${icon ? '3.6rem' : '0'};
+          padding-left: ${icon ? '3.6rem' : '1.6rem'};
           border-color: ${color || 'var(--color-primary-300)'};
         }
 
