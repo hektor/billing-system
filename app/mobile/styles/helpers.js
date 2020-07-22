@@ -14,6 +14,7 @@ export const getHeadingSizes = () => {
         font-size: ${32 - ((i - 1) * 4)}px; 
         margin-top: ${8/i}px; 
         margin-bottom: ${16/i}px; 
+        letter-spacing: -${1.5/i}px; 
       }
     `
 	}
