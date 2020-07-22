@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import {useState} from 'react'
 import Link from 'next/link'
-import  { GoSignIn } from 'react-icons/go'
+import {RiLoginCircleLine} from 'react-icons/ri'
 import {signin} from '../../auth'
 import {Layout, Form, Button} from '../../components'
 import AuthSwitch from './auth-switch.component'
@@ -32,7 +32,7 @@ export default () => {
 				onSubmit={handleSubmit}
 				generalErrors={errors} 
 			>
-				<Button primary type="submit" icon={<GoSignIn/>}>Sign in</Button>
+				<Button primary type="submit" icon={<RiLoginCircleLine/>}>Sign in</Button>
 				<AuthSwitch to="up"/>
 			</Form>
 			<style jsx>{`

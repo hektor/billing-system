@@ -2,7 +2,7 @@ import {signup} from '../../auth'
 import {Layout, Form, Button} from '../../components'
 import AuthSwitch from './auth-switch.component'
 import {signupForm as form} from '../../data'
-import { GoPlus } from 'react-icons/go'
+import {RiUserAddLine} from 'react-icons/ri'
 
 export default () => {
 	const handleSubmit = e => signup(e) 
@@ -16,7 +16,7 @@ export default () => {
 				fields={form.fields}
 				onSubmit={handleSubmit}
 			>
-				<Button primary type="submit" icon={<GoPlus/>}>Create account</Button>
+				<Button primary type="submit" icon={<RiUserAddLine/>}>Create account</Button>
 				<AuthSwitch to="in"/>
 			</Form>
 			<style jsx>{`
