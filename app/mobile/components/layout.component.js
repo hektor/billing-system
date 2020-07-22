@@ -32,7 +32,7 @@ export default ({ children, bottomNav }) => (
 					background: #fff;
 					border-radius: var(--border-radius);
 					padding: 1.6rem;
-          max-width: 32rem;
+          max-width: 48rem;
 				}
 
 				@media (min-width: 768px) {
@@ -47,8 +47,7 @@ export default ({ children, bottomNav }) => (
 
 					.content {
 						order: 1;
-					  margin: 0 1.2rem;
-            min-width: 32rem;
+            min-width: 48rem;
 					}
 			`}</style>
 	</div>
