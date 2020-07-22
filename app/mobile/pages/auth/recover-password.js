@@ -1,24 +1,22 @@
 import {useState} from 'react'
-import { sendRecoveryLink } from '../../auth'
-import {Layout, Header, Form, Button, GoBack} from '../../components'
+import {sendRecoveryLink} from '../../auth'
+import {Layout, Header, Form, Button} from '../../components'
 import {recoverPasswordForm as form} from '../../data'
-import {GoRocket} from 'react-icons/go'
+import {RiMailSendLine} from 'react-icons/ri'
 
 export default () => {
 	const [feedback, setFeedback] = useState({})
 	const handleSubmit = e => sendRecoveryLink(e).then(data => setFeedback(data))
 	return (
 		<Layout col>
-			<Header title="Recover password">
-				<GoBack/>
-			</Header>
+			<Header title="Recover password" />
 			<h2>Request a recovery link</h2>
 			{feedback.message && <h3>{feedback.message}</h3>}
 			<Form
 				fields={form.fields}
 				onSubmit={handleSubmit}
 			>
-				<Button primary type="submit" icon={<GoRocket/>}>Send link</Button>
+				<Button primary type="submit" icon={<RiMailSendLine/>}>Send link</Button>
 			</Form>
 			<style jsx>{`
         h2 {
