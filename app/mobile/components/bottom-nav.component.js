@@ -37,8 +37,18 @@ export default () => {
 
         nav > .active {
           color: var(--color-primary-700);
-          transform: translateY(-0.8rem);
+          transform: translateY(-0.4rem);
           opacity: 1;
+        }
+
+        nav > .active::after {
+          content: '';
+          position: absolute;
+          bottom: -1.6rem;
+          height: .8rem;
+          width: .8rem;
+          border-radius: 50%;
+          background: var(--color-primary-700);
         }
 
         nav {
