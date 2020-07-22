@@ -1,10 +1,10 @@
 import Router from 'next/router'
 import { GoChevronLeft } from 'react-icons/go'
 
-export default () => (
+export default ({ title }) => (
 	<a onClick={() => Router.back()}>
 		<GoChevronLeft />
-		<span>Back</span>
+		<span>{title || 'Back'}</span>
 		<style>
 			{`
         a {
