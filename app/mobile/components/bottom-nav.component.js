@@ -58,7 +58,7 @@ export default () => {
           margin: -1.6rem;
           padding: 1.6rem 0.8rem;
           margin-top: auto;
-          background: var(--color-primary-100);
+          border-top: 1px solid var(--color-primary-100);
           border-radius: var(--border-radius) var(--border-radius-lg) 0 0;
         }
 
