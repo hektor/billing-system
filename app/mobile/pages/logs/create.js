@@ -19,6 +19,9 @@ export default () => {
         :global(button) {
           margin-left: auto;
           min-width: 9.6rem;
+          border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0 !important;
+          border: .2rem solid var(--color-primary-500) !important;
+          border-bottom: none !important;
         } 
      `}
 			</style>
