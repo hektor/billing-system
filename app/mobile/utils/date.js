@@ -42,8 +42,8 @@ const dateFormat = {
 }
 
 
-export const formatDate = (date,type) => new Date(date).toLocaleDateString('en-BE', dateFormat[type] || dateFormat.human)
-export const formatTime = time => new Date(time).toLocaleTimeString('en-BE')
+export const formatDate = (date, type) => new Date(date).toLocaleDateString('en-BE', dateFormat[type] || dateFormat.human)
+export const formatTime = time => new Date(time).toLocaleTimeString('en-BE').slice(0, -3)
 
 export const calculateWorkday = (start, end, breakMinutes) =>
 	new Date((new Date(end) - new Date(start) - new Date(breakMinutes * 60000))).toISOString().substr(11, 5)
