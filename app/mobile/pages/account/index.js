@@ -1,14 +1,13 @@
-import {useRouter} from 'next/router'
-import {GoGear, GoSignOut } from 'react-icons/go'
+import { useRouter } from 'next/router'
+import { GoGear, GoSignOut } from 'react-icons/go'
 import { signout } from '../../auth'
-import { Layout, Header, Button, GoBack} from '../../components'
+import { Layout, Header, Button } from '../../components'
 
 export default () => {
 	const router = useRouter()
 	return (
 		<Layout>
 			<Header title="My account">
-				<GoBack/>
 			</Header>
 			<div className="account-details">
 				<div className="avatar"/>
