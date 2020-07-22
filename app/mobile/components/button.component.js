@@ -1,10 +1,6 @@
 export default ({ title, type, onClick, loading, children, primary, icon }) => (
 	<button onClick={onClick} type={type}>
-		{icon && (
-			<i>
-				{icon}
-			</i>
-		)}
+		{icon && <i>{icon}</i>}
 		{children}
 		{title}
 		{loading && 'loading'}
@@ -14,6 +10,7 @@ export default ({ title, type, onClick, loading, children, primary, icon }) => (
       }
 
       button {
+        cursor: pointer;
         display: flex;
         align-items: center;
         color: ${primary ? 'var(--color-primary-100)' : 'var(--color-primary-300)'};
