@@ -1,10 +1,10 @@
-import { useEffect } from 'react'
-import { GoCheck, GoX, GoInfo } from 'react-icons/go'
-import { useState } from 'react'
+import {useEffect} from 'react'
+import {RiCheckLine, RiErrorWarningLine, RiInformationLine} from 'react-icons/ri'
+import {useState} from 'react'
 import PropTypes from 'prop-types'
 
-import { useInput } from '../hooks'
-import {Input, Dropdown, Modal } from '.'
+import {useInput} from '../hooks'
+import {Input, Dropdown, Modal} from '.'
 
 const FormField = ({
 	type,
@@ -70,7 +70,7 @@ const FormField = ({
 					<div className="feedback-badge">
 						<div className="feedback-icon">
 							{showFeedback && (
-								error ? <GoX/> : <GoCheck/>
+								error ? <RiErrorWarningLine/> : <RiCheckLine/>
 							)}
 						</div>
 					</div>
@@ -80,11 +80,11 @@ const FormField = ({
 							<h3>{info}</h3>
 							<a className="close-modal" onClick={() => setShowInfo(false)}>
 								<span>Close</span>
-								<GoX/>
+								<RiErrorWarningLine/>
 							</a>
 						</div>
 					</Modal>
-					{info && <a className="open-modal" onClick={() => setShowInfo(!showInfo)}><GoInfo/></a>}
+					{info && <a className="open-modal" onClick={() => setShowInfo(!showInfo)}><RiInformationLine/></a>}
 				</div>
 			</div>
 			{getInputByType()}
