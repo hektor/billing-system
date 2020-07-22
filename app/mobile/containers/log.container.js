@@ -1,11 +1,11 @@
-import { useRouter } from 'next/router'
-import Link from 'next/link'
+import {useRouter} from 'next/router'
+import {RiTimeLine, RiContactsBook2Line, RiPinDistanceLine, RiMoneyEuroCircleLine} from 'react-icons/ri'
 import Query from '../apollo/query'
-import { GET_LOG } from '../apollo'
-import { Header } from '../components'
-import { formatDate, formatTime, calculateWorkday, timeToDecimal } from '../utils/date'
-import { GoClock, GoBriefcase } from 'react-icons/go'
-import { FaRoad, FaEuroSign } from 'react-icons/fa'
+import {GET_LOG} from '../apollo'
+import {Header, Button} from '../components'
+import {formatDate, formatTime, calculateWorkday, timeToDecimal} from '../utils/date'
+
+
 
 export default () => (
 	<>
@@ -18,12 +18,8 @@ export default () => (
 						<div className="log" key={id}>
 							<div className="header">
 								<div className="client-name">
-									<GoBriefcase size="32"/>
-									<span>{client_id.name}</span>
-									<span>{client_id.id}</span>
-									<Link href={`/clients/${client_id.id}`}>
-										<button>View client</button>
-									</Link>
+									<h2>{client_id.name}</h2>
+									<Button onClick={() => useRouter().replace(`/clients/${client_id.id}`)} title="View client" icon={<RiContactsBook2Line size="32"/>} />
 								</div>
 								<span>
 								</span>
@@ -37,7 +33,7 @@ export default () => (
 							<div className="costs">
 								<div className="cost hourly-cost">
 									<div className="amount">
-										<GoClock size="32"/>
+										<RiTimeLine size="32"/>
 										<span>{calculateWorkday(startTime, endTime, totalBreakDuration)}</span>
 									</div>
 									{/*<span className="rate">&euro;{billingRate}/hour</span>*/}
@@ -45,7 +41,7 @@ export default () => (
 								</div>
 								<div className="cost transport-cost">
 									<div className="amount">
-										<FaRoad size="32"/>
+										<RiPinDistanceLine size="32"/>
 										<span>{distance} km</span>
 									</div>
 									{/*<span className="rate">&euro;{transportationCost}/km</span>*/}
@@ -55,7 +51,7 @@ export default () => (
 							<div className="cost total-cost">
 								<span>Total</span>
 								<div className="amount">
-									<FaEuroSign size="32"/>
+									<RiMoneyEuroCircleLine size="32"/>
 									<span>{timeToDecimal(calculateWorkday(startTime, endTime, totalBreakDuration)) * billingRate + distance * transportationCost}</span>
 								</div>
 							</div>
@@ -89,14 +85,8 @@ export default () => (
           align-items: center;
         }
 
-        .client-name > span {
-          margin: auto 1.6rem;
-          font-size: 1.6rem;
-        }
-
-        .client-name > button {
-          margin-left: auto;
-          cursor: pointer;
+        .client-name > h2 {
+          margin: auto auto 1.6rem 1.6rem;
         }
 
         .cost {
