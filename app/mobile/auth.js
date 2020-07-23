@@ -65,6 +65,5 @@ export const auth = ctx => {
 
 export const signout = () => {
 	cookie.remove('token')
-	window.localStorage.setItem('signout', Date.now().toString())
 	Router.push('/auth/signin')
 }
