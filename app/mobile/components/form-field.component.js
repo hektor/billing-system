@@ -102,7 +102,7 @@ const FormField = ({
           }
 
           label {
-            padding: 0.8rem 0;
+            margin: 0.8rem 0;
             color: ${showFeedback ? (error ? 'var(--color-warning-700)' : 'var(--color-success-700)') : 'inherit'};
             margin-right: auto;
           }
@@ -120,10 +120,15 @@ const FormField = ({
           }
 
           .feedback {
+            position: relative;
+            top: -0.8rem;
             color: var(--color-warning-700);
-            min-height: 2rem;
-            padding: 0.4rem 0;
-            margin: 0 1.6rem;
+            opacity: ${showFeedback && error ? 1 : 0};
+            font-style: italic;
+            min-height: 1.6rem;
+            padding: 0 1.6rem;
+            margin-top: 0.4rem;
+            background: var(--color-white);
           }
 
           .modal-header {
