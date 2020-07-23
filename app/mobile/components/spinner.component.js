@@ -1,8 +1,8 @@
 import {RiLoader4Line} from 'react-icons/ri'
 
-export default () => (
+export default ({size}) => (
 	<div>
-		<RiLoader4Line />
+		<RiLoader4Line size={size || 24}/>
 		<style jsx>
 			{`
       div {
