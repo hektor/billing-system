@@ -1,13 +1,21 @@
-export default ({ title, type, onClick, loading, children, primary, icon }) => (
-	<button onClick={onClick} type={type}>
-		{icon && <i>{icon}</i>}
+import { Spinner } from '.'
+
+export default ({ title, type, onClick, isLoading, children, primary, icon }) => (
+	<button onClick={onClick} type={type || 'button'}>
+		{icon && !isLoading && <i>{icon}</i>}
 		{children}
 		{title}
-		{loading && 'loading'}
+		{isLoading && <i className="loader"><Spinner/></i>}
 		<style jsx>{`
       button :global(i) {
         margin-right: 0.8rem;
       }
+
+      .loader {
+        margin-left: 0.8rem;
+        margin-right: 0;
+      }
+
 
       button {
         cursor: pointer;

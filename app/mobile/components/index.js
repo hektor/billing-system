@@ -12,6 +12,7 @@ export {default as Input} from './input.component'
 export {default as Layout} from './layout.component'
 export {default as ListItem} from './list-item.component'
 export {default as Modal} from './modal.component'
+export {default as Spinner} from './spinner.component'
 
 /*
  * Higher order components
