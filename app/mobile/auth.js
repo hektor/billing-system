@@ -13,7 +13,7 @@ const flattenMessages = messages => {
 const handleSuccess = ({ jwt, user}) => {
 	cookie.set('token', jwt, { expires: 1 })
 	cookie.set('user', user, { expires: 1 })
-	Router.push('/dashboard')
+	Router.replace('/dashboard')
 	return null
 }
 
@@ -59,11 +59,11 @@ export const auth = ctx => {
 		ctx.res.end()
 		return
 	}
-	!token && Router.push('/signin')
+	!token && Router.replace('/auth/signin')
 	return token
 }
 
 export const signout = () => {
 	cookie.remove('token')
-	Router.push('/auth/signin')
+	Router.replace('/auth/signin')
 }
