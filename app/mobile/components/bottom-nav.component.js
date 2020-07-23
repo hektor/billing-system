@@ -22,9 +22,11 @@ export default ({ children }) => {
 						</a>
 					</Link>
 				))}
-				<div className="nav-secondary">
-					{children}
-				</div>
+				{children && (
+					<div className="nav-secondary">
+						{children}
+					</div>
+				)}
 			</nav>
 			<style jsx>
 				{`
