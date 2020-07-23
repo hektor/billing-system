@@ -13,6 +13,13 @@ export default () => {
 			>
 				<Button primary type="submit" icon={<RiSave3Line/>}>Save changes</Button>
 			</Form>
+			<style jsx>
+				{`
+          :global(header) {
+            margin-bottom: auto;
+          }
+        `}
+			</style>
 		</Layout>
 	)
 }

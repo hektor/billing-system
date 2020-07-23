@@ -9,9 +9,9 @@ import {RECOVER_PASSWORD} from '../../routes'
 
 export default () => {
 	const [errors, setErrors] = useState()
-	const handleSubmit = async e => setErrors(await signin(e)) 
+	const handleSubmit = async e => setErrors(await signin(e))
 	return (
-		<Layout col>
+		<Layout>
 			<div className="heading-group">
 				<h1>Get started</h1>
 				<h2>Sign in</h2>
@@ -23,7 +23,7 @@ export default () => {
 				<div className="recover-password">
 					<label htmlFor="recover-password">Forgot password?</label>
 					<Link href={RECOVER_PASSWORD}>
-						<Button name="recover-password" type="button" title="Recover password" />
+						<Button name="recover-password" title="Recover password"/>
 					</Link>
 				</div>
 			)} 

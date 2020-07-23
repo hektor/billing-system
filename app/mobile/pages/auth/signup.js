@@ -19,19 +19,16 @@ export default () => {
 				<Button primary type="submit" icon={<RiUserAddLine/>}>Create account</Button>
 				<AuthSwitch to="in"/>
 			</Form>
-			<style jsx>{`
-        .heading-group {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          margin: 3.2rem 0 0 1.6rem;
-        }
-
-        form :global(button) {
-          margin-top: 3.2rem;
-          border: 1px solid red;
-        }
-      `}</style>
+			<style jsx>
+				{`
+          .heading-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            margin: 3.2rem 0 0 1.6rem;
+          }
+        `}
+			</style>
 		</Layout>
 	)
 }

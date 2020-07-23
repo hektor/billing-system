@@ -143,11 +143,11 @@ export default css.global`
 	form {
 		display: flex;
 		flex-direction: column;
-    max-width: 32rem;
+    max-width: 48rem;
 	}
 
   form:last-child button {
-    margin-top: 3.2rem; 
+    margin-top: 1.6rem; 
   }
 
 	label {

@@ -33,9 +33,6 @@ export default () => {
 
         .actions {
           display: flex;
-          background: var(--color-primary-100);
-          color: var(--color-primary-400);
-          border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
         }
 
         .action {
@@ -43,6 +40,23 @@ export default () => {
           align-items: center;
           justify-content: center;
           padding: 1.6rem;
+          color: var(--color-primary-400);
+          background: var(--color-primary-100);
+          cursor: pointer;
+          transition: .16s;
+        }
+
+        .action:first-child {
+          border-radius: var(--border-radius-lg) 0 0 0;
+        }
+
+        .action:last-child {
+          border-radius: 0 var(--border-radius-lg) 0 0;
+        }
+
+        .action:hover {
+          color: var(--color-primary-700);
+          background: var(--color-primary-300);
         }
 
         .action > span {

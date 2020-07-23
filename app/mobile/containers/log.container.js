@@ -94,17 +94,16 @@ export default () => {
         .cost {
           display: flex;
           padding: 1.6rem;
-          margin-bottom: 1.6rem;
+          margin-bottom: .4rem;
           background: var(--color-primary-100);
-          border-radius: var(--border-radius);
         }
 
         .hourly-cost { 
-          margin-right: 0.8rem; 
+          margin-right: 0.2rem; 
         }
 
         .transport-cost { 
-          margin-left: 0.8rem; 
+          margin-left: 0.2rem; 
         }
 
         .hourly-cost,
@@ -112,10 +111,15 @@ export default () => {
           flex: 1;
         }
 
+        .total-cost {
+          border-radius: 0 0 var(--border-radius) var(--border-radius);
+          margin-bottom: 1.6rem;
+        }
+
         .total-cost > span {
           flex: 1;
           margin: auto 0;
-          font-size: 1.6rem;
+          font-size: 1.2rem;
         }
 
         .total-cost > .amount {
@@ -127,7 +131,7 @@ export default () => {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          font-size: 1.6rem;
+          font-size: 1.2rem;
         }
       `}
 			</style>
