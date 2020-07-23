@@ -1,8 +1,7 @@
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import Router from 'next/router'
 
 export default ({ children, href }) => {
-	const router = useRouter()
 	const child = React.Children.only(children)
 
 	/**
@@ -15,7 +14,7 @@ export default ({ children, href }) => {
 		// make array
 			.split(',')
 		// check if at least one element from  the array matches
-			.some(route => route === `/${router.pathname.split('/')[1]}`)
+			.some(route => route === `/${Router.pathname.split('/')[1]}`)
 
 	let className = child.props.className || ''
 	if (checkRoutes()) className = `${className} active`.trim()

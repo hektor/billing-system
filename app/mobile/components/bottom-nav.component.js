@@ -5,13 +5,12 @@ import {useLoading} from '../hooks'
 import {Spinner} from '.'
 
 const Tab = ({href, title, icon}) => {
-	const router = useRouter()
 	const {load, isLoading} = useLoading()
 	return (
 		<>
 			<Link href={href}>
-				<a onClick={load} className={`/${router.pathname.split('/')[1]}` === href && 'active'}>
-					{isLoading ? <Spinner/> : icon}
+				<a onClick={`/${useRouter().pathname.split('/')[1]}` !== href && load} className={`/${useRouter().pathname.split('/')[1]}` === href && 'active'}>
+					{isLoading ? <Spinner size="32"/> : icon}
 					<span>{title}</span>
 				</a>
 			</Link>
@@ -22,6 +21,7 @@ const Tab = ({href, title, icon}) => {
             display: flex;
             padding: 0.8rem;
             margin: 0.8rem;
+            min-height: 4.8rem;
             align-items: center;
             justify-content: center;
             border-radius: var(--border-radius-lg);
@@ -49,7 +49,7 @@ const Tab = ({href, title, icon}) => {
           .active::after {
             content: '';
             position: absolute;
-            bottom: 1.1rem;
+            bottom: 0.8rem;
             height: .4rem;
             width: 3.2rem;
             border-radius: var(--border-radius);

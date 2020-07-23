@@ -17,7 +17,6 @@ const App = ({ Component, props, apollo }) => {
      */ 
 
 		const token = Cookie.get('token')
-
 		if(token) fetch(api.GET_USER, {
 			headers: {
 				Authorization: `Bearer ${token}`
@@ -29,10 +28,9 @@ const App = ({ Component, props, apollo }) => {
 				return
 			}
 			const user = await res.json()
-			console.log(user)
 			setUser(user)
 		})
-	}, [])
+	}, [])  
 
 	return (
 		<AuthCtx.Provider value={{ user, isAuthenticated: !!user, setUser }}>
