@@ -1,0 +1,20 @@
+import {RiLoader4Line} from 'react-icons/ri'
+
+export default () => (
+	<div>
+		<RiLoader4Line />
+		<style jsx>
+			{`
+      div {
+        display: flex;
+        animation: 0.8s cubic-bezier(0.5, 0.5, 0.5, 0.8) spin infinite;
+      }
+
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to   { transform: rotate(360deg); }
+      }
+   `}
+		</style>
+	</div>
+)
