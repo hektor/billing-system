@@ -1,6 +1,7 @@
 import {signup} from '../../auth'
 import {Layout, Form, Button} from '../../components'
 import AuthSwitch from './auth-switch.component'
+import Heading from './heading.component'
 import {signupForm as form} from '../../data'
 import {RiUserAddLine} from 'react-icons/ri'
 
@@ -8,10 +9,7 @@ export default () => {
 	const handleSubmit = e => signup(e) 
 	return (
 		<Layout col>
-			<div className="heading-group">
-				<h1>Get started</h1>
-				<h2>Sign up</h2>
-			</div>
+			<Heading title="Get started" subtitle="Sign up"/>
 			<Form
 				fields={form.fields}
 				onSubmit={handleSubmit}
