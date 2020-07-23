@@ -1,29 +1,27 @@
-import {useRouter} from 'next/router'
+import Router from 'next/router'
 import {RiFileAddLine, RiFilter2Line, RiSearch2Line} from 'react-icons/ri'
 import {Layout, Header, BottomNav, Button } from '../../components'
 import {Logs} from '../../containers'
 
-export default () => {
-	const router = useRouter()
-	return (
-		<Layout>
-			<Header title="My logs" />
-			<Logs/>
-			<BottomNav>
-				<div className="actions">
-					<div className="action search">
-						<RiSearch2Line/>
-						<span>Search</span>
-					</div>
-					<div className="action filter">
-						<RiFilter2Line/>
-						<span>Filter</span>
-					</div>
+export default () => (
+	<Layout>
+		<Header title="My logs" />
+		<Logs/>
+		<BottomNav>
+			<div className="actions">
+				<div className="action search">
+					<RiSearch2Line/>
+					<span>Search</span>
 				</div>
-				<Button primary onClick={() => router.replace('/logs/create')} title="New log" icon={<RiFileAddLine />} />
-			</BottomNav>
-			<style jsx>
-				{`
+				<div className="action filter">
+					<RiFilter2Line/>
+					<span>Filter</span>
+				</div>
+			</div>
+			<Button primary onClick={() => Router.replace('/logs/create')} title="New log" icon={<RiFileAddLine />} />
+		</BottomNav>
+		<style jsx>
+			{`
 
         :global(button) {
           margin-left: auto;
@@ -67,6 +65,6 @@ export default () => {
           border-right: .2rem solid var(--color-white);
         }
      `}
-			</style>
-		</Layout>
-	)}
+		</style>
+	</Layout>
+)
