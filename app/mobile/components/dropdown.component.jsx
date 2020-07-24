@@ -8,7 +8,8 @@ const Dropdown = ({ name, placeholder, options, value, required, icon, ...rest }
 		<select name={name} {...rest} value={value}>
 			{placeholder && (
 				<option
-					value={placeholder} disabled={required} hidden={required}>
+					value=''
+					placeholder={placeholder}>
 					{placeholder}
 				</option>
 			)}
