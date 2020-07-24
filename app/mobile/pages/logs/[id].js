@@ -1,8 +1,9 @@
-import { Layout } from '../../components'
+import { Layout, BottomNav } from '../../components'
 import { Log } from '../../containers'
 
 export default () => (
-	<Layout bottomNav>
+	<Layout>
 		<Log />
+		<BottomNav />
 	</Layout>
 )

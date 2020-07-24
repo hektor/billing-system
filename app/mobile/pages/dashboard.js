@@ -2,7 +2,7 @@ import Link from 'next/link'
 import {RiAccountCircleLine} from 'react-icons/ri'
 import {useContext} from 'react'
 import {AuthCtx} from './_app'
-import {Layout, Header} from '../components'
+import {Layout, Header, BottomNav} from '../components'
 
 export default () => {
 	const {user} = useContext(AuthCtx)
@@ -17,6 +17,7 @@ export default () => {
 					</a>
 				</Link>
 			</Header>
+			<BottomNav/>
 			<style jsx>
 				{`
         a {
