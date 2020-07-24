@@ -1,6 +1,6 @@
-import { env } from '.'
+import {env} from '.'
 
-const { BASE_URL } = env
+const {BASE_URL} = env
 
 export default {
 	GRAPHQL: `${BASE_URL}/graphql`,
