@@ -1,3 +1,4 @@
+import {useState, useEffect} from 'react'
 import {useRouter} from 'next/router'
 import Link from 'next/link'
 import {RiClipboardLine, RiDashboardLine, RiContactsBook2Line} from 'react-icons/ri'
@@ -33,10 +34,12 @@ const Tab = ({href, title, icon}) => {
 
           a:first-child {
             border-bottom-left-radius: 1.6rem;
+            margin-right: 0;
           }
 
           a:last-child {
             border-bottom-right-radius: 1.6rem;
+            margin-left: 0;
           }
 
           @media(min-width: 480px) {
@@ -77,6 +80,12 @@ const Tab = ({href, title, icon}) => {
 
 
 export default ({ children }) => {
+	const [scrollY, setScrollY] = useState(0)
+	const handleScroll = () => setScrollY(window.pageYOffset)
+
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll)
+	}, [])
 	const tabs = [
 		{ href: '/logs', title: 'Logs', icon: <RiClipboardLine size="32"/> },
 		{ href: '/dashboard', title: 'Dashboard', icon: <RiDashboardLine size="32"/> },
@@ -88,7 +97,7 @@ export default ({ children }) => {
 			<nav>
 				{tabs.map(({href, title, icon}, id) => <Tab href={href} title={title} icon={icon} key={id}/>)}
 				{children && (
-					<div className="nav-secondary">
+					<div className={`nav-secondary ${scrollY > 240 && 'nav-secondary-hidden'}`}>
 						{children}
 					</div>
 				)}
@@ -96,25 +105,37 @@ export default ({ children }) => {
 			<style jsx>
 				{`
           nav {
-            position: sticky;
-            bottom: 0;
+            z-index: 1000;
+            position: fixed;
+            bottom: 1.6rem;
+            left: 1.6rem;
+            right: 1.6rem;
             display: flex;
             margin: -1.6rem;
             margin-top: auto;
-            padding: 0 0.8rem;
             min-height: 6.4rem;
             border-top: 1px solid var(--color-primary-100);
             background: var(--color-white);
           }
 
           .nav-secondary {
+            z-index: -1;
             position absolute;
-            padding: 1.6rem;
-            display: flex;
             top: -6.4rem;
             left: 0;
             right: 0;
+            padding: 1.6rem;
+            display: flex;
             height: 8rem;
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.32s;
+            background: linear-gradient(0deg, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
+          }
+
+          .nav-secondary-hidden {
+            visibility: hidden;
+            opacity: 0;
           }
      `}
 			</style>
