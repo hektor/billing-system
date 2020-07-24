@@ -27,7 +27,7 @@ const Tab = ({href, title, icon}) => {
             align-items: center;
             justify-content: center;
             border-radius: var(--border-radius-lg);
-            border: 1px solid var(--color-white);
+            border: .2rem solid var(--color-white);
             opacity: 0.5;
             transition: .16s;
           }
@@ -60,7 +60,7 @@ const Tab = ({href, title, icon}) => {
 
           .active {
             color: var(--color-primary-700);
-            border: 1px solid var(--color-primary-100);
+            border: .2rem solid var(--color-primary-100);
             opacity: 1;
           }
 
@@ -107,36 +107,46 @@ export default ({ children }) => {
           nav {
             z-index: 1000;
             position: fixed;
-            bottom: 1.6rem;
-            left: 1.6rem;
-            right: 1.6rem;
+            bottom: 0rem;
+            left: 0rem;
+            right: 0rem;
             display: flex;
-            margin: -1.6rem;
-            margin-top: auto;
             min-height: 6.4rem;
-            border-top: 1px solid var(--color-primary-100);
+            border-top: .2rem solid var(--color-primary-100);
             background: var(--color-white);
+            max-width: 48rem;
+            margin: 0 auto;
           }
 
           .nav-secondary {
             z-index: -1;
             position absolute;
-            top: -6.4rem;
+            bottom: 6.4rem;
             left: 0;
             right: 0;
-            padding: 1.6rem;
+            padding: 0 0.8rem;
             display: flex;
-            height: 8rem;
+            height: 4.8rem;
             visibility: visible;
             opacity: 1;
             transition: opacity 0.32s;
-            background: linear-gradient(0deg, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
           }
 
           .nav-secondary-hidden {
             visibility: hidden;
             opacity: 0;
           }
+
+          @media(min-width: 768px) {
+            nav {
+              padding: 0 0.8rem;
+            }
+
+            .nav-secondary {
+              margin: 0 0.8rem;
+            }
+          }
+
      `}
 			</style>
 		</>
