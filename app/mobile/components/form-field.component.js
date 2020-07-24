@@ -4,7 +4,7 @@ import {useState} from 'react'
 import PropTypes from 'prop-types'
 
 import {useInput} from '../hooks'
-import {Input, Dropdown, Modal} from '.'
+import {Input, Dropdown, SelectClient, Modal} from '.'
 
 const FormField = ({
 	type,
@@ -16,6 +16,7 @@ const FormField = ({
 	error,
 	setField,
 	value,
+	placeholder,
 	showFeedback: showSubmitFeedback,
 	...rest
 }) => {
@@ -38,6 +39,7 @@ const FormField = ({
 				<Dropdown
 					name={name}
 					value={value}
+					placeholder={placeholder}
 					required={required}
 					icon={icon}
 					color={showFeedback && (error ? 'var(--color-warning-600)' : 'var(--color-success-600)')}
@@ -46,12 +48,25 @@ const FormField = ({
 					onChange={handleChange}
 				/>
 			)
+		case 'client':
+			return <SelectClient 
+				name={name}
+				value={value}
+				placeholder={placeholder}
+				required={required}
+				icon={icon}
+				color={showFeedback && (error ? 'var(--color-warning-600)' : 'var(--color-success-600)')}
+				{...rest}
+				{...bind}
+				onChange={handleChange}
+			/>
 		default:
 			return (
 				<Input
 					type={type}
 					name={name}
 					value={value}
+					placeholder={placeholder}
 					required={required}
 					color={showFeedback && (error ? 'var(--color-warning-600)' : 'var(--color-success-600)')}
 					icon={icon}
