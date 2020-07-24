@@ -10,15 +10,8 @@ export default css.global`
   }
 
 	:root {
-		--base: 1rem;
 		--font-family: Inter, Helvetica, Arial;
     --font-size: 16px;
-    --font-size-h1: calc(var(--base) * 3.2 );
-    --font-size-h2: calc(var(--base) * 2.8);
-    --font-size-h3: calc(var(--base) * 2.4);
-    --font-size-h4: calc(var(--base) * 2);
-    --font-size-h5: calc(var(--base) * 1.6);
-    --font-size-h6: calc(var(--base) * 1.2);
 		--border-radius: 0.4rem;
 		--border-radius-lg: 0.8rem;
     --color-white: #fff;
@@ -121,9 +114,11 @@ export default css.global`
     outline: none;
 		border: none;
     border-radius: var(--border-radius); 
+    background: transparent;
     font-weight: 500;
+    cursor: pointer;
 	}
-  
+
   a {
     outline: none;
     color: inherit;
