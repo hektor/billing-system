@@ -27,7 +27,7 @@ export default () => (
           margin-left: auto;
           min-width: 9.6rem;
           border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0 !important;
-        } 
+        }
 
         .actions {
           display: flex;
@@ -37,7 +37,8 @@ export default () => (
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 1.6rem;
+          flex-direction: column;
+          padding: 0 1.6rem;
           color: var(--color-primary-400);
           background: var(--color-primary-100);
           cursor: pointer;
@@ -58,11 +59,26 @@ export default () => (
         }
 
         .action > span {
-          margin-left: 0.8rem;
         }
 
         .search {
           border-right: .2rem solid var(--color-white);
+        }
+
+        .action > span {
+          margin: 0;
+          margin-top: 0.4rem;
+        }
+
+        @media (min-width: 480px) {
+          .action {
+            flex-direction: row;
+          } 
+
+          .action > span {
+            margin: 0;
+            margin-left: 0.4rem;
+          }
         }
      `}
 		</style>

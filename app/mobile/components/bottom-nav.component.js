@@ -19,15 +19,30 @@ const Tab = ({href, title, icon}) => {
           a {
             flex: 1;
             display: flex;
+            flex-direction: column;
+            min-height: 4.8rem;
             padding: 0.8rem;
             margin: 0.8rem;
-            min-height: 4.8rem;
             align-items: center;
             justify-content: center;
             border-radius: var(--border-radius-lg);
             border: 1px solid var(--color-white);
             opacity: 0.5;
             transition: .16s;
+          }
+
+          a:first-child {
+            border-bottom-left-radius: 1.6rem;
+          }
+
+          a:last-child {
+            border-bottom-right-radius: 1.6rem;
+          }
+
+          @media(min-width: 480px) {
+            a { 
+              flex-direction: row;
+            }
           }
 
           a:hover {
@@ -84,7 +99,6 @@ export default ({ children }) => {
             position: sticky;
             bottom: 0;
             display: flex;
-            align-items: center;
             margin: -1.6rem;
             margin-top: auto;
             padding: 0 0.8rem;
@@ -92,7 +106,6 @@ export default ({ children }) => {
             border-top: 1px solid var(--color-primary-100);
             background: var(--color-white);
           }
-
 
           .nav-secondary {
             position absolute;

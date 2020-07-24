@@ -8,6 +8,8 @@ export default ({size}) => (
       div {
         display: flex;
         animation: 0.8s cubic-bezier(0.5, 0.5, 0.5, 0.8) spin infinite;
+        justify-content: center;
+        align-items: center;
       }
 
       @keyframes spin {

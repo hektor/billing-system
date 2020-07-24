@@ -1,54 +1,52 @@
-import { BottomNav } from '../components'
-import { globalStyles } from '../styles'
+import {useEffect} from 'react'
+import {BottomNav} from '../components'
+import {globalStyles} from '../styles'
 
-export default ({ children, bottomNav }) => (
-	<div className="container">
-		<div className="page-container">
+export default ({ children, bottomNav }) => {
+
+	const setViewportHeight = () => document.documentElement.style.setProperty('--viewport-height', `${window.innerHeight}px`)
+
+	useEffect(() => {
+		setViewportHeight() 
+		window.addEventListener('resize', setViewportHeight)
+	}, [])
+
+	return (
+		<div className="container">
 			<main className="content">
 				{children}
 				{bottomNav && <BottomNav/>}
 			</main>
-		</div>
-		<style jsx global>{globalStyles}</style>
-		<style jsx>{`
+			<style jsx global>{globalStyles}</style>
+			<style jsx>{`
 				.container {
-					background: #eee;
-          min-height: 100vh;
-          min-height: -webkit-fill-available;
-				}
-
-				.container,
-				.page-container {
 					display: flex;
 					flex-direction: column;
-          flex: 1;
+					background: #eee;
+          height: var(--viewport-height);
 				}
 
 				.content {
 					flex: 1;
-					order: -1;
 					display: flex;
 					flex-direction: column;
+          padding: 0.8rem;
 					background: #fff;
 					border-radius: var(--border-radius);
-					padding: 1.6rem;
           max-width: 48rem;
+          overflow-x: hidden;
 				}
 
 				@media (min-width: 768px) {
           .container {
-            justify-content: center;
             align-items: center;
           }
 
-					.page-container {
-						flex-direction: row;
-					}
-
 					.content {
-						order: 1;
             min-width: 48rem;
+            padding: 1.6rem;
 					}
 			`}</style>
-	</div>
-)
+		</div>
+	)
+}
