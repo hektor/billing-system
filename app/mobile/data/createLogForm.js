@@ -1,66 +1,71 @@
-/*
- 
-employee_id: 7,
-client_id: 1,
-  startTime: "2017-07-15T00:17:11.790Z", 
-  endTime: "2017-07-15T00:17:11.790Z",
-  activitiesPerformed: "More of that",
-  totalBreakDuration: 30,
-  resourcesUsed: "More of that",
-  billingRate: 75.00
-  distance: 30,
-  transportationCost: 2.44,
-*/
+import {RiContactsBook2Line, RiTimeLine, RiPinDistanceLine, RiMoneyEuroCircleLine } from 'react-icons/ri'
 
 export default {
 	title:  'Create new log',
 	fields: [
 		{
-			label: 'Client'
+			label: 'Client',
+			name: 'client',
+			type: 'client',
+			placeholder: 'Select client',
+			icon: <RiContactsBook2Line/>,
+			required: true
 		},
 		{
 			label: 'Start time',
-			name: 'start-time',
+			name: 'startTime',
 			type: 'time',
+			icon: <RiTimeLine/>,
+			required: true
 		},
 		{
 			label: 'End time',
-			name: 'end-time',
+			name: 'endTime',
 			type: 'time',
+			icon: <RiTimeLine/>,
+			required: true
 		},
 		{
 			label: 'Total break duration',
-			name: 'total-break-duration',
+			name: 'totalBreakDuration',
 			type: 'number',
-			placeholder: 'Number of minutes'
+			placeholder: 'Number of minutes',
+			icon: <RiTimeLine/>,
+			required: true
 		},
 		{
 			label: 'Distance traveled',
 			name: 'distance',
 			type: 'number',
-			placeholder: 'Number of kilometers'
+			placeholder: 'Number of kilometers',
+			icon: <RiPinDistanceLine/>,
+			required: true
 		},
 		{
 			label: 'Billing rate',
-			name: 'billing-rate',
+			name: 'billingRate',
 			type: 'number',
+			icon: <RiMoneyEuroCircleLine/>,
 			placeholder: 'Price per hour'
 		},
 		{
 			label: 'Transportation cost',
-			name: 'transportation-cost',
+			name: 'transportationCost',
 			type: 'number',
-			placeholder: 'Price per kilometer'
+			icon: <RiMoneyEuroCircleLine/>,
+			placeholder: 'Price per kilometer',
+			required: true
 		},
 		{
 			label: 'Activities performed',
-			name: 'activities-performed',
+			name: 'activitiesPerformed',
 			type: 'textarea',
 			placeholder: 'List the activities you performed',
+			required: true
 		},
 		{
 			label: 'Resources used',
-			name: 'resources-used',
+			name: 'resourcesUsed',
 			type: 'textarea',
 			placeholder: 'List the resources you used',
 		}
