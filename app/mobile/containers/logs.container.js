@@ -1,8 +1,7 @@
 import {RiTimeLine, RiContactsBook2Line} from 'react-icons/ri'
-import Query from '../apollo/query'
-import { GET_LOGS } from '../apollo'
-import { formatDate } from '../utils/date'
-import { ListItem } from '../components'
+import {Query, GET_LOGS} from '../apollo'
+import {formatDate} from '../utils/date'
+import {ListItem} from '../components'
 
 export default () => (
 	<div className="list">

@@ -1,7 +1,6 @@
 import Router, {useRouter} from 'next/router'
 import {RiTimeLine, RiContactsBook2Line, RiPinDistanceLine, RiMoneyEuroCircleLine} from 'react-icons/ri'
-import Query from '../apollo/query'
-import {GET_LOG} from '../apollo'
+import {Query, GET_LOG} from '../apollo'
 import {Header, Button} from '../components'
 import {formatDate, formatTime, calculateWorkday, timeToDecimal} from '../utils/date'
 

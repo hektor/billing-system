@@ -1,6 +1,5 @@
-import Query from '../apollo/query'
-import { GET_CLIENTS } from '../apollo'
-import { ListItem } from '../components'
+import {Query, GET_CLIENTS} from '../apollo'
+import {ListItem} from '../components'
 
 export default () => (
 	<div className="list">
