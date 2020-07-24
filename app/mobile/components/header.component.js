@@ -4,8 +4,10 @@ export default ({ title, children }) => (
 		{children}
 		<style jsx>{`
 				header {
-          position: sticky;
+          position: fixed;
           top: 0;
+          left: 0;
+          right: 0;
           flex: 1;
 					display: flex;
 					justify-content: space-between;
