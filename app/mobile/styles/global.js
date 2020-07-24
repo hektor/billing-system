@@ -83,9 +83,6 @@ export default css.global`
     --color-danger-transparent-400: rgba(242, 107, 91, 0.32);
     --color-danger-transparent-500: rgba(242, 107, 91, 0.4);
     --color-danger-transparent-600: rgba(242, 107, 91, 0.48);
-
-    @custom-media --mobile-viewport (max-width: 767px);
-    @custom-media --desktop-viewport (min-width: 768px);
   }
 
   h1,h2,h3,h4,h5,h6 {
