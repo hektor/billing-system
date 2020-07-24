@@ -1,6 +1,5 @@
 import {useRouter} from 'next/router'
-import Query from '../apollo/query'
-import {GET_CLIENT} from '../apollo'
+import {Query, GET_CLIENT} from '../apollo'
 import {Header, Button} from '../components'
 import {RiPhoneLine, RiClipboardLine} from 'react-icons/ri'
 
