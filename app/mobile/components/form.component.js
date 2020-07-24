@@ -21,7 +21,18 @@ const Form = ({ fields, children, onSubmit, generalErrors }) => {
 
 	return (
 		<form onSubmit={handleSubmit} noValidate>
-			{fields && fields.map(field => <FormField key={field.name} {...field} setField={onChange} value={values[field.name]} error={errors[field.name]} showFeedback={showFeedback} />)}
+			{fields && 
+        fields.map(
+        	field => 
+        		<FormField 
+        			key={field.name} 
+        			{...field} 
+        			setField={onChange} 
+        			value={values[field.name]} 
+        			error={errors[field.name]} 
+        			showFeedback={showFeedback} 
+        		/>
+        )}
 			{children}
 		</form>
 	)
