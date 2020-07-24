@@ -1,4 +1,4 @@
-export default ({toggle, children}) => (
+export default ({toggle, children, bottom}) => (
 	<div className={`modal-container ${toggle ? 'container-open' : 'container-closed'}`}>
 		<div className={`modal ${toggle ? 'open' : 'closed'}`}>
 			{children}
@@ -21,10 +21,20 @@ export default ({toggle, children}) => (
           flex: 1;
           display: flex;
           flex-direction: column;
-          margin: 1.6rem;
+          margin: 6.4rem 0.8rem;
+          ${bottom && 'margin-top: 50vh;'}
           padding: 1.6rem;
           background: #fff;
           transition: .3s cubic-bezier(0.4, 0.14, 0.3, 1);
+          border-radius: var(--border-radius-lg);
+          max-width: calc(48rem - 1.6rem);
+        }
+
+        @media (min-width: 768px) {
+          .modal { 
+            max-width: calc(48rem - 3.2rem);
+            margin: 12.8rem auto;
+          }
         }
 
         .container-open {
