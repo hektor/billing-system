@@ -1,5 +1,4 @@
 import {useEffect} from 'react'
-import {BottomNav} from '../components'
 import {globalStyles} from '../styles'
 
 export default ({ children, bottomNav }) => {
@@ -16,7 +15,6 @@ export default ({ children, bottomNav }) => {
 			<main className="content">
 				{children}
 			</main>
-			{bottomNav && <BottomNav/>}
 			<style jsx global>{globalStyles}</style>
 			<style jsx>{`
 				.container {
@@ -34,7 +32,7 @@ export default ({ children, bottomNav }) => {
 					background: #fff;
           max-width: 48rem;
           overflow-x: hidden;
-          margin: 4.8rem 0 ${bottomNav ? '6.4rem' : 0} 0;
+          margin: 4.8rem 0 ${bottomNav ? '6.4' : '0'}rem 0;
 				}
 
 				@media (min-width: 768px) {
@@ -44,7 +42,8 @@ export default ({ children, bottomNav }) => {
 
 					.content {
             min-width: 48rem;
-            margin: 6.4rem 0 ${bottomNav ? '8rem' : 0}rem 0;
+            padding: 1.6rem;
+            margin: 6.4rem 0 ${bottomNav ? '8' : '0'}rem 0;
 					  border-radius: var(--border-radius);
 					}
 			`}</style>
