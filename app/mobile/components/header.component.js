@@ -4,6 +4,7 @@ export default ({ title, children }) => (
 		{children}
 		<style jsx>{`
 				header {
+          z-index: 1000;
           position: fixed;
           top: 0;
           left: 0;
@@ -17,6 +18,18 @@ export default ({ title, children }) => (
           background: var(--color-white);
           border-bottom: 1px solid var(--color-primary-100);
 				}
+
+        h1 {
+          flex: 1;
+          margin: 0 auto;
+          max-width: 48rem;
+        }
+
+        @media (min-width: 768px) {
+          header {
+            padding: 1.6rem 0 0.8rem 0;
+          }
+        }
 			`}</style>
 	</header>
 )
