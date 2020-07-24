@@ -1,5 +1,5 @@
 {
-  "name": "Progressive Web App",
+  "name": "Next.js PWA",
   "short_name": "PWA",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "sizes": "512x512"
     }
   ],
-  "background_color": "#FFFFFF",
+  "background_color": "#fff",
   "description": "make your Next.js application work offline using service workers via Google's workbox",
   "display": "fullscreen",
   "orientation": "portrait",
