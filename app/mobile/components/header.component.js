@@ -1,7 +1,9 @@
 export default ({ title, children }) => (
 	<header>
-		{title && <h1>{title}</h1>}
-		{children}
+		<div>
+			{title && <h1>{title}</h1>}
+			{children}
+		</div>
 		<style jsx>{`
 				header {
           z-index: 1000;
@@ -9,9 +11,7 @@ export default ({ title, children }) => (
           top: 0;
           left: 0;
           right: 0;
-          flex: 1;
 					display: flex;
-					justify-content: space-between;
           align-items: center;
           max-height: 4.8rem;
           padding: 1.6rem 0 0.8rem 1.6rem;
@@ -19,8 +19,11 @@ export default ({ title, children }) => (
           border-bottom: 1px solid var(--color-primary-100);
 				}
 
-        h1 {
+        div {
           flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
           margin: 0 auto;
           max-width: 48rem;
         }
