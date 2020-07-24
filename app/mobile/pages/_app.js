@@ -1,15 +1,18 @@
-import { createContext, useState, useEffect } from 'react'
+import {createContext, useState, useEffect} from 'react'
 import Head from 'next/head'
 import Cookie from 'js-cookie'
 import {ApolloProvider} from '@apollo/react-hooks'
 import withApollo from '../apollo/apollo'
-import { IconContext as IconCtx } from 'react-icons'
+import {IconContext as IconCtx} from 'react-icons'
 import api from '../config/api'
 
 export const AuthCtx = createContext({ isAuthenticated: false })
 
 const App = ({ Component, props, apollo }) => {
+
+
 	const [user, setUser] = useState(null)
+
 	useEffect(() => {
 
 		/*
