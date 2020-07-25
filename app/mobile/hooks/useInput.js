@@ -1,5 +1,9 @@
 import { useState } from 'react'
 
+/*
+ * Custom hook for binding input values & toggling feedback 
+ */
+
 export default initial => {
 	const [value, setValue] = useState(initial.value)
 	const [showFeedback, setShowFeedback] = useState(initial.showFeedback)

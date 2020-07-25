@@ -1,5 +1,9 @@
 import {RiContactsBook2Line, RiTimeLine, RiPinDistanceLine, RiMoneyEuroCircleLine } from 'react-icons/ri'
 
+/*
+ * Form data for creating a new log
+ */
+
 export default {
 	title:  'Create new log',
 	fields: [

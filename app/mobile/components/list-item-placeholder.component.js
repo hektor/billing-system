@@ -1,3 +1,8 @@
+/*
+ * Placeholder for ListItem component
+ * Used for skeleton render while getting data for list items
+ */
+
 export default () => (
 	<div className="skeleton">
 		<style jsx>

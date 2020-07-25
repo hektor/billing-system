@@ -1,7 +1,7 @@
 const withPWA = require('next-pwa')
 require('dotenv').config()
 
-module.exports = withPWA({
+module.exports = {
 	/*
   * Configure next-pwa 
   */
@@ -11,4 +11,4 @@ module.exports = withPWA({
 	env: {
 		BASE_URL: process.env.BASE_URL
 	}
-})
+}

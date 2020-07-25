@@ -6,6 +6,10 @@ import withApollo from '../apollo/apollo'
 import {IconContext as IconCtx} from 'react-icons'
 import api from '../config/api'
 
+/*
+ * Create authentication context
+ */
+
 export const AuthCtx = createContext({ isAuthenticated: false })
 
 const App = ({ Component, props, apollo }) => {

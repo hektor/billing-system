@@ -1,5 +1,9 @@
 import {RiAtLine} from 'react-icons/ri'
 
+/*
+ * Form data for requesting a password recovery link 
+ */
+
 export default {
 	title: 'Get password recovery link',
 	fields: [

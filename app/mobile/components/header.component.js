@@ -1,4 +1,8 @@
-export default ({ title, children }) => (
+/*
+ * Page header with title and optional component on the right side
+ */
+
+export default ({title, children}) => (
 	<header>
 		<div>
 			{title && <h1>{title}</h1>}

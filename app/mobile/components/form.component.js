@@ -1,11 +1,15 @@
-import { useEffect } from 'react'
+import {useEffect} from 'react'
 import PropTypes from 'prop-types'
-import { useForm } from '../hooks'
-import { FormField } from '../components'
+import {useForm} from '../hooks'
+import {FormField} from '../components'
 
-const Form = ({ fields, children, onSubmit, generalErrors }) => {
-	const { onChange, values, errors, onSubmit: onFormSubmit, showFeedback, setShowFeedback } = useForm(fields)
+/*
+ * Data based form component
+ */
 
+const Form = ({fields, children, onSubmit, generalErrors}) => {
+	const {onChange, values, errors, onSubmit: onFormSubmit, showFeedback, setShowFeedback} = useForm(fields)
+  
 	useEffect(() => {
 		if(generalErrors) setShowFeedback(false)
 	}, [])
@@ -21,6 +25,7 @@ const Form = ({ fields, children, onSubmit, generalErrors }) => {
 
 	return (
 		<form onSubmit={handleSubmit} noValidate>
+			{JSON.stringify(values, 0, 2)}
 			{fields && 
         fields.map(
         	field => 

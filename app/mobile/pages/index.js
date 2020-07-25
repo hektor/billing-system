@@ -3,6 +3,10 @@ import Router from 'next/router'
 import {Spinner} from '../components'
 import {AuthCtx} from './_app'
 
+/*
+ * Splash page when opening app 
+ */
+
 export default () => { 
 	const {user} = useContext(AuthCtx) 
 

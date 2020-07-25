@@ -1,6 +1,10 @@
 import {Query, GET_CLIENTS} from '../apollo'
 import {ListItem} from '../components'
 
+/*
+ * List of clients
+ */
+
 export default () => (
 	<div className="list">
 		<Query query={GET_CLIENTS} id={null}>

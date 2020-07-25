@@ -1,6 +1,10 @@
 import { getPrimaryColors, getHeadingSizes } from './helpers'
 import css from 'styled-jsx/css'
 
+/*
+ * Global CSS
+ */
+
 export default css.global`
 
   *,

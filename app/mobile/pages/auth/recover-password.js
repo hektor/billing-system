@@ -1,9 +1,13 @@
 import {useState} from 'react'
 import {sendRecoveryLink} from '../../auth'
-import {Layout, Header, Form, Button} from '../../components'
+import {Layout, Form, Button} from '../../components'
 import {recoverPasswordForm as form} from '../../data'
 import {RiMailSendLine} from 'react-icons/ri'
 import Heading from './heading.component'
+
+/*
+ * Password recovery (from email) page
+ */
 
 export default () => {
 	const [feedback, setFeedback] = useState({})

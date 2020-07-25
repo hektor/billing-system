@@ -1,8 +1,16 @@
 import {useEffect} from 'react'
 import {globalStyles} from '../styles'
 
-export default ({ children, bottomNav }) => {
+/*
+ * Layout wrapper component 
+ */
 
+export default ({children, bottomNav}) => {
+
+	/*
+   * Set viewport height css variable
+   * Get correct height with url bar on mobile browsers
+   */
 	const setViewportHeight = () => document.documentElement.style.setProperty('--viewport-height', `${window.innerHeight}px`)
 
 	useEffect(() => {

@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Layout } from '.'
 
+/*
+ * Splash screen higher order component
+ */
+
 export default ({Component, ...rest}) => {
 	const [loading, setLoading] = useState(true)
 	useEffect(() => {

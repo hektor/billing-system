@@ -2,14 +2,10 @@ import PropTypes from 'prop-types'
 
 const Dropdown = ({ name, placeholder, options, value, required, icon, ...rest }) => (
 	<div className="dropdown">
-		<div className="icon">
-			{icon}
-		</div>
+		<div className="icon">{icon}</div>
 		<select name={name} {...rest} value={value}>
 			{placeholder && (
-				<option
-					value=''
-					placeholder={placeholder}>
+				<option value='' placeholder={placeholder}>
 					{placeholder}
 				</option>
 			)}

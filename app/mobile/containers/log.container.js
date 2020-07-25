@@ -4,6 +4,10 @@ import {Query, GET_LOG} from '../apollo'
 import {Header, Button} from '../components'
 import {formatDate, formatTime, calculateWorkday, timeToDecimal} from '../utils/date'
 
+/*
+ * Log details
+ */
+
 export default () => (
 	<>
 		<Query query={GET_LOG} id={useRouter().query.id}>

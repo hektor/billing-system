@@ -1,19 +1,19 @@
 import Link from 'next/link'
 import Router from 'next/router'
 
-export default ({ children, href }) => {
+export default ({children, href}) => {
 	const child = React.Children.only(children)
 
-	/**
+	/*
    * Check if endpoint matches one of the matchRoutes prop
+   * 1. Remove whitespace
+   * 2. Create array of hrefs
+   * 3. Check if at least one route in array matches
    */
 	const checkRoutes = () =>
 		href
-		// remove whitespace
 			.replace(/\s/g, '')
-		// make array
 			.split(',')
-		// check if at least one element from  the array matches
 			.some(route => route === `/${Router.pathname.split('/')[1]}`)
 
 	let className = child.props.className || ''

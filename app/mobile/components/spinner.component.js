@@ -1,5 +1,9 @@
 import {RiLoader4Line} from 'react-icons/ri'
 
+/*
+ * Spinning loader icon 
+ */
+
 export default ({size}) => (
 	<div>
 		<RiLoader4Line size={size || 24}/>

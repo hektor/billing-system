@@ -1,7 +1,11 @@
 import {useState} from 'react'
 import PropTypes from 'prop-types'
 
-const Input = ({ type, name, placeholder, required, color, value, icon, ...rest }) => {
+/*
+ * Form input component
+ */
+
+const Input = ({type, name, placeholder, required, color, value, icon, ...rest}) => {
 	const [inputVisibility, setInputVisibility] = useState(false)
 	return (
 		<div className="input">

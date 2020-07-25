@@ -8,6 +8,10 @@ import Heading from './heading.component'
 import {signinForm as form}  from '../../data'
 import {RECOVER_PASSWORD} from '../../routes'
 
+/*
+ * Sign in page for existing users
+ */
+
 export default () => {
 	const [errors, setErrors] = useState()
 	const handleSubmit = async e => setErrors(await signin(e))

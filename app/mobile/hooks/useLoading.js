@@ -1,5 +1,9 @@
 import {useState} from 'react'
 
+/*
+ * Custom hook for getting & setting a loading state
+ */
+
 export default (initial) => {
 	const [isLoading, setIsLoading] = useState(initial)
 

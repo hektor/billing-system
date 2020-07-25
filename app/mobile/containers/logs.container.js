@@ -3,6 +3,10 @@ import {Query, GET_LOGS} from '../apollo'
 import {formatDate} from '../utils/date'
 import {ListItem} from '../components'
 
+/*
+ * List of logs for this user
+ */
+
 export default () => (
 	<div className="list">
 		<div className="list-header">

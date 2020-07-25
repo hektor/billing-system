@@ -1,5 +1,9 @@
 import {RiAtLine, RiLockPasswordLine, RiQuillPenLine} from 'react-icons/ri'
 
+/*
+ * Form data for signup form
+ */
+
 export const inputTypes = {
 	EMAIL: 'email',
 	PASSWORD: 'password',

@@ -4,6 +4,10 @@ import {useContext} from 'react'
 import {AuthCtx} from './_app'
 import {Layout, Header, BottomNav} from '../components'
 
+/*
+ * Overview landing page for authenticated users
+ */
+
 export default () => {
 	const {user} = useContext(AuthCtx)
 	const getGreeting = () => user && user.name ? user.name : 'Welcome'

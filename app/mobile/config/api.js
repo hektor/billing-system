@@ -2,6 +2,10 @@ import {env} from '.'
 
 const {BASE_URL} = env
 
+/*
+ * Define API endpoints for current environment
+ */
+
 export default {
 	GRAPHQL: `${BASE_URL}/graphql`,
 	GET_USER: `${BASE_URL}/users/me`,

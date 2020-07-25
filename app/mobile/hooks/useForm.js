@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'
 import { validator } from '../validate'
 
+/*
+ * Custom hook for validating & submitting forms
+ */
+
 export default (fields, initialIsValid) => {
 	const [values, setValues] = useState({})
 	const [errors, setErrors] = useState({})

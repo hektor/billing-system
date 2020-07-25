@@ -1,5 +1,9 @@
 import {RiLockPasswordLine} from 'react-icons/ri'
 
+/*
+ * Form data for resetting password
+ */
+
 export default {
 	title: 'Reset password',
 	fields: [

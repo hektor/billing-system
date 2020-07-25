@@ -1,12 +1,20 @@
 import {useState} from 'react'
 import Router from 'next/router'
 import {RiFileAddLine, RiFilter2Line, RiSearch2Line, RiCloseLine} from 'react-icons/ri'
-import {Layout, Header, BottomNav, Button, Modal } from '../../components'
+import {Layout, Header, BottomNav, Button, Modal, Form} from '../../components'
 import {Logs} from '../../containers'
+import {searchLogForm as form} from '../../data'
+
+/*
+ * Log list page
+ */
 
 export default () => {
 
+	const handleSubmit = e => setFilter(e.byClient)
+
 	const [toggled, setToggled] = useState(null)
+	const [filter, setFilter] = useState('')
 
 	const toggleSearch = () => setToggled(toggled === 'search' ? null : 'search')
 	const toggleFilter = () => setToggled(toggled === 'filter' ? null : 'filter')  
@@ -28,6 +36,18 @@ export default () => {
 						<RiCloseLine size="32"/>
 					</button>
 				</div>
+				<p>
+					{`
+                Getting all logs 
+                ${filter ? `from ${filter}` : ''} 
+          `}
+				</p>
+				<Form fields={form.fields} onSubmit={handleSubmit}>
+					<div className="filter-actions">
+						<Button primary type="submit" onClick={toggleFilter}>Filter</Button>
+						<Button onClick={() => setFilter(null)}>Clear filters</Button>
+					</div>
+				</Form>
 			</Modal>
 			<Header title="My logs" />
 			<Logs/>
@@ -109,6 +129,23 @@ export default () => {
 
           .modal-header > button {
             padding: 0.8rem;
+          }
+
+          .filter-actions {
+            display: flex;
+          }
+
+          .filter-actions > :global(button) {
+            flex: 1;
+          }
+
+          .filter-actions > :global(button:first-child) {
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+          }
+
+          .filter-actions > :global(button:last-child) {
+            border-left: 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
           }
 
           @media (min-width: 480px) {

@@ -1,3 +1,8 @@
+/*
+ * Reusable modal component
+ * To be toggled from parent
+ */
+
 export default ({toggle, children, bottom}) => (
 	<div className={`modal-container ${toggle ? 'container-open' : 'container-closed'}`}>
 		<div className={`modal ${toggle ? 'open' : 'closed'}`}>

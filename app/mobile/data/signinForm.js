@@ -1,5 +1,9 @@
 import { RiAtLine, RiLockPasswordLine } from 'react-icons/ri'
 
+/*
+ * Form data for signin form
+ */
+
 export const inputTypes = {
 	EMAIL: 'email',
 	PASSWORD: 'password'

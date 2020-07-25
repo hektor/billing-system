@@ -2,13 +2,21 @@ import Router from 'next/router'
 import nextCookie from 'next-cookies'
 import cookie from 'js-cookie'
 
-import { api } from './config'
+import {api} from './config'
+
+/*
+ * Flatten messages array from response
+ */
 
 const flattenMessages = messages => {
 	let flattened = []
 	messages.map(({messages}) => messages.map(({message}) => flattened.push(message)))
 	return flattened
 }
+
+/*
+ * Handle a succesful authentication request
+ */
 
 const handleSuccess = ({ jwt, user}) => {
 	cookie.set('token', jwt, { expires: 1 })
@@ -17,7 +25,15 @@ const handleSuccess = ({ jwt, user}) => {
 	return null
 }
 
+/*
+ * Handle a failed authentication request
+ */
+
 const handleInvalid = ({ /* statusCode, error, */ message}) => flattenMessages(message)
+
+/*
+ * Wrap POST body with fetch options 
+ */
 
 const postOptions = body => ({
 	method: 'POST',
@@ -25,12 +41,20 @@ const postOptions = body => ({
 	body: JSON.stringify(body)
 })
 
+/*
+ * Handle a signup request
+ */
+
 export const signup = async ({ email, password }) => { 
 	const options = postOptions({ email, password })
 	const res = await (await fetch(api.SIGNIN, postOptions(options))).json()
 	if (res.statusCode === 200) return handleSuccess(res)
 	if (res.statusCode === 400) return handleInvalid(res)
 } 
+
+/*
+ * Handle a signin request
+ */
 
 export const signin = async ({ email, password }) => {
 	const options = postOptions({identifier: email, password})
@@ -40,11 +64,19 @@ export const signin = async ({ email, password }) => {
 	if (res.status === 429) return ['Too many failed signin attempts, try again later or reset password'] 
 }
 
+/*
+ * Handle a password recovery request 
+ */
+
 export const sendRecoveryLink = async ({ email }) => {
 	const res = await fetch(api.FORGOT_PASSWORD, postOptions({ email }))
 	if (res.status === 400) return { message: 'We could not send a recovery link at this time', type: 'warning'}
 	if (res.status === 200) return { message: 'We sent a recovery link to this email address', type: 'success'}
 }
+
+/*
+ * Handle a password reset request 
+ */
 
 export const resetPassword = async ({ password, passwordConfirmation, code }) => {
 	const res = await fetch(api.RESET_PASSWORD, postOptions({ password, passwordConfirmation, code }))
@@ -62,6 +94,12 @@ export const auth = ctx => {
 	!token && Router.replace('/auth/signin')
 	return token
 }
+
+/*
+ * Sign out the user 
+ * - Remove the token cookie
+ * - Redirect user to signin page
+ */
 
 export const signout = () => {
 	cookie.remove('token')

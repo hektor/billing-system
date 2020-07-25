@@ -5,6 +5,10 @@ import {RiClipboardLine, RiDashboardLine, RiContactsBook2Line} from 'react-icons
 import {useLoading} from '../hooks'
 import {Spinner} from '.'
 
+/*
+ * Tab component for bottom navigation
+ */
+
 const Tab = ({href, title, icon}) => {
 	const {load, isLoading} = useLoading()
 	return (
@@ -78,14 +82,25 @@ const Tab = ({href, title, icon}) => {
 		</>
 	)}
 
+/*
+ * Bottom navigation
+ */
 
 export default ({ children }) => {
-	const [scrollY, setScrollY] = useState(0)
-	const handleScroll = () => setScrollY(window.pageYOffset)
 
+	/*
+   * Track scroll position
+   */
+
+	const [scrollY, setScrollY] = useState(0)
 	useEffect(() => {
-		window.addEventListener('scroll', handleScroll)
+		window.addEventListener('scroll', setScrollY(window.pageYOffset))
 	}, [])
+
+	/*
+   * Tab data
+   */
+
 	const tabs = [
 		{ href: '/logs', title: 'Logs', icon: <RiClipboardLine size="32"/> },
 		{ href: '/dashboard', title: 'Dashboard', icon: <RiDashboardLine size="32"/> },

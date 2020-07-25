@@ -5,6 +5,10 @@ import {signout} from '../../auth'
 import {Layout, Header, Button} from '../../components'
 import {AuthCtx} from '../_app'
 
+/*
+ * General account overview page
+ */
+
 export default () => {
 	const {user} = useContext(AuthCtx)
 	const router = useRouter()

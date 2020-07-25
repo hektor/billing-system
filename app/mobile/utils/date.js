@@ -1,3 +1,7 @@
+/*
+ * Various constants & utility functions for working with dates
+ */
+
 export const weekDays = [
 	'monday',
 	'tuesday',

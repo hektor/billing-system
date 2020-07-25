@@ -7,6 +7,10 @@ import {AuthCtx} from '../_app'
 import {Layout, Header, Form, BottomNav, Button} from '../../components'
 import {createLogForm as form}  from '../../data'
 
+/*
+ * Create a new log page
+ */
+
 export default () => { 
 
 	const {user} = useContext(AuthCtx)

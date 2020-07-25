@@ -5,6 +5,10 @@ import Heading from './heading.component'
 import {signupForm as form} from '../../data'
 import {RiUserAddLine} from 'react-icons/ri'
 
+/*
+ * Create a new account page
+ */
+
 export default () => {
 	const handleSubmit = e => signup(e) 
 	return (

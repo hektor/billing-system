@@ -1,3 +1,7 @@
+/*
+ * Chainable validation functions
+ */
+
 /* eslint-disable func-names */
 /* eslint-disable no-control-regex */
 

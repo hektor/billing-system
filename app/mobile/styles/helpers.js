@@ -1,3 +1,7 @@
+/*
+ * Helper functions for generating global CSS
+ */
+
 export const getPrimaryColors = () => {
 	let colors = ''
 	for (let i = 1; i <= 9; i++) {

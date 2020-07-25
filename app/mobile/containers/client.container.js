@@ -3,6 +3,10 @@ import {Query, GET_CLIENT} from '../apollo'
 import {Header, Button} from '../components'
 import {RiPhoneLine, RiClipboardLine} from 'react-icons/ri'
 
+/*
+ * Client details
+ */
+
 export default () => (
 	<Query query={GET_CLIENT} id={useRouter().query.id}>
 		{({client}) => {

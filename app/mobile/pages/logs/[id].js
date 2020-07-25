@@ -1,8 +1,12 @@
 import { Layout, BottomNav } from '../../components'
 import { Log } from '../../containers'
 
+/*
+ * Log detail page
+ */
+
 export default () => (
-	<Layout>
+	<Layout bottomNav>
 		<Log />
 		<BottomNav />
 	</Layout>

@@ -7,6 +7,10 @@ import {resetPassword} from '../../auth'
 import {RiCheckLine} from 'react-icons/ri'
 import Heading from './heading.component'
 
+/*
+ * Reset password (from recovery link) page
+ */
+
 export default () => {
 	const [feedback, setFeedback] = useState({ message: null, type: null})
 	const {code} = useRouter().query
