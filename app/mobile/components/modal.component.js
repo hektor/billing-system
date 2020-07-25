@@ -22,8 +22,9 @@ export default ({toggle, children, bottom}) => (
           display: flex;
           flex-direction: column;
           margin: 6.4rem 0.8rem;
-          ${bottom && 'margin-top: 50vh;'}
+          ${bottom && 'margin-top: auto;'}
           padding: 1.6rem;
+          padding-bottom: 6.4rem;
           background: #fff;
           transition: .3s cubic-bezier(0.4, 0.14, 0.3, 1);
           border-radius: var(--border-radius-lg);
