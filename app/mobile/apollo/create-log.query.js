@@ -3,6 +3,7 @@ import gql from 'graphql-tag'
 export default gql`
 mutation CreateLog(
   $employeeId: ID!,
+  $client: ID!,
   $startTime: DateTime!,
   $endTime: DateTime!,
   $activitiesPerformed: String!,
@@ -15,7 +16,7 @@ mutation CreateLog(
   createLog(input: { 
     data: { 
       employee_id: $employeeId,
-      client_id: 1,
+      client_id: $client,
       startTime: $startTime,
       endTime: $endTime,
       activitiesPerformed: $activitiesPerformed,
@@ -28,6 +29,7 @@ mutation CreateLog(
   })
   {
     log {
+      id
       employee_id {
         email,
         name
