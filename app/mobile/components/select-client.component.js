@@ -8,6 +8,15 @@ import {Dropdown} from '.'
 
 export default props => (
 	<Query query={GET_CLIENTS} id={null}>
-		{({clients}) => <Dropdown {...props} options={clients.map(({name}) => name)}/>}
+		{({clients}) => 
+			<Dropdown 
+				{...props} 
+				options={
+					clients.map(({name, id}) => {
+						return {title: name, value: id}
+					})
+				}
+			/>
+		}
 	</Query>
 )

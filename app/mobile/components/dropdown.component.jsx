@@ -9,8 +9,8 @@ const Dropdown = ({ name, placeholder, options, value, required, icon, ...rest }
 					{placeholder}
 				</option>
 			)}
-			{options.map((option, id) => (
-				<option key={id.toString()}>{option}</option>
+			{options.map(({value, title}, id) => (
+				<option key={id.toString()} value={value}>{title}</option>
 			))}
 		</select>
 		<style jsx>

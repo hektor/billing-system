@@ -31,8 +31,8 @@ export default {
 			type: DROPDOWN,
 			placeholder: 'Select your contract type',
 			options: [
-				'Employee',
-				'Subcontractor'
+				{title: 'Employee', value: 'employee'},
+				{title: 'Subcontractor', value: 'subcontractor'},
 			],
 			icon: <RiQuillPenLine/>,
 			required: true
