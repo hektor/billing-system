@@ -6,6 +6,7 @@ import {CREATE_LOG} from '../../apollo'
 import {AuthCtx} from '../_app'
 import {Layout, Header, Form, BottomNav, Button} from '../../components'
 import {createLogForm as form}  from '../../data'
+import {mergeDateTime} from '../../utils/date'
 
 /*
  * Create a new log page
@@ -23,11 +24,6 @@ export default () => {
 		if(data) Router.replace(`/logs/${data.createLog.log.id}`)
 	}, [data])
 
-	const mergeDateTime = (date, time) => {
-		return new Date(`
-      ${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${time}:00
-    `)
-	}
 
 	const handleSubmit = async e => { 
 		e.employeeId = user.id

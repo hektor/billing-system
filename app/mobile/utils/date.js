@@ -92,3 +92,14 @@ export const timeToDecimal = time => {
 	time = time.split(':')
 	return parseInt(time[0], 10)*1 + parseInt(time[1], 10)/60
 }
+
+/*
+ * Merge date and time into ISO string
+ *
+ * {@param} data
+ * {@param} time
+ * {@return} DateTime
+ */
+
+export const mergeDateTime = (date, time) => new Date(`${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${time}:00`)
+
