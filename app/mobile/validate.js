@@ -15,12 +15,20 @@ Validator.prototype.setError = function (error) {
 	return this
 }
 
+/*
+ * Check if contains proper value 
+ */
+
 Validator.prototype.isRequired = function () {
 	if (this.value === '' || this.value === null || this.value === undefined) {
 		this.error = 'Required'
 	}
 	return this
 }
+
+/*
+ * Check if value is string 
+ */
 
 Validator.prototype.isString = function () {
 	if (typeof this.value !== 'string') {
@@ -29,6 +37,10 @@ Validator.prototype.isString = function () {
 	return this
 }
 
+/*
+ * Check if string is at least specified length
+ */
+
 Validator.prototype.minLength = function (min) {
 	if (this.value.length < min) {
 		this.error = `${min - this.value.length} more characters required`
@@ -36,12 +48,20 @@ Validator.prototype.minLength = function (min) {
 	return this
 }
 
+/*
+ * Check if string does not exceed specified length
+ */
+
 Validator.prototype.maxLength = function (max) {
 	if (this.value.length >= max) {
 		this.error = `${this.value.length - max} characters too long`
 	}
 	return this
 }
+
+/*
+ * Check if value is valid email using regex 
+ */
 
 Validator.prototype.isEmail = function () {
 	if (
@@ -54,6 +74,10 @@ Validator.prototype.isEmail = function () {
 	return this
 }
 
+/*
+ * Check if value is valid url using regex 
+ */
+
 Validator.prototype.isUrl = function () {
 	if (
 		/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/.test(
@@ -65,7 +89,11 @@ Validator.prototype.isUrl = function () {
 	return this
 }
 
-const validate = (value) => new Validator(value)
+const validate = value => new Validator(value)
+
+/*
+ * Define validator types used in form data
+ */
 
 export const validator = {
 	title: (title) => validate(title).minLength(3).maxLength(100).isRequired(),

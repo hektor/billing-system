@@ -96,7 +96,7 @@ export const auth = ctx => {
 }
 
 /*
- * Sign out the user 
+ * Handle a signout 
  * - Remove the token cookie
  * - Redirect user to signin page
  */
