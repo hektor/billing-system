@@ -1,8 +1,8 @@
 import {useContext, useEffect} from 'react'
 import {useMutation} from '@apollo/react-hooks'
-import {CREATE_LOG} from '../../apollo'
 import Router from 'next/router'
 import {RiCloseLine} from 'react-icons/ri'
+import {CREATE_LOG} from '../../apollo'
 import {AuthCtx} from '../_app'
 import {Layout, Header, Form, BottomNav, Button} from '../../components'
 import {createLogForm as form}  from '../../data'
@@ -12,16 +12,22 @@ import {createLogForm as form}  from '../../data'
  */
 
 export default () => { 
-
 	const {user} = useContext(AuthCtx)
+	const [CreateLog, {data}] = useMutation(CREATE_LOG)
+
+	/*
+   * On succesful response, redirect using received id
+   */
+
+	useEffect(() => {
+		if(data) Router.replace(`/logs/${data.createLog.log.id}`)
+	}, [data])
 
 	const mergeDateTime = (date, time) => {
 		return new Date(`
       ${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${time}:00
     `)
 	}
-
-	const [CreateLog, {loading, error}] = useMutation(CREATE_LOG)
 
 	const handleSubmit = async e => { 
 		e.employeeId = user.id
