@@ -19,22 +19,26 @@ export default () => (
 						<div className="card">
 							<span>{phone}</span>
 						</div>
-						<h2>Location</h2>
-						<div className="card">
-							<span>
-								{`
-                ${address.streetName} ${address.streetNumber}, 
-              `}
-								<br/>
-								{`
-                ${address.postalCode} ${address.city},
-              `}
-								<br/>
-								{`
-                ${address.country} ${address.province}
-              `}
-							</span>
-						</div>
+						{address && (
+							<>
+								<h2>Location</h2>
+								<div className="card">
+									<span>
+										{`
+                      ${address.streetName} ${address.streetNumber}, 
+                    `}
+										<br/>
+										{`
+                      ${address.postalCode} ${address.city},
+                    `}
+										<br/>
+										{`
+                      ${address.country} ${address.province}
+                    `}
+									</span>
+								</div>
+							</>
+						)}
 					</div>
 					<div className="actions">
 						<Button title="View logs" icon={<RiClipboardLine/>} className="action-left"/>
