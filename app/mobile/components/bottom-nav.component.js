@@ -93,8 +93,9 @@ export default ({ children }) => {
    */
 
 	const [scrollY, setScrollY] = useState(0)
+
 	useEffect(() => {
-		window.addEventListener('scroll', setScrollY(window.pageYOffset))
+		window.addEventListener('scroll', () => setScrollY(window.pageYOffset))
 	}, [])
 
 	/*
