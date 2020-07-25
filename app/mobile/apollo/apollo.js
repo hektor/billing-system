@@ -8,10 +8,23 @@ import cookies from 'js-cookie'
 
 import {api} from '../config'
 
+/*
+ * Set up GraphQL w/ Apollo
+ */
+
+
+/*
+ * Set up link over http using env endpoint
+ */
+
 const httpLink = createHttpLink({
 	fetch,
 	uri: api.GRAPHQL
 })
+
+/*
+ * Set up request context
+ */
 
 const authLink = setContext((_, {headers}) => ({
 	headers: {
@@ -19,6 +32,10 @@ const authLink = setContext((_, {headers}) => ({
 		authorization: `Bearer ${cookies.get('token')}` || ''
 	}
 }))
+
+/*
+ * Set up apollo client & create higher order component
+ */
 
 export default withApollo(
 	({initialState}) =>
