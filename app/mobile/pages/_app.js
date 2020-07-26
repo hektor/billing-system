@@ -6,6 +6,7 @@ import withApollo from '../apollo/apollo'
 import {IconContext as IconCtx} from 'react-icons'
 import api from '../config/api'
 
+
 /*
  * Create authentication context
  */
@@ -35,13 +36,14 @@ const App = ({ Component, props, apollo }) => {
 				return
 			}
 			const user = await res.json()
+			user.lastSeen = new Date().toISOString()
 			setUser(user)
 		})
 	}, [])  
 
 	return (
-		<AuthCtx.Provider value={{ user, isAuthenticated: !!user, setUser }}>
-			<ApolloProvider client={apollo}>
+		<ApolloProvider client={apollo}>
+			<AuthCtx.Provider value={{ user, isAuthenticated: !!user, setUser }}>
 				<Head>
 					<meta charSet="utf-8"/>
 					<meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
@@ -60,8 +62,8 @@ const App = ({ Component, props, apollo }) => {
 				<IconCtx.Provider value={{size: 24, className: 'icon'}}>
 					<Component {...props} />
 				</IconCtx.Provider>
-			</ApolloProvider>
-		</AuthCtx.Provider>
+			</AuthCtx.Provider>
+		</ApolloProvider>
 	)
 }
 
