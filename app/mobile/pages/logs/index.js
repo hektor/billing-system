@@ -11,10 +11,10 @@ import {searchLogForm as form} from '../../data'
 
 export default () => {
 
-	const handleSubmit = e => setFilter(e.byClient)
+	const handleSubmit = e => setFilter([...filter, Number(e.byClient)])
 
 	const [toggled, setToggled] = useState(null)
-	const [filter, setFilter] = useState('')
+	const [filter, setFilter] = useState([])
 
 	const toggleSearch = () => setToggled(toggled === 'search' ? null : 'search')
 	const toggleFilter = () => setToggled(toggled === 'filter' ? null : 'filter')  
@@ -36,21 +36,15 @@ export default () => {
 						<RiCloseLine size="32"/>
 					</button>
 				</div>
-				<p>
-					{`
-                Getting all logs 
-                ${filter ? `from ${filter}` : ''} 
-          `}
-				</p>
 				<Form fields={form.fields} onSubmit={handleSubmit}>
 					<div className="filter-actions">
 						<Button primary type="submit" onClick={toggleFilter}>Filter</Button>
-						<Button onClick={() => setFilter(null)}>Clear filters</Button>
+						<Button onClick={() => setFilter([])}>Clear filters</Button>
 					</div>
 				</Form>
 			</Modal>
 			<Header title="My logs" />
-			<Logs/>
+			<Logs filter={filter}/>
 			<BottomNav>
 				<div className="actions">
 					<button onClick={toggleSearch} className={`action search ${toggled === 'search' && 'active'}`}>

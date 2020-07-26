@@ -7,7 +7,7 @@ import {ListItem} from '../components'
  * List of logs for this user
  */
 
-export default () => (
+export default ({filter}) => (
 	<div className="list">
 		<div className="list-header">
 			<div className="header-item client">
@@ -19,7 +19,13 @@ export default () => (
 				<span>Date</span>
 			</div>
 		</div>
-		<Query query={GET_LOGS} id={null}>
+		<Query 
+			query={GET_LOGS} 
+			variables={{
+				filter: filter && filter.length > 0 ? {client_id:{id_in: filter}} : {}, 
+				sort: 'updated_at:desc'
+			}}
+		>
 			{({logs}) =>
 				logs.map(({id, client_id, startTime}) => (
 					<ListItem key={id} href={`logs/${id}`}>

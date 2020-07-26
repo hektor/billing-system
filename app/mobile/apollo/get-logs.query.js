@@ -1,18 +1,15 @@
 import gql from 'graphql-tag'
 
 export default gql`
-{ 
-  logs {
+query Logs($filter: JSON!, $sort: String!) { 
+  logs(where: $filter, sort: $sort ) {
     id
-    employee_id {
-      email
-      name
-    }
     client_id {
       id
       name
     }
     startTime
+    updated_at
   }
 }
 `
