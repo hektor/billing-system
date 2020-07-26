@@ -1,55 +1,33 @@
 {
-	"env": {
-		"browser": true,
-		"es6": true,
-		"node": true
-	},
-	"extends": [
-		"eslint:recommended",
-		"plugin:react/recommended"
-	],
-	"globals": {
-		"React": "writable",
-		"Atomics": "readonly",
-		"SharedArrayBuffer": "readonly"
-	},
-	"parserOptions": {
-		"ecmaFeatures": {
-			"jsx": true
-		},
-		"ecmaVersion": 2018,
-		"sourceType": "module"
-	},
-	"plugins": [
-		"react",
-    "react-hooks"
-	],
-	"rules": {
-		"react/react-in-jsx-scope": "off",
-		"react/prop-types": 0,
-		"react/display-name": 0,
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react"
+  ],
+  "plugins": ["prettier", "react", "react-hooks"],
+  "rules": {
+    "react/prop-types": 0,
+    "react/react-in-jsx-scope": "off",
+    "react/display-name": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "error",
-		"indent": [
-			"error",
-			"tab"
-		],
-		"linebreak-style": [
-			"error",
-			"unix"
-		],
-		"quotes": [
-			"error",
-			"single"
-		],
-		"semi": [
-			"error",
-			"never"
-		]
-	},
-	"settings": {
-		"react": {
-			"version": "detect"
-		}
-	}
+    "react-hooks/exhaustive-deps": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }
