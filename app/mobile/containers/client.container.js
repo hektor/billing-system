@@ -8,7 +8,7 @@ import {RiPhoneLine, RiClipboardLine} from 'react-icons/ri'
  */
 
 export default () => (
-	<Query query={GET_CLIENT} id={useRouter().query.id}>
+	<Query query={GET_CLIENT} variables={{id: useRouter().query.id}}>
 		{({client}) => {
 			const {name, phone, address} = client
 			return (
