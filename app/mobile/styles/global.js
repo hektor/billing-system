@@ -20,8 +20,11 @@ export default css.global`
 	:root {
 		--font-family: Inter, Helvetica, Arial;
     --font-size: 16px;
+
+		--border-radius-sm: 0.2rem;
 		--border-radius: 0.4rem;
 		--border-radius-lg: 0.8rem;
+
     --color-white: #fff;
     ${getPrimaryColors()}
     --color-success-100: #F1FCDA;
@@ -99,9 +102,10 @@ export default css.global`
   }
 
 	body {
+    background: var(--color-white);
+    color: var(--color-primary-700);
 		font-family: var(--font-family);
 		font-size: var(--font-size);
-    color: var(--color-primary-700);
   }
 
   .hidden,
@@ -115,17 +119,6 @@ export default css.global`
     display: block;
   }
  
-	button {
-		display: flex;
-		flex-direction: row;
-    padding: 1.6rem 1.4rem;
-    outline: none;
-		border: none;
-    border-radius: var(--border-radius); 
-    background: transparent;
-    font-weight: 500;
-    cursor: pointer;
-	}
 
   a {
     outline: none;
@@ -161,5 +154,16 @@ export default css.global`
 		border: 1px solid var(--color-primary-300);
     background: inherit;
 		padding: 1.6rem;
+	}
+
+	button {
+		display: flex;
+		flex-direction: row;
+    padding: 1.6rem 1.4rem;
+		border: none;
+    border-radius: var(--border-radius); 
+    background: transparent;
+    font-weight: 500;
+    cursor: pointer;
 	}
 `
