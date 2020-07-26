@@ -13,7 +13,7 @@ export default props => (
 				{...props} 
 				options={
 					clients.map(({name, id}) => {
-						return {title: name, value: id}
+						return {label: name, value: id}
 					})
 				}
 			/>
