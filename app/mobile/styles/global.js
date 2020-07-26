@@ -13,6 +13,10 @@ export default css.global`
     box-sizing: border-box;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
 	:root {
 		--font-family: Inter, Helvetica, Arial;
     --font-size: 16px;
