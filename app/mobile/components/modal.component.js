@@ -11,7 +11,7 @@ export default ({toggle, children, bottom}) => (
 		<style>
 			{`
         .modal-container {
-          position: absolute;
+          position: fixed;
           z-index: 100;
           top: 0;
           right: 0;
