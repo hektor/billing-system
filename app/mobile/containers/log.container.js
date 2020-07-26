@@ -10,7 +10,7 @@ import {formatDate, formatTime, calculateWorkday, timeToDecimal} from '../utils/
 
 export default () => (
 	<>
-		<Query query={GET_LOG} id={useRouter().query.id}>
+		<Query query={GET_LOG} variables={{id: Number(useRouter().query.id)}}>
 			{({log}) => {
 				const { id, client_id,startTime, endTime, activitiesPerformed, totalBreakDuration, resourcesUsed, billingRate, distance, transportationCost} = log
 				return (
