@@ -10,7 +10,7 @@ export const inputTypes = {
 	DROPDOWN: 'dropdown'
 }
 
-const { EMAIL, DROPDOWN, PASSWORD } = inputTypes
+const {EMAIL, DROPDOWN, PASSWORD} = inputTypes
 
 export default {
 	title: 'Get started',

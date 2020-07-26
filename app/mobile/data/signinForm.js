@@ -1,4 +1,4 @@
-import { RiAtLine, RiLockPasswordLine } from 'react-icons/ri'
+import {RiAtLine, RiLockPasswordLine} from 'react-icons/ri'
 
 /*
  * Form data for signin form
@@ -9,7 +9,7 @@ export const inputTypes = {
 	PASSWORD: 'password'
 }
 
-const { EMAIL, PASSWORD } = inputTypes
+const {EMAIL, PASSWORD} = inputTypes
 
 export default {
 	title: 'Get started',

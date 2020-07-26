@@ -1,4 +1,4 @@
-import { getPrimaryColors, getHeadingSizes } from './helpers'
+import {getPrimaryColors, getHeadingSizes} from './helpers'
 import css from 'styled-jsx/css'
 
 /*

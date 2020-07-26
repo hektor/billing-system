@@ -86,7 +86,7 @@ const Tab = ({href, title, icon}) => {
  * Bottom navigation
  */
 
-export default ({ children }) => {
+export default ({children}) => {
 
 	/*
    * Track scroll position
@@ -103,9 +103,9 @@ export default ({ children }) => {
    */
 
 	const tabs = [
-		{ href: '/logs', title: 'Logs', icon: <RiClipboardLine size="32"/> },
-		{ href: '/dashboard', title: 'Dashboard', icon: <RiDashboardLine size="32"/> },
-		{ href: '/clients', title: 'Clients', icon: <RiContactsBook2Line size="32"/> },
+		{href: '/logs', title: 'Logs', icon: <RiClipboardLine size="32"/>},
+		{href: '/dashboard', title: 'Dashboard', icon: <RiDashboardLine size="32"/>},
+		{href: '/clients', title: 'Clients', icon: <RiContactsBook2Line size="32"/>},
 	]
   
 	return (

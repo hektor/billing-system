@@ -9,7 +9,7 @@ export const inputTypes = {
 	PASSWORD: 'password'
 }
 
-const { EMAIL, PASSWORD } = inputTypes
+const {EMAIL, PASSWORD} = inputTypes
 
 export default {
 	title: 'Settings',

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import {useState} from 'react'
 
 /*
  * Custom hook for binding input values & toggling feedback 

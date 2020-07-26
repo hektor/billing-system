@@ -11,8 +11,8 @@ const Form = ({fields, children, onSubmit, generalErrors}) => {
 	const {onChange, values, errors, onSubmit: onFormSubmit, showFeedback, setShowFeedback} = useForm(fields)
   
 	useEffect(() => {
-		if(generalErrors) setShowFeedback(false)
-	}, [])
+    if (generalErrors) setShowFeedback(false)
+  }, [generalErrors, setShowFeedback])
 
 	/*
    * Pass form values to parent's onSubmit

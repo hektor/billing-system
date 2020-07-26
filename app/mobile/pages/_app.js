@@ -11,9 +11,9 @@ import api from '../config/api'
  * Create authentication context
  */
 
-export const AuthCtx = createContext({ isAuthenticated: false })
+export const AuthCtx = createContext({isAuthenticated: false})
 
-const App = ({ Component, props, apollo }) => {
+const App = ({Component, props, apollo}) => {
 
 
 	const [user, setUser] = useState(null)
@@ -43,7 +43,7 @@ const App = ({ Component, props, apollo }) => {
 
 	return (
 		<ApolloProvider client={apollo}>
-			<AuthCtx.Provider value={{ user, isAuthenticated: !!user, setUser }}>
+			<AuthCtx.Provider value={{user, isAuthenticated: !!user, setUser}}>
 				<Head>
 					<meta charSet="utf-8"/>
 					<meta httpEquiv="X-UA-Compatible" content="IE=edge"/>

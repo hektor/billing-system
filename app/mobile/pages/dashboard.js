@@ -27,8 +27,8 @@ export default () => {
 			<p>Today is {formatDate(new Date())}</p>
 			{user && formatDate(user.lastSeen)}
 			<Query query={GET_LATEST_LOG} id={null}>
-				{({logs}) => {
-					const {startTime, endTime, totalBreakDuration} = logs[0]
+        {({logs}) => {
+          const {startTime, endTime} = logs[0]
 					return (
 						<p>Your latest work activity was on {formatDate(startTime)}, from {formatTime(startTime)} until {formatTime(endTime)}.</p>
 					)

@@ -12,7 +12,7 @@ export default () => (
 	<>
 		<Query query={GET_LOG} variables={{id: Number(useRouter().query.id)}}>
 			{({log}) => {
-				const { id, client_id,startTime, endTime, activitiesPerformed, totalBreakDuration, resourcesUsed, billingRate, distance, transportationCost} = log
+				const {id, client_id,startTime, endTime, activitiesPerformed, totalBreakDuration, resourcesUsed, billingRate, distance, transportationCost} = log
 				return (
 					<>
 						<Header title={formatDate(startTime, 'short')} />

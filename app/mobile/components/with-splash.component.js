@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { Layout } from '.'
+import {useState, useEffect} from 'react'
+import {Layout} from '.'
 
 /*
  * Splash screen higher order component
@@ -17,7 +17,7 @@ export default ({Component, ...rest}) => {
 			console.log(error)
 			setLoading(false)
 		}
-	})
+	}, [])
 	return loading ?
 		(
 			<Layout>

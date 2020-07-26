@@ -4,7 +4,7 @@ import Link from 'next/link'
  * Toggle between signin & signup
  */
 
-export default ({ to }) => (
+export default ({to}) => (
 	<span className="switch-sign-type">
 		{to === 'up' ? 'Create an account?' : 'Already have an account?'}
 		<Link href={to === 'up' ? 'signup' : 'signin'}>

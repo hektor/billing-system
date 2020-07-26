@@ -1,5 +1,5 @@
-import { Layout, BottomNav } from '../../components'
-import { Log } from '../../containers'
+import {Layout, BottomNav} from '../../components'
+import {Log} from '../../containers'
 
 /*
  * Log detail page

@@ -1,3 +1,4 @@
+import React from 'react'
 import Link from 'next/link'
 import Router from 'next/router'
 
@@ -21,7 +22,7 @@ export default ({children, href}) => {
 
 	return (
 		<Link href={href.trim().split(',')[0]}>
-			{React.cloneElement(child, { className })}
+			{React.cloneElement(child, {className})}
 		</Link>
 	)
 }

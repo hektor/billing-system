@@ -12,14 +12,13 @@ import {api} from '../config'
  * Set up GraphQL w/ Apollo
  */
 
-
 /*
  * Set up link over http using env endpoint
  */
 
 const httpLink = createHttpLink({
 	fetch,
-	uri: api.GRAPHQL
+	uri: api.GRAPHQL,
 })
 
 /*
@@ -29,8 +28,8 @@ const httpLink = createHttpLink({
 const authLink = setContext((_, {headers}) => ({
 	headers: {
 		...headers,
-		authorization: `Bearer ${cookies.get('token')}` || ''
-	}
+		authorization: `Bearer ${cookies.get('token')}` || '',
+	},
 }))
 
 /*
@@ -41,6 +40,6 @@ export default withApollo(
 	({initialState}) =>
 		new ApolloClient({
 			link: authLink.concat(httpLink),
-			cache: new InMemoryCache().restore(initialState || {})
+			cache: new InMemoryCache().restore(initialState || {}),
 		})
 )

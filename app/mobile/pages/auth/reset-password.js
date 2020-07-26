@@ -12,9 +12,9 @@ import Heading from './heading.component'
  */
 
 export default () => {
-	const [feedback, setFeedback] = useState({ message: null, type: null})
+	const [feedback, setFeedback] = useState({message: null, type: null})
 	const {code} = useRouter().query
-	const handleSubmit = ({ password }) => resetPassword({ password, passwordConfirmation: password, code}).then(data => setFeedback(data))
+	const handleSubmit = ({password}) => resetPassword({password, passwordConfirmation: password, code}).then(data => setFeedback(data))
 	return (
 		<Layout col>
 			<Heading title="Reset password" subtitle="Reset your password"/>

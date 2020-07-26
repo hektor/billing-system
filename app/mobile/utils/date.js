@@ -102,4 +102,3 @@ export const timeToDecimal = time => {
  */
 
 export const mergeDateTime = (date, time) => new Date(`${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${time}:00`)
-

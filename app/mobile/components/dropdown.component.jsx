@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-const Dropdown = ({ name, placeholder, options, value, required, icon, ...rest }) => (
+const Dropdown = ({ name, placeholder, options, value, icon, ...rest }) => (
 	<div className="dropdown">
 		<div className="icon">{icon}</div>
 		<select name={name} {...rest} value={value}>

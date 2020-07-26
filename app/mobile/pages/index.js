@@ -13,7 +13,7 @@ export default () => {
 	useEffect(() => {
 		if(user) Router.replace('/dashboard')
 		if(!user) Router.replace('/auth/signin')
-	}, [])
+	})
 
 	return <Spinner/> 
 }

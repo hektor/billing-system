@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { validator } from '../validate'
+import {useState, useEffect, useCallback} from 'react'
+import {validator} from '../validate'
 
 /*
  * Custom hook for validating & submitting forms
@@ -11,9 +11,10 @@ export default (fields, initialIsValid) => {
 	const [showFeedback, setShowFeedback] = useState()
 	const [isValid, setIsValid] = useState(initialIsValid)
 
-	const validate = () => {
+	const validate = useCallback(
+    () => {
 		const validateErrors = {}
-		fields.map(({ name }) => {
+		fields.map(({name}) => {
 			if (validator[name] !== undefined) {
 				let error
 				error = validator[name](values[name]).error
@@ -31,11 +32,12 @@ export default (fields, initialIsValid) => {
 		} else {
 			setIsValid(false)
 		}
-	}
+    }, [fields, values]
+	)
 
 	useEffect(() => {
-		validate()
-	}, [values])
+    validate()
+  }, [values, validate])
 
 	return {
 		isValid,
@@ -56,7 +58,7 @@ export default (fields, initialIsValid) => {
 			}
 		},
 		onChange: (field) => {
-			const { name, value } = field
+			const {name, value} = field
 			setValues({
 				...values,
 				[name]: value
