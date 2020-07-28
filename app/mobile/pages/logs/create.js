@@ -7,6 +7,7 @@ import {AuthCtx} from '../_app'
 import {Layout, Header, Form, BottomNav, Button} from '../../components'
 import {createLogForm as form}  from '../../data'
 import {mergeDateTime} from '../../utils/date'
+import {LOGS} from '../../routes'
 
 /*
  * Create a new log page
@@ -20,8 +21,8 @@ export default () => {
    * On succesful response, redirect using received id
    */
 
-	useEffect(() => {
-		if(data) Router.replace(`/logs/${data.createLog.log.id}`)
+  useEffect(() => {
+    if (data) Router.replace(`${LOGS}/${data.createLog.log.id}`)
 	}, [data])
 
 
@@ -41,8 +42,8 @@ export default () => {
 			<Form fields={form.fields} onSubmit={handleSubmit}>
 				<Button title="Create log" primary type="submit"/>
 			</Form>
-			<BottomNav>
-				<Button onClick={() => Router.replace('/logs')} title="Cancel" icon={<RiCloseLine />} />
+      <BottomNav>
+        <Button onClick={() => Router.replace(LOGS)} title="Cancel" icon={<RiCloseLine />} />
 			</BottomNav>
 			<style jsx>
 				{`

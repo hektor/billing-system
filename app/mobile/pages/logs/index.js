@@ -5,6 +5,7 @@ import {Layout, Header, BottomNav, Button, Modal, Form} from '../../components'
 import {Logs} from '../../containers'
 import {filterLogsForm} from '../../data'
 import {sortLogsForm} from '../../data'
+import {CREATE_LOG} from '../../routes'
 
 /*
  * Log list page
@@ -67,7 +68,7 @@ export default () => {
 						<span>Filter</span>
 					</button>
 				</div>
-				<Button primary onClick={() => Router.replace('/logs/create')} title="New log" icon={<RiFileAddLine />} />
+				<Button primary onClick={() => Router.replace(CREATE_LOG)} title="New log" icon={<RiFileAddLine />} />
 			</BottomNav>
 			<style jsx>
 				{`

@@ -4,6 +4,7 @@ import {RiUserSettingsLine, RiLogoutCircleLine, RiUserLine} from 'react-icons/ri
 import {signout} from '../../auth'
 import {Layout, Header, Button} from '../../components'
 import {AuthCtx} from '../_app'
+import {ACCOUNT_SETTINGS} from '../../routes'
 
 /*
  * General account overview page
@@ -23,8 +24,8 @@ export default () => {
 				<h2>{user && user.name || user && user.email}</h2>
 			</div>
 			<div className="account-actions">
-				<Button icon={<RiLogoutCircleLine />} onClick={signout} color='var(--color-danger-900)'>Sign out</Button>
-				<Button icon={<RiUserSettingsLine />} onClick={() => router.replace('/account/settings')}>Account settings</Button>
+        <Button icon={<RiLogoutCircleLine />} onClick={signout} color='var(--color-danger-900)'>Sign out</Button>
+        <Button icon={<RiUserSettingsLine />} onClick={() => router.replace(ACCOUNT_SETTINGS)}>Account settings</Button>
 			</div>
 			<style jsx>
 				{`

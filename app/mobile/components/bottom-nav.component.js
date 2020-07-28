@@ -4,6 +4,7 @@ import Link from 'next/link'
 import {RiClipboardLine, RiDashboardLine, RiContactsBook2Line} from 'react-icons/ri'
 import {useLoading} from '../hooks'
 import {Spinner} from '.'
+import {LOGS, DASHBOARD, CLIENTS} from '../routes'
 
 /*
  * Tab component for bottom navigation
@@ -102,10 +103,10 @@ export default ({children}) => {
    * Tab data
    */
 
-	const tabs = [
-		{href: '/logs', title: 'Logs', icon: <RiClipboardLine size="32"/>},
-		{href: '/dashboard', title: 'Dashboard', icon: <RiDashboardLine size="32"/>},
-		{href: '/clients', title: 'Clients', icon: <RiContactsBook2Line size="32"/>},
+  const tabs = [
+    {href: LOGS, title: 'Logs', icon: <RiClipboardLine size="32" />},
+    {href: DASHBOARD, title: 'Dashboard', icon: <RiDashboardLine size="32" />},
+    {href: CLIENTS, title: 'Clients', icon: <RiContactsBook2Line size="32" />},
 	]
   
 	return (

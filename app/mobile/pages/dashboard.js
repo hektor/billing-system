@@ -5,6 +5,7 @@ import {useContext} from 'react'
 import {AuthCtx} from './_app'
 import {Layout, Header, BottomNav} from '../components'
 import {formatDate, formatTime} from '../utils/date'
+import {ACCOUNT} from '../routes'
 
 /*
  * Overview landing page for authenticated users
@@ -16,8 +17,8 @@ export default () => {
 
 	return(
 		<Layout bottomNav>
-			<Header title={getGreeting()}>
-				<Link href="/account">
+      <Header title={getGreeting()}>
+        <Link href={ACCOUNT}>
 					<a className="avatar">
 						<span>My account</span>
 						<RiAccountCircleLine size="32"/>

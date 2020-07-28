@@ -1,6 +1,7 @@
 import Router from 'next/router'
 import nextCookie from 'next-cookies'
 import cookie from 'js-cookie'
+import {SIGNIN, DASHBOARD} from './routes'
 
 import {api} from './config'
 
@@ -22,8 +23,8 @@ const flattenMessages = messages => {
 
 const handleSuccess = ({jwt, user}) => {
 	cookie.set('token', jwt, {expires: 1})
-	cookie.set('user', user, {expires: 1})
-	Router.replace('/dashboard')
+  cookie.set('user', user, {expires: 1})
+  Router.replace(DASHBOARD)
 	return null
 }
 
@@ -103,6 +104,7 @@ export const resetPassword = async ({
 	)
 	if (res.status === 400)
 		return {message: 'This recovery link is invalid', type: 'warning'}
+
 	if (res.status === 200) return handleSuccess(await res.json())
 }
 
@@ -112,8 +114,8 @@ export const auth = ctx => {
 		ctx.res.writeHead(302, {Location: '/signin'})
 		ctx.res.end()
 		return
-	}
-	!token && Router.replace('/auth/signin')
+  }
+  !token && Router.replace(SIGNIN)
 	return token
 }
 
@@ -124,6 +126,6 @@ export const auth = ctx => {
  */
 
 export const signout = () => {
-	cookie.remove('token')
-	Router.replace('/auth/signin')
+  cookie.remove('token')
+  Router.replace(SIGNIN)
 }

@@ -3,6 +3,7 @@ import {RiTimeLine, RiContactsBook2Line, RiPinDistanceLine, RiMoneyEuroCircleLin
 import {Query, GET_LOG} from '../apollo'
 import {Header, Button} from '../components'
 import {formatDate, formatTime, calculateWorkday, timeToDecimal} from '../utils/date'
+import {LOGS, CLIENTS} from '../routes'
 
 /*
  * Log details
@@ -56,8 +57,8 @@ export default () => (
 								</div>
 							</div>
               <div className="actions">
-                <Button onClick={() => Router.replace(`/logs/${id}/edit`)} title="Edit log" icon={<RiEditLine size="32" />} />
-                <Button primary onClick={() => Router.replace(`/clients/${client_id.id}`)} title="View client" icon={<RiContactsBook2Line size="32" />} />
+                <Button onClick={() => Router.replace(`${LOGS}/${id}/edit`)} title="Edit log" icon={<RiEditLine size="32" />} />
+                <Button primary onClick={() => Router.replace(`${CLIENTS}/${client_id.id}`)} title="View client" icon={<RiContactsBook2Line size="32" />} />
                </div>
 						</div>
 					</>

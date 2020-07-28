@@ -2,6 +2,7 @@ import {RiTimeLine, RiContactsBook2Line} from 'react-icons/ri'
 import {Query, GET_LOGS} from '../apollo'
 import {formatDate} from '../utils/date'
 import {ListItem} from '../components'
+import {LOGS} from '../routes'
 
 /*
  * List of logs for this user
@@ -27,8 +28,8 @@ export default ({filter, sort}) => (
 			}}
 		>
 			{({logs}) =>
-				logs.map(({id, client_id, startTime, billingRate}) => (
-					<ListItem key={id} href={`logs/${id}`}>
+        logs.map(({id, client_id, startTime, billingRate}) => (
+          <ListItem key={id} href={`${LOGS}/${id}`}>
 						<span>{client_id.name}</span>
             <span>{formatDate(startTime)}</span>
 					</ListItem>
