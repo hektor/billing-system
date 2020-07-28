@@ -12,7 +12,7 @@ export default {
 			name: 'byClient',
 			type: 'client',
 			placeholder: 'Select client',
-			icon: <RiContactsBook2Line/>,
-		}
+      icon: <RiContactsBook2Line />,
+    }
 	]
 }

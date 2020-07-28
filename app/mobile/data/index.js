@@ -17,4 +17,5 @@ export {default as resetPasswordForm} from './resetPasswordForm'
  */
 
 export {default as createLogForm} from './createLogForm'
-export {default as searchLogForm} from './searchLogForm'
+export {default as filterLogsForm} from './filterLogsForm'
+export {default as sortLogsForm} from './sortLogsForm'
