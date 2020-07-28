@@ -1,5 +1,5 @@
 import Router, {useRouter} from 'next/router'
-import {RiTimeLine, RiContactsBook2Line, RiPinDistanceLine, RiMoneyEuroCircleLine} from 'react-icons/ri'
+import {RiTimeLine, RiContactsBook2Line, RiPinDistanceLine, RiMoneyEuroCircleLine, RiEditLine} from 'react-icons/ri'
 import {Query, GET_LOG} from '../apollo'
 import {Header, Button} from '../components'
 import {formatDate, formatTime, calculateWorkday, timeToDecimal} from '../utils/date'
@@ -20,7 +20,6 @@ export default () => (
 							<div className="header">
 								<div className="client-name">
 									<h2>{client_id.name}</h2>
-									<Button onClick={() => Router.replace(`/clients/${client_id.id}`)} title="View client" icon={<RiContactsBook2Line size="32"/>} />
 								</div>
 								<span>
 								</span>
@@ -52,10 +51,14 @@ export default () => (
 							<div className="cost total-cost">
 								<span>Total</span>
 								<div className="amount">
-									<RiMoneyEuroCircleLine size="32"/>
-									<span>{timeToDecimal(calculateWorkday(startTime, endTime, totalBreakDuration)) * billingRate + distance * transportationCost}</span>
+                  <RiMoneyEuroCircleLine size="32" />
+                  <span>{Number(timeToDecimal(calculateWorkday(startTime, endTime, totalBreakDuration)) * billingRate + distance * transportationCost).toFixed(2)}</span>
 								</div>
 							</div>
+              <div className="actions">
+                <Button onClick={() => Router.replace(`/logs/${id}/edit`)} title="Edit log" icon={<RiEditLine size="32" />} />
+                <Button primary onClick={() => Router.replace(`/clients/${client_id.id}`)} title="View client" icon={<RiContactsBook2Line size="32" />} />
+               </div>
 						</div>
 					</>
 				)
@@ -88,6 +91,23 @@ export default () => (
 
         .client-name > h2 {
           margin: auto auto 1.6rem 1.6rem;
+        }
+
+        .actions {
+          display: flex;
+        }
+
+        .actions > :global(button) {
+          flex: 1;
+        }
+
+        .actions > :global(button:first-child) {
+          border-right: 0;
+          border-radius: var(--border-radius) 0 0 var(--border-radius);
+        }
+
+        .actions > :global(button:last-child) {
+          border-radius: 0 var(--border-radius) var(--border-radius) 0;
         }
 
         .cost {
