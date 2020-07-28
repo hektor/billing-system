@@ -9,6 +9,7 @@ query Logs($filter: JSON!, $sort: String!) {
       name
     }
     startTime
+    billingRate
     updated_at
   }
 }
