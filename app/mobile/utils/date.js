@@ -1,32 +1,32 @@
 /*
- * Various constants & utility functions for working with dates
+* Various constants & utility functions for working with dates
  */
 
 /*
  * Names for days of the week 
  */
 
-export const weekDays = [
+const weekDays = [
 	'monday',
 	'tuesday',
 	'wednesday',
 	'thursday',
 	'friday',
 	'saturday',
-	'sunday'
+  'sunday'
 ]
 
 /*
  * Short names for days of the week (first three characters)
  */
 
-export const weekDaysShort = weekDays.map(weekDay => weekDay.substr(0, 2))
+const weekDaysShort = weekDays.map(weekDay => weekDay.substr(0, 2))
 
 /*
  * Month names 
  */
 
-export const months = [
+const months = [
 	'January',
 	'February',
 	'March',
@@ -45,7 +45,7 @@ export const months = [
  * Short month names (first three characters)
  */
 
-export let monthsShort = months.map(month => month.substr(0, 3))
+const monthsShort = months.map(month => month.substr(0, 3))
 
 /*
  * Full date formatting structures
@@ -86,6 +86,9 @@ export const calculateWorkday = (start, end, breakMinutes) =>
 
 /*
  * Convert HH:mm format to decimal format
+ *
+ * {@param} String
+ * {@return} Number
  */
 
 export const timeToDecimal = time => {
