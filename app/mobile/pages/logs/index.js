@@ -1,9 +1,10 @@
 import {useState} from 'react'
 import Router from 'next/router'
-import {RiFileAddLine, RiFilter2Line, RiSearch2Line, RiCloseLine} from 'react-icons/ri'
+import {RiFileAddLine, RiFilter2Line, RiFilter3Line, RiCloseLine} from 'react-icons/ri'
 import {Layout, Header, BottomNav, Button, Modal, Form} from '../../components'
 import {Logs} from '../../containers'
-import {searchLogForm as form} from '../../data'
+import {filterLogsForm} from '../../data'
+import {sortLogsForm} from '../../data'
 
 /*
  * Log list page
@@ -11,23 +12,33 @@ import {searchLogForm as form} from '../../data'
 
 export default () => {
 
-	const handleSubmit = e => setFilter([...filter, Number(e.byClient)])
+	// for multiselect
+  //const handleSubmit = e => setFilter([...filter, Number(e.byClient)])
+  
+	const handleFilterSubmit = e => setFilter(e.byClient)
+	const handleSortSubmit = e => setSort(e.sort)
 
 	const [toggled, setToggled] = useState(null)
 	const [filter, setFilter] = useState([])
+	const [sort, setSort] = useState('updated_at:desc')
 
-	const toggleSearch = () => setToggled(toggled === 'search' ? null : 'search')
+	const toggleSort = () => setToggled(toggled === 'sort' ? null : 'sort')
 	const toggleFilter = () => setToggled(toggled === 'filter' ? null : 'filter')  
 
 	return (
 		<Layout bottomNav>
-			<Modal bottom toggle={toggled === 'search'}>
+			<Modal bottom toggle={toggled === 'sort'}>
 				<div className="modal-header">
-					<h2>Search logs</h2>
-					<button onClick={toggleSearch}>
+					<h2>Sort logs</h2>
+					<button onClick={toggleSort}>
 						<RiCloseLine size="32"/>
 					</button>
 				</div>
+				<Form fields={sortLogsForm.fields} onSubmit={handleSortSubmit}>
+					<div className="filter-actions">
+						<Button primary type="submit" onClick={toggleSort}>Sort</Button>
+					</div>
+				</Form>
 			</Modal>
 			<Modal bottom toggle={toggled === 'filter'}>
 				<div className="modal-header">
@@ -36,7 +47,7 @@ export default () => {
 						<RiCloseLine size="32"/>
 					</button>
 				</div>
-				<Form fields={form.fields} onSubmit={handleSubmit}>
+				<Form fields={filterLogsForm.fields} onSubmit={handleFilterSubmit}>
 					<div className="filter-actions">
 						<Button primary type="submit" onClick={toggleFilter}>Filter</Button>
 						<Button onClick={() => setFilter([])}>Clear filters</Button>
@@ -44,12 +55,12 @@ export default () => {
 				</Form>
 			</Modal>
 			<Header title="My logs" />
-			<Logs filter={filter}/>
+			<Logs filter={filter} sort={sort}/>
 			<BottomNav>
 				<div className="actions">
-					<button onClick={toggleSearch} className={`action search ${toggled === 'search' && 'active'}`}>
-						<RiSearch2Line/>
-						<span>Search</span>
+					<button onClick={toggleSort} className={`action sort ${toggled === 'sort' && 'active'}`}>
+						<RiFilter3Line/>
+						<span>Sort</span>
 					</button>
 					<button onClick={toggleFilter} className={`action filter ${toggled === 'filter' && 'active'}`}>
 						<RiFilter2Line/>
@@ -103,7 +114,7 @@ export default () => {
             background: var(--color-primary-300);
           }
 
-          .search {
+          .sort {
             border-right: .2rem solid var(--color-white);
           }
 
