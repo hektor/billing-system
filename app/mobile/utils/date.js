@@ -1,18 +1,20 @@
 /*
-* Various constants & utility functions for working with dates
+ * Various constants & utility functions for working with dates
  */
 
+export const now = new Date()
+
 /*
- * Names for days of the week 
+ * Names for days of the week
  */
 
 const weekDays = [
-	'monday',
-	'tuesday',
-	'wednesday',
-	'thursday',
-	'friday',
-	'saturday',
+  'monday',
+  'tuesday',
+  'wednesday',
+  'thursday',
+  'friday',
+  'saturday',
   'sunday'
 ]
 
@@ -23,22 +25,22 @@ const weekDays = [
 const weekDaysShort = weekDays.map(weekDay => weekDay.substr(0, 2))
 
 /*
- * Month names 
+ * Month names
  */
 
 const months = [
-	'January',
-	'February',
-	'March',
-	'April',
-	'May',
-	'June',
-	'July',
-	'August',
-	'September',
-	'October',
-	'November',
-	'December'
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
 ]
 
 /*
@@ -52,16 +54,16 @@ const monthsShort = months.map(month => month.substr(0, 3))
  */
 
 const dateFormat = {
-	human: {
-		weekday: 'long',
-		day: 'numeric',
-		month: 'long'
-	},
-	short: {
-		weekday: 'short',
-		day: 'numeric',
-		month: 'short'
-	}
+  human: {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long'
+  },
+  short: {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short'
+  }
 }
 
 /*
@@ -69,20 +71,27 @@ const dateFormat = {
  * (Fixed locale)
  */
 
-export const formatDate = (date, structure) => new Date(date).toLocaleDateString('en-BE', dateFormat[structure] || dateFormat.human)
+export const formatDate = (date, structure) =>
+  new Date(date).toLocaleDateString(
+    'en-BE',
+    dateFormat[structure] || dateFormat.human
+  )
 
 /*
  * Get time string in HH:mm format
  */
 
-export const formatTime = time => new Date(time).toLocaleTimeString('en-BE').slice(0, -3)
+export const formatTime = time =>
+  new Date(time).toLocaleTimeString('en-BE').slice(0, -3)
 
 /*
- * Calculate hours worked (does not include breaks) in HH:mm format 
+ * Calculate hours worked (does not include breaks) in HH:mm format
  */
 
 export const calculateWorkday = (start, end, breakMinutes) =>
-	new Date((new Date(end) - new Date(start) - new Date(breakMinutes * 60000))).toISOString().substr(11, 5)
+  new Date(new Date(end) - new Date(start) - new Date(breakMinutes * 60000))
+    .toISOString()
+    .substr(11, 5)
 
 /*
  * Convert HH:mm format to decimal format
@@ -92,8 +101,8 @@ export const calculateWorkday = (start, end, breakMinutes) =>
  */
 
 export const timeToDecimal = time => {
-	time = time.split(':')
-	return parseInt(time[0], 10)*1 + parseInt(time[1], 10)/60
+  time = time.split(':')
+  return parseInt(time[0], 10) * 1 + parseInt(time[1], 10) / 60
 }
 
 /*
@@ -101,7 +110,25 @@ export const timeToDecimal = time => {
  *
  * {@param} data
  * {@param} time
+ *
  * {@return} DateTime
  */
 
-export const mergeDateTime = (date, time) => new Date(`${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${time}:00`)
+export const mergeDateTime = (date, time) =>
+  new Date(
+    `${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${time}:00`
+  )
+
+/*
+ * Amount of days that have passed between 2 dates
+ *
+ * @param {string} firstDate - First date
+ * @param {string} secondDate - Second date
+ *
+ */
+
+export const diffDays = (firstDate, secondDate) =>
+  (
+    Math.abs(new Date(firstDate).getTime() - new Date(secondDate).getTime()) /
+    (1000 * 3600 * 24)
+  ).toFixed(0)
