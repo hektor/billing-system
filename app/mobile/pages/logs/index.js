@@ -1,6 +1,11 @@
 import {useState} from 'react'
 import Router from 'next/router'
-import {RiFileAddLine, RiFilter2Line, RiFilter3Line, RiCloseLine} from 'react-icons/ri'
+import {
+  RiFileAddLine,
+  RiFilter2Line,
+  RiFilter3Line,
+  RiCloseLine
+} from 'react-icons/ri'
 import {Layout, Header, BottomNav, Button, Modal, Form} from '../../components'
 import {Logs} from '../../containers'
 import {filterLogsForm} from '../../data'
@@ -12,76 +17,90 @@ import {CREATE_LOG} from '../../routes'
  */
 
 export default () => {
-
-	// for multiselect
+  // for multiselect
   //const handleSubmit = e => setFilter([...filter, Number(e.byClient)])
-  
-	const handleFilterSubmit = e => setFilter(e.byClient)
-	const handleSortSubmit = e => setSort(e.sort)
 
-	const [toggled, setToggled] = useState(null)
-	const [filter, setFilter] = useState([])
-	const [sort, setSort] = useState('updated_at:desc')
+  const handleFilterSubmit = e => setFilter(e.byClient)
+  const handleSortSubmit = e => setSort(e.sort)
 
-	const toggleSort = () => setToggled(toggled === 'sort' ? null : 'sort')
-	const toggleFilter = () => setToggled(toggled === 'filter' ? null : 'filter')  
+  const [toggled, setToggled] = useState(null)
+  const [filter, setFilter] = useState([])
+  const [sort, setSort] = useState('updated_at:desc')
 
-	return (
-		<Layout bottomNav>
-			<Modal bottom toggle={toggled === 'sort'}>
-				<div className="modal-header">
-					<h2>Sort logs</h2>
-					<button onClick={toggleSort}>
-						<RiCloseLine size="32"/>
-					</button>
-				</div>
-				<Form fields={sortLogsForm.fields} onSubmit={handleSortSubmit}>
-					<div className="filter-actions">
-						<Button primary type="submit" onClick={toggleSort}>Sort</Button>
-					</div>
-				</Form>
-			</Modal>
-			<Modal bottom toggle={toggled === 'filter'}>
-				<div className="modal-header">
-					<h2>Filter logs</h2>
-					<button onClick={toggleFilter}>
-						<RiCloseLine size="32"/>
-					</button>
-				</div>
-				<Form fields={filterLogsForm.fields} onSubmit={handleFilterSubmit}>
-					<div className="filter-actions">
-						<Button primary type="submit" onClick={toggleFilter}>Filter</Button>
-						<Button onClick={() => setFilter([])}>Clear filters</Button>
-					</div>
-				</Form>
-			</Modal>
-			<Header title="My logs" />
-			<Logs filter={filter} sort={sort}/>
-			<BottomNav>
-				<div className="actions">
-					<button onClick={toggleSort} className={`action sort ${toggled === 'sort' && 'active'}`}>
-						<RiFilter3Line/>
-						<span>Sort</span>
-					</button>
-					<button onClick={toggleFilter} className={`action filter ${toggled === 'filter' && 'active'}`}>
-						<RiFilter2Line/>
-						<span>Filter</span>
-					</button>
-				</div>
-				<Button primary onClick={() => Router.replace(CREATE_LOG)} title="New log" icon={<RiFileAddLine />} />
-			</BottomNav>
-			<style jsx>
-				{`
+  const toggleSort = () => setToggled(toggled === 'sort' ? null : 'sort')
+  const toggleFilter = () => setToggled(toggled === 'filter' ? null : 'filter')
+
+  return (
+    <Layout bottomNav>
+      <Modal bottom toggle={toggled === 'sort'}>
+        <div className='modal-header'>
+          <h2>Sort logs</h2>
+          <button onClick={toggleSort}>
+            <RiCloseLine size='32' />
+          </button>
+        </div>
+        <Form fields={sortLogsForm.fields} onSubmit={handleSortSubmit}>
+          <div className='filter-actions'>
+            <Button primary type='submit' onClick={toggleSort}>
+              Sort
+            </Button>
+          </div>
+        </Form>
+      </Modal>
+      <Modal bottom toggle={toggled === 'filter'}>
+        <div className='modal-header'>
+          <h2>Filter logs</h2>
+          <button onClick={toggleFilter}>
+            <RiCloseLine size='32' />
+          </button>
+        </div>
+        <Form fields={filterLogsForm.fields} onSubmit={handleFilterSubmit}>
+          <div className='filter-actions'>
+            <Button primary type='submit' onClick={toggleFilter}>
+              Filter
+            </Button>
+            <Button onClick={() => setFilter([])}>Clear filters</Button>
+          </div>
+        </Form>
+      </Modal>
+      <Header title='My logs' />
+      <Logs filter={filter} sort={sort} />
+      <BottomNav>
+        <div className='actions'>
+          <button
+            onClick={toggleSort}
+            className={`action sort ${toggled === 'sort' && 'active'}`}
+          >
+            <RiFilter3Line />
+            <span>Sort</span>
+          </button>
+          <button
+            onClick={toggleFilter}
+            className={`action filter ${toggled === 'filter' && 'active'}`}
+          >
+            <RiFilter2Line />
+            <span>Filter</span>
+          </button>
+        </div>
+        <Button
+          primary
+          onClick={() => Router.replace(CREATE_LOG)}
+          title='New log'
+          icon={<RiFileAddLine />}
+        />
+      </BottomNav>
+      <style jsx>
+        {`
           :global(.nav-secondary > button:last-child) {
             margin-left: auto;
             min-width: 9.6rem;
-            border: .2rem solid var(--color-white) !important;
+            border: 0.2rem solid var(--color-white) !important;
             border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0 !important;
           }
 
           .actions {
             display: flex;
-            border: .2rem solid var(--color-white);
+            border: 0.2rem solid var(--color-white);
             border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
           }
 
@@ -94,7 +113,7 @@ export default () => {
             color: var(--color-primary-400);
             background: var(--color-primary-100);
             cursor: pointer;
-            transition: .16s;
+            transition: 0.16s;
           }
 
           .action.active {
@@ -116,7 +135,7 @@ export default () => {
           }
 
           .sort {
-            border-right: .2rem solid var(--color-white);
+            border-right: 0.2rem solid var(--color-white);
           }
 
           .action > span {
@@ -157,15 +176,15 @@ export default () => {
           @media (min-width: 480px) {
             .action {
               flex-direction: row;
-            } 
+            }
 
             .action > span {
               margin: 0;
               margin-left: 0.4rem;
             }
           }
-       `}
-			</style>
-		</Layout>
-	)
+        `}
+      </style>
+    </Layout>
+  )
 }
