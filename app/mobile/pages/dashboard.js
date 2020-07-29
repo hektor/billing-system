@@ -4,7 +4,7 @@ import {RiAccountCircleLine} from 'react-icons/ri'
 import {useContext} from 'react'
 import {AuthCtx} from './_app'
 import {Layout, Header, BottomNav} from '../components'
-import {now, formatDate, formatTime, diffDays} from '../utils/date'
+import {now, diffDays} from '../utils/date'
 import {ACCOUNT} from '../routes'
 
 /*
@@ -27,21 +27,34 @@ export default () => {
         </Link>
       </Header>
       {/* user && formatDate(user.lastSeen) */}
-      <h2>Latest activity</h2>
-      <div className='card'>
-        <Query query={GET_LATEST_LOG} id={null}>
-          {({logs}) => {
-            const {startTime, endTime} = logs[0]
-            return (
-              <>
-                <h3>{`${diffDays(now, startTime)} Days ago`}</h3>
-                Latest work activity {formatDate(startTime)}, from{' '}
-                {formatTime(startTime)} until {formatTime(endTime)}.
-              </>
-            )
-          }}
-        </Query>
-      </div>
+      <section>
+        <div className='card'>
+          <Query query={GET_LATEST_LOG} id={null}>
+            {({logs}) => {
+              const {startTime, endTime} = logs[0]
+              return (
+                <>
+                  <div className='card-header'>
+                    <span>Latest activity</span>
+                  </div>
+                  <div className='card-body'>
+                    <div className='highlight'>
+                      <span>{diffDays(now, startTime)}</span>
+                      <p>Days ago</p>
+                    </div>
+                  </div>
+                </>
+              )
+            }}
+          </Query>
+        </div>
+        <div className='card'>
+          <div className='card-header'>
+            <span>Weekly</span>
+          </div>
+          <div className='card-body'></div>
+        </div>
+      </section>
       <BottomNav />
       <style jsx>
         {`
@@ -59,6 +72,36 @@ export default () => {
 
           span {
             margin-right: 0.8rem;
+          }
+
+          section {
+            display: flex;
+          }
+
+          .card {
+            flex: 1;
+            background: var(--color-primary-100);
+            color: var(--color-primary-700);
+            margin: 0.4rem;
+            border-radius: var(--border-radius);
+          }
+
+          .card-header {
+            font-size: 1.2rem;
+            padding: 1.6rem;
+          }
+
+          .highlight {
+            display: flex;
+            align-items: center;
+          }
+
+          .highlight > span {
+            font-size: 2.4rem;
+          }
+
+          .card-body {
+            padding: 0 1.6rem 1.6rem 1.6rem;
           }
         `}
       </style>
