@@ -1,6 +1,13 @@
 import {Query, GET_LATEST_LOG} from '../apollo'
 import Link from 'next/link'
-import {RiAccountCircleLine} from 'react-icons/ri'
+import {
+  RiFlashlightLine,
+  RiAccountCircleLine,
+  RiMoneyEuroCircleLine,
+  RiBarChartLine,
+  RiBarChartGroupedLine,
+  RiClipboardLine
+} from 'react-icons/ri'
 import {useContext} from 'react'
 import {AuthCtx} from './_app'
 import {Layout, Header, BottomNav} from '../components'
@@ -35,6 +42,7 @@ export default () => {
               return (
                 <>
                   <div className='card-header'>
+                    <RiFlashlightLine />
                     <span>Latest activity</span>
                   </div>
                   <div className='card-body'>
@@ -50,7 +58,36 @@ export default () => {
         </div>
         <div className='card'>
           <div className='card-header'>
-            <span>Weekly</span>
+            <RiMoneyEuroCircleLine />
+            <span>This week</span>
+          </div>
+          <div className='card-body'>
+            <div className='empty'>
+              <RiClipboardLine size='32' />
+              <p>No entries yet</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className='card'>
+          <div className='card-header'>
+            <RiBarChartLine />
+            <span>This month</span>
+          </div>
+          <div className='card-body'>
+            <div className='empty'>
+              <RiClipboardLine size='32' />
+              <p>No entries yet</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className='card'>
+          <div className='card-header'>
+            <RiBarChartGroupedLine />
+            <span>This year</span>
           </div>
           <div className='card-body'></div>
         </div>
@@ -75,11 +112,14 @@ export default () => {
           }
 
           section {
+            flex: 1;
             display: flex;
           }
 
           .card {
             flex: 1;
+            display: flex;
+            flex-direction: column;
             background: var(--color-primary-100);
             color: var(--color-primary-700);
             margin: 0.4rem;
@@ -87,8 +127,14 @@ export default () => {
           }
 
           .card-header {
+            display: flex;
+            align-items: center;
             font-size: 1.2rem;
             padding: 1.6rem;
+          }
+
+          .card-header > span {
+            margin-left: 0.4rem;
           }
 
           .highlight {
@@ -101,7 +147,19 @@ export default () => {
           }
 
           .card-body {
+            flex: 1;
+            display: flex;
             padding: 0 1.6rem 1.6rem 1.6rem;
+            color: var(--color-primary-600);
+          }
+
+          .empty {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: auto;
+            color: var(--color-primary-300);
           }
         `}
       </style>
