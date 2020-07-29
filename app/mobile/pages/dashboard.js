@@ -10,7 +10,7 @@ import {
 } from 'react-icons/ri'
 import {useContext} from 'react'
 import {AuthCtx} from './_app'
-import {Layout, Header, BottomNav} from '../components'
+import {Layout, Header, BottomNav, Card} from '../components'
 import {now, diffDays} from '../utils/date'
 import {ACCOUNT} from '../routes'
 
@@ -35,62 +35,41 @@ export default () => {
       </Header>
       {/* user && formatDate(user.lastSeen) */}
       <section>
-        <div className='card'>
-          <Query query={GET_LATEST_LOG} id={null}>
-            {({logs}) => {
-              const {startTime, endTime} = logs[0]
-              return (
-                <>
-                  <div className='card-header'>
-                    <RiFlashlightLine />
-                    <span>Latest activity</span>
-                  </div>
-                  <div className='card-body'>
-                    <div className='highlight'>
-                      <span>{diffDays(now, startTime)}</span>
-                      <p>Days ago</p>
-                    </div>
-                  </div>
-                </>
-              )
-            }}
-          </Query>
-        </div>
-        <div className='card'>
-          <div className='card-header'>
-            <RiMoneyEuroCircleLine />
-            <span>This week</span>
+        <Query query={GET_LATEST_LOG} id={null}>
+          {({logs}) => {
+            const {startTime, endTime} = logs[0]
+            return (
+              <Card icon={<RiFlashlightLine />} title='Latest activity'>
+                <div className='highlight'>
+                  <span>{diffDays(now, startTime)}</span>
+                  <p>Days ago</p>
+                </div>
+              </Card>
+            )
+          }}
+        </Query>
+        <Card icon={<RiMoneyEuroCircleLine />} title='This week'>
+          <div className='empty'>
+            <RiClipboardLine size='32' />
+            <p>No entries yet</p>
           </div>
-          <div className='card-body'>
-            <div className='empty'>
-              <RiClipboardLine size='32' />
-              <p>No entries yet</p>
-            </div>
-          </div>
-        </div>
+        </Card>
       </section>
       <section>
-        <div className='card'>
-          <div className='card-header'>
-            <RiBarChartLine />
-            <span>This month</span>
+        <Card title='This month' icon={<RiBarChartLine />}>
+          <div className='empty'>
+            <RiClipboardLine size='32' />
+            <p>No entries yet</p>
           </div>
-          <div className='card-body'>
-            <div className='empty'>
-              <RiClipboardLine size='32' />
-              <p>No entries yet</p>
-            </div>
-          </div>
-        </div>
+        </Card>
       </section>
       <section>
-        <div className='card'>
-          <div className='card-header'>
-            <RiBarChartGroupedLine />
-            <span>This year</span>
+        <Card title='This year' icon={<RiBarChartGroupedLine />}>
+          <div className='empty'>
+            <RiClipboardLine size='32' />
+            <p>No entries yet</p>
           </div>
-          <div className='card-body'></div>
-        </div>
+        </Card>
       </section>
       <BottomNav />
       <style jsx>
@@ -116,27 +95,6 @@ export default () => {
             display: flex;
           }
 
-          .card {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            background: var(--color-primary-100);
-            color: var(--color-primary-700);
-            margin: 0.4rem;
-            border-radius: var(--border-radius);
-          }
-
-          .card-header {
-            display: flex;
-            align-items: center;
-            font-size: 1.2rem;
-            padding: 1.6rem;
-          }
-
-          .card-header > span {
-            margin-left: 0.4rem;
-          }
-
           .highlight {
             display: flex;
             align-items: center;
@@ -146,18 +104,12 @@ export default () => {
             font-size: 2.4rem;
           }
 
-          .card-body {
-            flex: 1;
-            display: flex;
-            padding: 0 1.6rem 1.6rem 1.6rem;
-            color: var(--color-primary-600);
-          }
-
           .empty {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             margin: auto;
             color: var(--color-primary-300);
           }

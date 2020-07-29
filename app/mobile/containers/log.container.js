@@ -1,8 +1,19 @@
 import Router, {useRouter} from 'next/router'
-import {RiTimeLine, RiContactsBook2Line, RiPinDistanceLine, RiMoneyEuroCircleLine, RiEditLine} from 'react-icons/ri'
+import {
+  RiTimeLine,
+  RiContactsBook2Line,
+  RiPinDistanceLine,
+  RiMoneyEuroCircleLine,
+  RiEditLine
+} from 'react-icons/ri'
 import {Query, GET_LOG} from '../apollo'
-import {Header, Button} from '../components'
-import {formatDate, formatTime, calculateWorkday, timeToDecimal} from '../utils/date'
+import {Header, Button, Card} from '../components'
+import {
+  formatDate,
+  formatTime,
+  calculateWorkday,
+  timeToDecimal
+} from '../utils/date'
 import {LOGS, CLIENTS} from '../routes'
 
 /*
@@ -10,92 +21,107 @@ import {LOGS, CLIENTS} from '../routes'
  */
 
 export default () => (
-	<>
-		<Query query={GET_LOG} variables={{id: Number(useRouter().query.id)}}>
-			{({log}) => {
-				const {id, client_id,startTime, endTime, activitiesPerformed, totalBreakDuration, resourcesUsed, billingRate, distance, transportationCost} = log
-				return (
-					<>
-						<Header title={formatDate(startTime, 'short')} />
-						<div className="log" key={id}>
-							<div className="header">
-								<div className="client-name">
-									<h2>{client_id.name}</h2>
-								</div>
-								<span>
-								</span>
-							</div>
-							<span>
-								Worked from {`${formatTime(startTime)} until ${formatTime(endTime)}`}
-							</span>
-							<span>Paused for {totalBreakDuration} minutes</span>
-							<p>{activitiesPerformed}</p>
-							<p>{resourcesUsed}</p>
-							<div className="costs">
-								<div className="cost hourly-cost">
-									<div className="amount">
-										<RiTimeLine size="32"/>
-										<span>{calculateWorkday(startTime, endTime, totalBreakDuration)}</span>
-									</div>
-									{/*<span className="rate">&euro;{billingRate}/hour</span>*/}
-									{/*<span className="total">&euro;{timeToDecimal(calculateWorkday(startTime, endTime, totalBreakDuration)) * billingRate}</span>*/}
-								</div>
-								<div className="cost transport-cost">
-									<div className="amount">
-										<RiPinDistanceLine size="32"/>
-										<span>{distance} km</span>
-									</div>
-									{/*<span className="rate">&euro;{transportationCost}/km</span>*/}
-									{/*<span className="total">&euro;{distance * transportationCost}</span>*/}
-								</div>
-							</div>
-							<div className="cost total-cost">
-								<span>Total</span>
-								<div className="amount">
-                  <RiMoneyEuroCircleLine size="32" />
-                  <span>{Number(timeToDecimal(calculateWorkday(startTime, endTime, totalBreakDuration)) * billingRate + distance * transportationCost).toFixed(2)}</span>
-								</div>
-							</div>
-              <div className="actions">
-                <Button onClick={() => Router.replace(`${LOGS}/${id}/edit`)} title="Edit log" icon={<RiEditLine size="32" />} />
-                <Button primary onClick={() => Router.replace(`${CLIENTS}/${client_id.id}`)} title="View client" icon={<RiContactsBook2Line size="32" />} />
-               </div>
-						</div>
-					</>
-				)
-			}}
-		</Query>
-		<style jsx>
-			{`
+  <>
+    <Query query={GET_LOG} variables={{id: Number(useRouter().query.id)}}>
+      {({log}) => {
+        const {
+          id,
+          client_id,
+          startTime,
+          endTime,
+          activitiesPerformed,
+          totalBreakDuration,
+          resourcesUsed,
+          billingRate,
+          distance,
+          transportationCost
+        } = log
+        return (
+          <>
+            <Header title={formatDate(startTime, 'short')} />
+            <div className='log' key={id}>
+              <div className='header'>
+                <div className='client-name'>
+                  <h2>{client_id.name}</h2>
+                </div>
+              </div>
+              <p>{activitiesPerformed}</p>
+              <p>{resourcesUsed}</p>
+              <div className='row'>
+                <Card icon={<RiTimeLine size='32' />} title='Hours worked'>
+                  <span>From {` ${formatTime(startTime)}`}</span>
+                  <span>Untill {` ${formatTime(endTime)}`}</span>
+                  <span>{totalBreakDuration} minutes paused</span>
+                  <span>
+                    <strong>
+                      {calculateWorkday(startTime, endTime, totalBreakDuration)}
+                    </strong>
+                    {` `}
+                    hours billed
+                  </span>
+                  {/*<span className="rate">&euro;{billingRate}/hour</span>*/}
+                  {/*<span className="total">&euro;{timeToDecimal(calculateWorkday(startTime, endTime, totalBreakDuration)) * billingRate}</span>*/}
+                </Card>
+                <Card
+                  icon={<RiPinDistanceLine size='32' />}
+                  title='Distance traveled'
+                >
+                  <span className='distance'>{distance}km</span>
+                  {/*<span className="rate">&euro;{transportationCost}/km</span>*/}
+                  {/*<span className="total">&euro;{distance * transportationCost}</span>*/}
+                </Card>
+              </div>
+              <div className='row'>
+                <Card icon={<RiMoneyEuroCircleLine size='32' />} title='Total'>
+                  <span>
+                    {Number(
+                      timeToDecimal(
+                        calculateWorkday(startTime, endTime, totalBreakDuration)
+                      ) *
+                        billingRate +
+                        distance * transportationCost
+                    ).toFixed(2)}
+                  </span>
+                </Card>
+              </div>
+              <div className='actions'>
+                <Button
+                  onClick={() => Router.replace(`${LOGS}/${id}/edit`)}
+                  title='Edit log'
+                  icon={<RiEditLine size='32' />}
+                />
+                <Button
+                  primary
+                  onClick={() => Router.replace(`${CLIENTS}/${client_id.id}`)}
+                  title='View client'
+                  icon={<RiContactsBook2Line size='32' />}
+                />
+              </div>
+            </div>
+          </>
+        )
+      }}
+    </Query>
+    <style jsx>
+      {`
         .log {
           flex: 1;
           display: flex;
           flex-direction: column;
         }
 
-        .header {
-          display: flex; 
-          justify-content: space-between;
-          padding: 1.6rem 0;
-        }
-
-        .costs {
+        .row {
+          flex: 1;
           display: flex;
-          margin-top: auto;
         }
 
         .client-name {
-          flex: 1;
-          display: flex;
-          align-items: center;
-        }
-
-        .client-name > h2 {
-          margin: auto auto 1.6rem 1.6rem;
+          padding: 0.8rem;
         }
 
         .actions {
           display: flex;
+          margin: 0.4rem;
         }
 
         .actions > :global(button) {
@@ -111,49 +137,18 @@ export default () => (
           border-radius: 0 var(--border-radius) var(--border-radius) 0;
         }
 
-        .cost {
-          display: flex;
-          padding: 1.6rem;
-          margin-bottom: .4rem;
-          background: var(--color-primary-100);
+        span {
+          margin: 0.4rem 0;
         }
 
-        .hourly-cost { 
-          margin-right: 0.2rem; 
-        }
-
-        .transport-cost { 
-          margin-left: 0.2rem; 
-        }
-
-        .hourly-cost,
-        .transport-cost { 
-          flex: 1;
-        }
-
-        .total-cost {
-          border-radius: 0 0 var(--border-radius) var(--border-radius);
-          margin-bottom: 1.6rem;
-        }
-
-        .total-cost > span {
-          flex: 1;
-          margin: auto 0;
-          font-size: 1.2rem;
-        }
-
-        .total-cost > .amount {
-          justify-content: flex-end
-        }
-
-        .amount {
+        .distance {
           flex: 1;
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          font-size: 1.2rem;
+          justify-content: center;
+          font-size: 2.4rem;
         }
       `}
-		</style>
-	</>
+    </style>
+  </>
 )

@@ -8,46 +8,54 @@ import {RiPhoneLine, RiClipboardLine} from 'react-icons/ri'
  */
 
 export default () => (
-	<Query query={GET_CLIENT} variables={{id: useRouter().query.id}}>
-		{({client}) => {
-			const {name, phone, address} = client
-			return (
-				<>
-					<Header title={name} />
-					<div className="client">
-						<h2>Contact details</h2>
-						<div className="card">
-							<span>{phone}</span>
-						</div>
-						{address && (
-							<>
-								<h2>Location</h2>
-								<div className="card">
-									<span>
-										{`
+  <Query query={GET_CLIENT} variables={{id: useRouter().query.id}}>
+    {({client}) => {
+      const {name, phone, address} = client
+      return (
+        <>
+          <Header title={name} />
+          <div className='client'>
+            <h2>Contact details</h2>
+            <div className='card'>
+              <span>{phone}</span>
+            </div>
+            {address && (
+              <>
+                <h2>Location</h2>
+                <div className='card'>
+                  <span>
+                    {`
                       ${address.streetName} ${address.streetNumber}, 
                     `}
-										<br/>
-										{`
+                    <br />
+                    {`
                       ${address.postalCode} ${address.city},
                     `}
-										<br/>
-										{`
+                    <br />
+                    {`
                       ${address.country} ${address.province}
                     `}
-									</span>
-								</div>
-							</>
-						)}
-					</div>
-					<div className="actions">
-						<Button title="View logs" icon={<RiClipboardLine/>} className="action-left"/>
-						<a href={`tel:${phone}`}>
-							<Button title="Call" icon={<RiPhoneLine/>}  className="action-right"/>
-						</a>
-					</div>
-					<style jsx>
-						{`
+                  </span>
+                </div>
+              </>
+            )}
+          </div>
+          <div className='actions'>
+            <Button
+              title='View logs'
+              icon={<RiClipboardLine />}
+              className='action-left'
+            />
+            <a href={`tel:${phone}`}>
+              <Button
+                title='Call'
+                icon={<RiPhoneLine />}
+                className='action-right'
+              />
+            </a>
+          </div>
+          <style jsx>
+            {`
               .client {
                 flex: 1;
                 display: flex;
@@ -71,8 +79,8 @@ export default () => (
                 display: flex;
               }
 
-              .actions > a { 
-                flex: 1; 
+              .actions > a {
+                flex: 1;
                 display: flex;
               }
 
@@ -87,9 +95,9 @@ export default () => (
                 border-radius: 0 var(--border-radius) var(--border-radius) 0;
               }
             `}
-					</style>
-				</>
-			)
-		}}
-	</Query>
+          </style>
+        </>
+      )
+    }}
+  </Query>
 )
