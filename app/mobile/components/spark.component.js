@@ -5,24 +5,24 @@ import Spark from 'dailychart'
  * Sparkline component
  */
 
-export default ({values, length}) => {
+export default ({values, length, id}) => {
   useEffect(() => {
-    Spark.create('#spark', {
+    Spark.create(`#${id}`, {
       lineWidth: 2,
-      colorPositive: 'var(--color-primary-500)',
-      colorNegative: 'var(--color-primary-500)'
+      colorPositive: 'var(--color-info-500)',
+      colorNegative: 'var(--color-info-500)'
     })
   }, [])
 
   return (
     <div
-      id='spark'
+      id={id}
       data-dailychart-values={values.join(',')}
       data-dailychart-length={length}
     >
       <style jsx>
         {`
-          #spark {
+          #${id} {
             flex: 1;
           }
         `}
