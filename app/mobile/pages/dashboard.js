@@ -1,15 +1,19 @@
-import {Query, GET_LATEST_LOG, GET_THIS_MONTH_LOGS} from '../apollo'
+import {useContext} from 'react'
 import Link from 'next/link'
+import {AuthCtx} from './_app'
+import {
+  Query,
+  GET_LATEST_LOG,
+  GET_THIS_WEEK_LOGS,
+  GET_THIS_MONTH_LOGS
+} from '../apollo'
 import {
   RiFlashlightLine,
   RiAccountCircleLine,
-  RiMoneyEuroCircleLine,
   RiBarChartLine,
   RiBarChartGroupedLine,
   RiClipboardLine
 } from 'react-icons/ri'
-import {useContext} from 'react'
-import {AuthCtx} from './_app'
 import {Layout, Header, BottomNav, Card, Spark} from '../components'
 import {now, diffDays, calculateWorkday, timeToDecimal} from '../utils/date'
 import {ACCOUNT} from '../routes'
@@ -31,11 +35,21 @@ export default () => {
     1
   ).toISOString()
 
+  const startOfWeek = () => {
+    const today = new Date()
+    return new Date(
+      today.setDate(today.getDate() - today.getDay())
+    ).toISOString()
+  }
+
   const currentDayInMonth = new Date().getDate()
   const daysInMonth = new Date(date.getYear(), date.getMonth(), 0).getDate()
-  const progress = (currentDayInMonth / daysInMonth) * 100
 
-  const getDayTotals = logs =>
+  const currentDayInWeek = new Date().getDay()
+  const monthProgress = (currentDayInMonth / daysInMonth) * 100
+  const weekProgress = (currentDayInWeek / 7) * 100
+
+  const getDayTotals = (logs, period) =>
     logs.map(
       ({
         startTime,
@@ -56,12 +70,15 @@ export default () => {
             ) *
               billingRate +
             distance * transportationCost,
-          day: new Date(startTime).getDate()
+          day:
+            period === 'month'
+              ? new Date(startTime).getDate()
+              : new Date(startTime).getDay()
         }
       }
     )
 
-  const getMonthTotal = dayTotals =>
+  const getTotal = dayTotals =>
     dayTotals.reduce((monthTotal, {total}) => monthTotal + total, 0)
 
   return (
@@ -89,52 +106,91 @@ export default () => {
             )
           }}
         </Query>
-        <Card icon={<RiMoneyEuroCircleLine />} title='This week'>
-          <div className='empty'>
-            <RiClipboardLine size='32' />
-            <p>No entries yet</p>
-          </div>
-        </Card>
-      </section>
-      <section>
-        <Query
-          query={GET_THIS_MONTH_LOGS}
-          variables={{limit: daysInMonth, startOfMonth, sort: 'startTime:asc'}}
-        >
-          {({logs}) => {
-            const dayTotals = getDayTotals(logs)
-            const monthTotal = getMonthTotal(dayTotals)
-            let values = Array(daysInMonth).fill(0)
+        <Card icon={<RiBarChartLine />} title='This week'>
+          <Query
+            query={GET_THIS_WEEK_LOGS}
+            variables={{
+              limit: 7,
+              startOfWeek: startOfWeek(),
+              sort: 'startTime:asc'
+            }}
+          >
+            {({logs}) => {
+              const dayTotals = getDayTotals(logs, 'week')
+              const weekTotal = getTotal(dayTotals)
+              let values = Array(7).fill(0)
 
-            dayTotals.map(({day, total}) => {
-              values[day - 1] = total
-            })
+              dayTotals.map(({day, total}) => {
+                values[day - 1] = total
+              })
 
-            return logs ? (
-              <Card title='This month' icon={<RiBarChartLine />}>
-                {progress && progress < 95 && progress > 15 && (
-                  <div className='progress-bar'>
-                    <div className='progress' />
+              return values.some(value => value > 0) ? (
+                <>
+                  <div className='highlight'>
+                    <span>&euro; {weekTotal}</span>
                   </div>
-                )}
-                <div className='highlight'>
-                  <span>&euro; {monthTotal}</span>
-                  <p>Total billed</p>
-                </div>
-                <div className='spark'>
-                  <Spark length={daysInMonth} values={values} />
-                </div>
-              </Card>
-            ) : (
-              <Card title='This month' icon={<RiBarChartLine />}>
+                  <div className='spark'>
+                    <Spark id='week' length={7} values={values} />
+                  </div>
+                </>
+              ) : (
                 <div className='empty'>
                   <RiClipboardLine size='32' />
                   <p>No entries yet</p>
                 </div>
-              </Card>
-            )
-          }}
-        </Query>
+              )
+            }}
+          </Query>
+          {weekProgress && weekProgress > 15 && (
+            <div className='progress-bar'>
+              <div className='week-progress' />
+            </div>
+          )}
+        </Card>
+      </section>
+      <section>
+        <Card title='This month' icon={<RiBarChartLine />}>
+          <Query
+            query={GET_THIS_MONTH_LOGS}
+            variables={{
+              limit: daysInMonth,
+              startOfMonth,
+              sort: 'startTime:asc'
+            }}
+          >
+            {({logs}) => {
+              const dayTotals = getDayTotals(logs, 'month')
+              const monthTotal = getTotal(dayTotals)
+              let values = Array(daysInMonth).fill(0)
+
+              dayTotals.map(({day, total}) => {
+                values[day - 1] = total
+              })
+
+              return values.some(value => value > 0) ? (
+                <>
+                  <div className='highlight'>
+                    <span>&euro; {monthTotal}</span>
+                    <p>Total billed</p>
+                  </div>
+                  <div className='spark'>
+                    <Spark id='month' length={daysInMonth} values={values} />
+                  </div>
+                </>
+              ) : (
+                <div className='empty'>
+                  <RiClipboardLine size='32' />
+                  <p>No entries yet</p>
+                </div>
+              )
+            }}
+          </Query>
+          {monthProgress && monthProgress > 15 && (
+            <div className='progress-bar'>
+              <div className='month-progress' />
+            </div>
+          )}
+        </Card>
       </section>
       <section>
         <Card title='This year' icon={<RiBarChartGroupedLine />}>
@@ -174,7 +230,7 @@ export default () => {
           }
 
           .highlight > span {
-            font-size: 2.4rem;
+            font-size: 2em;
           }
 
           .empty {
@@ -198,17 +254,24 @@ export default () => {
 
           .progress-bar {
             position: relative;
-            top: -4.7rem;
-            margin: 0 -1.6rem;
+            top: 1.2rem;
+            margin: 0 -1.2rem;
             display: flex;
-            height: 0.4rem;
-            border: 1px solid var(--color-primary-200);
+            height: 0.8rem;
+            background: var(--color-primary-200);
             border-radius: var(--border-radius);
           }
 
-          .progress {
-            width: ${progress}%;
-            background: var(--color-primary-500);
+          .month-progress {
+            width: ${monthProgress}%;
+            background: var(--color-info-500);
+            border-radius: var(--border-radius);
+          }
+
+          .week-progress {
+            width: ${weekProgress}%;
+            background: var(--color-info-500);
+            border-radius: var(--border-radius);
           }
         `}
       </style>
