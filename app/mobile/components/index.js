@@ -15,6 +15,7 @@ export {default as ListItem} from './list-item.component'
 export {default as ListItemPlaceholder} from './list-item-placeholder.component'
 export {default as Modal} from './modal.component'
 export {default as SelectClient} from './select-client.component'
+export {default as Spark} from './spark.component'
 export {default as Spinner} from './spinner.component'
 
 /*
