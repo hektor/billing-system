@@ -31,7 +31,9 @@ export default () => {
     1
   ).toISOString()
 
+  const currentDayInMonth = new Date().getDate()
   const daysInMonth = new Date(date.getYear(), date.getMonth(), 0).getDate()
+  const progress = (currentDayInMonth / daysInMonth) * 100
 
   const getDayTotals = logs =>
     logs.map(
@@ -101,19 +103,34 @@ export default () => {
         >
           {({logs}) => {
             const dayTotals = getDayTotals(logs)
-            return (
+            const monthTotal = getMonthTotal(dayTotals)
+            let values = Array(daysInMonth).fill(0)
+
+            dayTotals.map(({day, total}) => {
+              values[day - 1] = total
+            })
+
+            return logs ? (
               <Card title='This month' icon={<RiBarChartLine />}>
-                {JSON.stringify(dayTotals, 0, 2)}
-                <Spark
-                  length={30}
-                  values={[0, 1, 0, 0, 0, 0, 3, 2, 0, 0, 0, 5, 2, 8, 20]}
-                />
-                {/* 
-                    <div className='empty'>
-                      <RiClipboardLine size='32' />
-                      <p>No entries yet</p>
-                    </div>
-                */}
+                {progress && progress < 95 && progress > 15 && (
+                  <div className='progress-bar'>
+                    <div className='progress' />
+                  </div>
+                )}
+                <div className='highlight'>
+                  <span>&euro; {monthTotal}</span>
+                  <p>Total billed</p>
+                </div>
+                <div className='spark'>
+                  <Spark length={daysInMonth} values={values} />
+                </div>
+              </Card>
+            ) : (
+              <Card title='This month' icon={<RiBarChartLine />}>
+                <div className='empty'>
+                  <RiClipboardLine size='32' />
+                  <p>No entries yet</p>
+                </div>
               </Card>
             )
           }}
@@ -168,6 +185,30 @@ export default () => {
             justify-content: center;
             margin: auto;
             color: var(--color-primary-300);
+          }
+
+          .spark {
+            flex: 1;
+            display: flex;
+            border: 1px solid var(--color-primary-200);
+            padding-top: 1.6rem;
+            margin-top: 0.8rem;
+            border-radius: var(--border-radius-sm);
+          }
+
+          .progress-bar {
+            position: relative;
+            top: -4.7rem;
+            margin: 0 -1.6rem;
+            display: flex;
+            height: 0.4rem;
+            border: 1px solid var(--color-primary-200);
+            border-radius: var(--border-radius);
+          }
+
+          .progress {
+            width: ${progress}%;
+            background: var(--color-primary-500);
           }
         `}
       </style>
