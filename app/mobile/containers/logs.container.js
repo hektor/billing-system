@@ -38,11 +38,10 @@ export default ({filter, sort}) => {
         }}
       >
         {({logs}) =>
-          logs.map(({id, client_id, startTime, billingRate}) => (
+          logs.map(({id, client_id, startTime}) => (
             <ListItem key={id} href={`${LOGS}/${id}`}>
               <span>{client_id.name}</span>
               <span>{formatDate(startTime)}</span>
-              <span>{billingRate}</span>
             </ListItem>
           ))
         }
