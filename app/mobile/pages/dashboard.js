@@ -1,4 +1,4 @@
-import {Query, GET_LATEST_LOG} from '../apollo'
+import {Query, GET_LATEST_LOG, GET_THIS_MONTH_LOGS} from '../apollo'
 import Link from 'next/link'
 import {
   RiFlashlightLine,
@@ -10,8 +10,8 @@ import {
 } from 'react-icons/ri'
 import {useContext} from 'react'
 import {AuthCtx} from './_app'
-import {Layout, Header, BottomNav, Card} from '../components'
-import {now, diffDays} from '../utils/date'
+import {Layout, Header, BottomNav, Card, Spark} from '../components'
+import {now, diffDays, calculateWorkday, timeToDecimal} from '../utils/date'
 import {ACCOUNT} from '../routes'
 
 /*
@@ -22,6 +22,45 @@ export default () => {
   const {user} = useContext(AuthCtx)
   const getGreeting = () =>
     user && user.name ? 'Welcome' + user.name : 'Welcome'
+
+  const date = new Date()
+
+  const startOfMonth = new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    1
+  ).toISOString()
+
+  const daysInMonth = new Date(date.getYear(), date.getMonth(), 0).getDate()
+
+  const getDayTotals = logs =>
+    logs.map(
+      ({
+        startTime,
+        endTime,
+        totalBreakDuration,
+        billingRate,
+        distance,
+        transportationCost
+      }) => {
+        return {
+          total:
+            timeToDecimal(
+              calculateWorkday(
+                new Date(startTime),
+                new Date(endTime),
+                totalBreakDuration
+              )
+            ) *
+              billingRate +
+            distance * transportationCost,
+          day: new Date(startTime).getDate()
+        }
+      }
+    )
+
+  const getMonthTotal = dayTotals =>
+    dayTotals.reduce((monthTotal, {total}) => monthTotal + total, 0)
 
   return (
     <Layout bottomNav>
@@ -56,12 +95,29 @@ export default () => {
         </Card>
       </section>
       <section>
-        <Card title='This month' icon={<RiBarChartLine />}>
-          <div className='empty'>
-            <RiClipboardLine size='32' />
-            <p>No entries yet</p>
-          </div>
-        </Card>
+        <Query
+          query={GET_THIS_MONTH_LOGS}
+          variables={{limit: daysInMonth, startOfMonth, sort: 'startTime:asc'}}
+        >
+          {({logs}) => {
+            const dayTotals = getDayTotals(logs)
+            return (
+              <Card title='This month' icon={<RiBarChartLine />}>
+                {JSON.stringify(dayTotals, 0, 2)}
+                <Spark
+                  length={30}
+                  values={[0, 1, 0, 0, 0, 0, 3, 2, 0, 0, 0, 5, 2, 8, 20]}
+                />
+                {/* 
+                    <div className='empty'>
+                      <RiClipboardLine size='32' />
+                      <p>No entries yet</p>
+                    </div>
+                */}
+              </Card>
+            )
+          }}
+        </Query>
       </section>
       <section>
         <Card title='This year' icon={<RiBarChartGroupedLine />}>
