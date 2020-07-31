@@ -15,7 +15,13 @@ import {
   RiClipboardLine
 } from 'react-icons/ri'
 import {Layout, Header, BottomNav, Card, Spark} from '../components'
-import {now, diffDays, calculateWorkday, timeToDecimal} from '../utils/date'
+import {
+  now,
+  diffDays,
+  calculateWorkday,
+  timeToDecimal,
+  formatTime
+} from '../utils/date'
 import {ACCOUNT} from '../routes'
 
 /*
@@ -81,6 +87,25 @@ export default () => {
   const getTotal = dayTotals =>
     dayTotals.reduce((monthTotal, {total}) => monthTotal + total, 0)
 
+  const renderLatestActivity = startTime => {
+    const daysAgo = diffDays(now, startTime)
+    switch (daysAgo) {
+      case '0':
+        return <span>Today</span>
+      case '1':
+        return <span>Yesterday</span>
+      case '2':
+        return <span>2 Days ago</span>
+      default:
+        return (
+          <>
+            <span>{diffDays(now, startTime)}</span>
+            <p>Days ago</p>
+          </>
+        )
+    }
+  }
+
   return (
     <Layout bottomNav>
       <Header title={getGreeting()}>
@@ -99,9 +124,11 @@ export default () => {
             return (
               <Card icon={<RiFlashlightLine />} title='Latest activity'>
                 <div className='highlight'>
-                  <span>{diffDays(now, startTime)}</span>
-                  <p>Days ago</p>
+                  {renderLatestActivity(startTime)}
                 </div>
+                <p>
+                  {formatTime(startTime)}-{formatTime(endTime)}
+                </p>
               </Card>
             )
           }}
@@ -117,7 +144,7 @@ export default () => {
           >
             {({logs}) => {
               const dayTotals = getDayTotals(logs, 'week')
-              const weekTotal = getTotal(dayTotals)
+              const weekTotal = getTotal(dayTotals).toFixed(2)
               let values = Array(7).fill(0)
 
               dayTotals.map(({day, total}) => {
@@ -160,7 +187,7 @@ export default () => {
           >
             {({logs}) => {
               const dayTotals = getDayTotals(logs, 'month')
-              const monthTotal = getTotal(dayTotals)
+              const monthTotal = getTotal(dayTotals).toFixed(2)
               let values = Array(daysInMonth).fill(0)
 
               dayTotals.map(({day, total}) => {
@@ -229,7 +256,7 @@ export default () => {
             align-items: center;
           }
 
-          .highlight > span {
+          .highlight > :global(span) {
             font-size: 2em;
           }
 
