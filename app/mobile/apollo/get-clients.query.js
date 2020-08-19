@@ -1,14 +1,16 @@
 import gql from 'graphql-tag'
 
 export default gql`
-{
-  clients {
-    id
-    name
-    phone
-    address
-    logs {
+  {
+    clients {
       id
+      name
+      email
+      phone
+      address
+      logs {
+        id
+      }
     }
   }
-}`
+`
