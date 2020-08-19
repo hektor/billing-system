@@ -6,8 +6,8 @@ import {EditLog} from '../../../containers'
  */
 
 export default () => (
-	<Layout bottomNav>
-		<EditLog />
-		<BottomNav />
-	</Layout>
+  <Layout bottomNav>
+    <EditLog />
+    <BottomNav />
+  </Layout>
 )

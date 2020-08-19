@@ -10,11 +10,11 @@ import {api} from './config'
  */
 
 const flattenMessages = messages => {
-	let flattened = []
-	messages.map(({messages}) =>
-		messages.map(({message}) => flattened.push(message))
-	)
-	return flattened
+  let flattened = []
+  messages.map(({messages}) =>
+    messages.map(({message}) => flattened.push(message))
+  )
+  return flattened
 }
 
 /*
@@ -22,10 +22,10 @@ const flattenMessages = messages => {
  */
 
 const handleSuccess = ({jwt, user}) => {
-	cookie.set('token', jwt, {expires: 1})
+  cookie.set('token', jwt, {expires: 1})
   cookie.set('user', user, {expires: 1})
   Router.replace(DASHBOARD)
-	return null
+  return null
 }
 
 /*
@@ -33,16 +33,16 @@ const handleSuccess = ({jwt, user}) => {
  */
 
 const handleInvalid = ({/* statusCode, error, */ message}) =>
-	flattenMessages(message)
+  flattenMessages(message)
 
 /*
  * Wrap POST body with fetch options
  */
 
-const postOptions = (body) => ({
-	method: 'POST',
-	headers: {'Content-Type': 'application/json'},
-	body: JSON.stringify(body),
+const postOptions = body => ({
+  method: 'POST',
+  headers: {'Content-Type': 'application/json'},
+  body: JSON.stringify(body)
 })
 
 /*
@@ -50,10 +50,10 @@ const postOptions = (body) => ({
  */
 
 export const signup = async ({email, password}) => {
-	const options = postOptions({email, password})
-	const res = await (await fetch(api.SIGNIN, postOptions(options))).json()
-	if (res.statusCode === 200) return handleSuccess(res)
-	if (res.statusCode === 400) return handleInvalid(res)
+  const options = postOptions({email, password})
+  const res = await (await fetch(api.SIGNIN, postOptions(options))).json()
+  if (res.statusCode === 200) return handleSuccess(res)
+  if (res.statusCode === 400) return handleInvalid(res)
 }
 
 /*
@@ -61,14 +61,14 @@ export const signup = async ({email, password}) => {
  */
 
 export const signin = async ({email, password}) => {
-	const options = postOptions({identifier: email, password})
-	const res = await fetch(api.SIGNIN, options)
-	if (res.status === 200) return handleSuccess(await res.json())
-	if (res.status === 400) return handleInvalid(await res.json())
-	if (res.status === 429)
-		return [
-			'Too many failed signin attempts, try again later or reset password',
-		]
+  const options = postOptions({identifier: email, password})
+  const res = await fetch(api.SIGNIN, options)
+  if (res.status === 200) return handleSuccess(await res.json())
+  if (res.status === 400) return handleInvalid(await res.json())
+  if (res.status === 429)
+    return [
+      'Too many failed signin attempts, try again later or reset password'
+    ]
 }
 
 /*
@@ -76,47 +76,43 @@ export const signin = async ({email, password}) => {
  */
 
 export const sendRecoveryLink = async ({email}) => {
-	const res = await fetch(api.FORGOT_PASSWORD, postOptions({email}))
-	if (res.status === 400)
-		return {
-			message: 'We could not send a recovery link at this time',
-			type: 'warning',
-		}
-	if (res.status === 200)
-		return {
-			message: 'We sent a recovery link to this email address',
-			type: 'success',
-		}
+  const res = await fetch(api.FORGOT_PASSWORD, postOptions({email}))
+  if (res.status === 400)
+    return {
+      message: 'We could not send a recovery link at this time',
+      type: 'warning'
+    }
+  if (res.status === 200)
+    return {
+      message: 'We sent a recovery link to this email address',
+      type: 'success'
+    }
 }
 
 /*
  * Handle a password reset request
  */
 
-export const resetPassword = async ({
-	password,
-	passwordConfirmation,
-	code,
-}) => {
-	const res = await fetch(
-		api.RESET_PASSWORD,
-		postOptions({password, passwordConfirmation, code})
-	)
-	if (res.status === 400)
-		return {message: 'This recovery link is invalid', type: 'warning'}
+export const resetPassword = async ({password, passwordConfirmation, code}) => {
+  const res = await fetch(
+    api.RESET_PASSWORD,
+    postOptions({password, passwordConfirmation, code})
+  )
+  if (res.status === 400)
+    return {message: 'This recovery link is invalid', type: 'warning'}
 
-	if (res.status === 200) return handleSuccess(await res.json())
+  if (res.status === 200) return handleSuccess(await res.json())
 }
 
 export const auth = ctx => {
-	const {token} = nextCookie(ctx)
-	if (ctx.req && !token) {
-		ctx.res.writeHead(302, {Location: '/signin'})
-		ctx.res.end()
-		return
+  const {token} = nextCookie(ctx)
+  if (ctx.req && !token) {
+    ctx.res.writeHead(302, {Location: '/signin'})
+    ctx.res.end()
+    return
   }
   !token && Router.replace(SIGNIN)
-	return token
+  return token
 }
 
 /*

@@ -49,7 +49,11 @@ export default () => {
   }
 
   const currentDayInMonth = new Date().getDate()
-  const daysInMonth = new Date(date.getYear(), date.getMonth(), 0).getDate()
+  const daysInMonth = new Date(
+    date.getFullYear(),
+    date.getMonth() + 1,
+    0
+  ).getDate()
 
   const currentDayInWeek = new Date().getDay()
   const monthProgress = (currentDayInMonth / daysInMonth) * 100
@@ -168,7 +172,7 @@ export default () => {
               )
             }}
           </Query>
-          {weekProgress && weekProgress > 15 && (
+          {!!weekProgress && weekProgress > 15 && (
             <div className='progress-bar'>
               <div className='week-progress' />
             </div>
