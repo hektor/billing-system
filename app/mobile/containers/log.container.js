@@ -45,8 +45,10 @@ export default () => (
                   <h2>{client_id.name}</h2>
                 </div>
               </div>
+              {/*
               <p>{activitiesPerformed}</p>
               <p>{resourcesUsed}</p>
+              */}
               <div className='row'>
                 <Card icon={<RiTimeLine size='32' />} title='Hours worked'>
                   <span>From {` ${formatTime(startTime)}`}</span>
