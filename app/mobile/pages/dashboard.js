@@ -295,13 +295,13 @@ export default () => {
 
           .month-progress {
             width: ${monthProgress}%;
-            background: var(--color-info-500);
+            background: var(--color-primary-500);
             border-radius: var(--border-radius);
           }
 
           .week-progress {
             width: ${weekProgress}%;
-            background: var(--color-info-500);
+            background: var(--color-primary-500);
             border-radius: var(--border-radius);
           }
         `}

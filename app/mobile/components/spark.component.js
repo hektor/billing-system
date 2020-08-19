@@ -9,8 +9,8 @@ export default ({values, length, id}) => {
   useEffect(() => {
     Spark.create(`#${id}`, {
       lineWidth: 2,
-      colorPositive: 'var(--color-info-500)',
-      colorNegative: 'var(--color-info-500)'
+      colorPositive: 'var(--color-primary-500)',
+      colorNegative: 'var(--color-primary-500)'
     })
   }, [])
 

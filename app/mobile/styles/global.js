@@ -1,4 +1,4 @@
-import {getPrimaryColors, getHeadingSizes} from './helpers'
+import {getHeadingSizes} from './helpers'
 import css from 'styled-jsx/css'
 
 /*
@@ -26,7 +26,11 @@ export default css.global`
 		--border-radius-lg: 0.8rem;
 
     --color-white: #fff;
-    ${getPrimaryColors()}
+    --color-primary-100: #CCEDF8;
+    --color-primary-200: #9CD8F2;
+    --color-primary-300: #66AFD9;
+    --color-primary-400: #3C82B3;
+    --color-primary-500: #0F4C81;
     --color-success-100: #F1FCDA;
     --color-success-200: #DFF9B7;
     --color-success-300: #C4EE90;
@@ -103,7 +107,7 @@ export default css.global`
 
 	body {
     background: var(--color-white);
-    color: var(--color-primary-700);
+    color: var(--color-primary-500);
 		font-family: var(--font-family);
 		font-size: var(--font-size);
   }
@@ -155,6 +159,10 @@ export default css.global`
     background: inherit;
 		padding: 1.6rem;
 	}
+
+  select {
+    color: var(--color-primary-500);
+  }
 
 	button {
 		display: flex;
