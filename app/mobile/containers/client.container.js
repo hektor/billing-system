@@ -1,7 +1,7 @@
 import {useRouter} from 'next/router'
 import {Query, GET_CLIENT} from '../apollo'
 import {Header, Button} from '../components'
-import {RiPhoneLine, RiClipboardLine} from 'react-icons/ri'
+import {RiPhoneLine, RiMailLine} from 'react-icons/ri'
 
 /*
  * Client details
@@ -10,7 +10,7 @@ import {RiPhoneLine, RiClipboardLine} from 'react-icons/ri'
 export default () => (
   <Query query={GET_CLIENT} variables={{id: useRouter().query.id}}>
     {({client}) => {
-      const {name, phone, address} = client
+      const {name, email, phone, address} = client
       return (
         <>
           <Header title={name} />
@@ -41,17 +41,20 @@ export default () => (
             )}
           </div>
           <div className='actions'>
+            {/*
             <Button
               title='View logs'
               icon={<RiClipboardLine />}
               className='action-left'
             />
-            <a href={`tel:${phone}`}>
-              <Button
-                title='Call'
-                icon={<RiPhoneLine />}
-                className='action-right'
-              />
+            */}
+            {email && (
+              <a className='action action-left' href={`mailto:${email}`}>
+                <Button title='Mail' icon={<RiMailLine />} />
+              </a>
+            )}
+            <a className='action action-right' href={`tel:${phone}`}>
+              <Button title='Call' icon={<RiPhoneLine />} />
             </a>
           </div>
           <style jsx>
@@ -84,12 +87,12 @@ export default () => (
                 display: flex;
               }
 
-              .actions :global(button:first-child) {
-                width: 50%;
+              .action-left :global(button) {
+                width: 100%;
                 border-radius: var(--border-radius) 0 0 var(--border-radius);
               }
 
-              .actions :global(button:last-child) {
+              .action-right :global(button) {
                 width: 100%;
                 border-left: 0;
                 border-radius: 0 var(--border-radius) var(--border-radius) 0;
