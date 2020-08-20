@@ -1,10 +1,13 @@
-# Next strapi boilerplate
+# Automated billing system 
 
-## Technologies
+## Next.js
 
-- Next.js
-- Strapi
-- GraphQL & JWT auth
+Hooks
+Environment variables
+
+## Strapi
+
+GraphQL & JWT auth
 
 # Setup
 
@@ -30,4 +33,3 @@ Install dependencies for Strapi
 Go to strapi folder  
 ```cd strapi```
 Run ```yarn```
-
