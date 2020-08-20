@@ -21,6 +21,10 @@
     },
     "address": {
       "type": "json"
+    },
+    "email": {
+      "type": "email",
+      "required": true
     }
   }
 }

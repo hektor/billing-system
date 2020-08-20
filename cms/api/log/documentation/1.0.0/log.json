@@ -591,7 +591,8 @@
           },
           "client_id": {
             "required": [
-              "id"
+              "id",
+              "email"
             ],
             "properties": {
               "id": {
@@ -611,6 +612,9 @@
               },
               "address": {
                 "type": "object"
+              },
+              "email": {
+                "type": "string"
               }
             }
           }

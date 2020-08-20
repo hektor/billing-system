@@ -516,7 +516,8 @@
     "schemas": {
       "Client": {
         "required": [
-          "id"
+          "id",
+          "email"
         ],
         "properties": {
           "id": {
@@ -575,10 +576,16 @@
           },
           "address": {
             "type": "object"
+          },
+          "email": {
+            "type": "string"
           }
         }
       },
       "NewClient": {
+        "required": [
+          "email"
+        ],
         "properties": {
           "name": {
             "type": "string"
@@ -594,6 +601,9 @@
           },
           "address": {
             "type": "object"
+          },
+          "email": {
+            "type": "string"
           }
         }
       }
