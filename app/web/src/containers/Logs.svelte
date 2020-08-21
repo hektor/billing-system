@@ -4,11 +4,13 @@
 
   import Log from "./Log.svelte";
 
+  export let id = 0;
+
   const client = getClient();
   const logs = query(client, {
     query: GET_LOGS,
     variables: {
-      filter: { client_id: { id: 59 } },
+      filter: { client_id: { id } },
       sort: "startTime:asc",
       start: 219,
     },
