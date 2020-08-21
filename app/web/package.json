@@ -1,0 +1,23 @@
+{
+  "scripts": {
+    "dev": "snowpack dev",
+    "build": "snowpack build",
+    "test": "jest"
+  },
+  "dependencies": {
+    "apollo-boost": "^0.4.9",
+    "graphql": "^15.3.0",
+    "graphql-tag": "^2.11.0",
+    "svelte": "^3.24.0",
+    "svelte-apollo": "^0.3.0"
+  },
+  "devDependencies": {
+    "@snowpack/app-scripts-svelte": "^1.8.3",
+    "@testing-library/jest-dom": "^5.5.0",
+    "@testing-library/svelte": "^3.0.0",
+    "jest": "^26.2.2",
+    "rxjs": "^6.6.2",
+    "snowpack": "^2.7.7",
+    "svelte-check": "^0.1.59"
+  }
+}
