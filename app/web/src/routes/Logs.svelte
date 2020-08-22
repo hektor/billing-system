@@ -64,6 +64,7 @@
   .row {
     display: flex;
     flex-wrap: wrap;
+    margin: 0 auto;
   }
 
   .col {
