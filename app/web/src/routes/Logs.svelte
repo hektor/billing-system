@@ -8,10 +8,28 @@
   export let clientId = 0;
 
   const client = getClient();
-  const logs = query(client, {
+  const approvedLogs = query(client, {
     query: GET_LOGS,
     variables: {
-      filter: { client_id: { id: clientId } },
+      filter: { client_id: { id: clientId }, approved: true },
+      sort: "startTime:asc",
+      start: 219,
+    },
+  });
+
+  const reviewableLogs = query(client, {
+    query: GET_LOGS,
+    variables: {
+      filter: { client_id: { id: clientId }, approved_null: true },
+      sort: "startTime:asc",
+      start: 219,
+    },
+  });
+
+  const disapprovedLogs = query(client, {
+    query: GET_LOGS,
+    variables: {
+      filter: { client_id: { id: clientId }, approved: false },
       sort: "startTime:asc",
       start: 219,
     },
@@ -19,10 +37,14 @@
 </script>
 
 <style>
+  h2 {
+    margin: 1.6rem;
+    padding: 1.6rem;
+  }
+
   ul {
     max-width: 48rem;
-    padding: 6vw;
-    margin: 2.4rem auto;
+    margin: 0.8rem auto;
   }
 
   li {
@@ -38,23 +60,90 @@
   li > span {
     padding: 1.6rem;
   }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .approved {
+    background: var(--color-success-500);
+    color: var(--color-success-100);
+  }
+
+  .disapproved {
+    background: var(--color-danger-500);
+    color: var(--color-danger-100);
+  }
 </style>
 
-<ul>
-  {#await $logs}
-    Loading...
-  {:then { data }}
-    {#each data.logs as { id, startTime, employee_id }}
-      <Link to={`/clients/${clientId}/logs/${id}`}>
-        <li>
-          <span>{formatDate(startTime)}</span>
-          {#if employee_id.name}
-            <span>{employee_id.name}</span>
-          {:else}
-            <span>{employee_id.email}</span>
-          {/if}
-        </li>
-      </Link>
-    {/each}
-  {/await}
-</ul>
+<div class="row">
+  <div class="col">
+    <h2>Disapproved</h2>
+    <ul>
+      {#await $disapprovedLogs}
+        Loading...
+      {:then { data }}
+        {#each data.logs as { id, startTime, employee_id, approved }}
+          <Link to={`/clients/${clientId}/logs/${id}`}>
+            <li class="disapproved">
+              <span>{formatDate(startTime)}</span>
+              {#if employee_id.name}
+                <span>{employee_id.name}</span>
+              {:else}
+                <span>{employee_id.email}</span>
+              {/if}
+            </li>
+          </Link>
+        {/each}
+      {/await}
+    </ul>
+  </div>
+  <div class="col">
+    <h2>Reviewable</h2>
+    <ul>
+      {#await $reviewableLogs}
+        Loading...
+      {:then { data }}
+        {#each data.logs as { id, startTime, employee_id, approved }}
+          <Link to={`/clients/${clientId}/logs/${id}`}>
+            <li class:approved>
+              <span>{formatDate(startTime)}</span>
+              {#if employee_id.name}
+                <span>{employee_id.name}</span>
+              {:else}
+                <span>{employee_id.email}</span>
+              {/if}
+            </li>
+          </Link>
+        {/each}
+      {/await}
+    </ul>
+  </div>
+  <div class="col">
+    <h2>Approved</h2>
+    <ul>
+      {#await $approvedLogs}
+        Loading...
+      {:then { data }}
+        {#each data.logs as { id, startTime, employee_id, approved }}
+          <Link to={`/clients/${clientId}/logs/${id}`}>
+            <li class:approved>
+              <span>{formatDate(startTime)}</span>
+              {#if employee_id.name}
+                <span>{employee_id.name}</span>
+              {:else}
+                <span>{employee_id.email}</span>
+              {/if}
+            </li>
+          </Link>
+        {/each}
+      {/await}
+    </ul>
+  </div>
+</div>
