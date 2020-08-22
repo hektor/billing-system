@@ -617,6 +617,10 @@
                 "type": "string"
               }
             }
+          },
+          "approved": {
+            "type": "boolean",
+            "default": false
           }
         }
       },
@@ -655,6 +659,10 @@
           },
           "client_id": {
             "type": "string"
+          },
+          "approved": {
+            "type": "boolean",
+            "default": false
           }
         }
       }

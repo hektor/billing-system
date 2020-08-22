@@ -1,4 +1,5 @@
 {
+  "kind": "collectionType",
   "connection": "default",
   "collectionName": "logs",
   "info": {
@@ -41,8 +42,12 @@
       "type": "decimal"
     },
     "client_id": {
-      "via": "logs",
-      "model": "client"
+      "model": "client",
+      "via": "logs"
+    },
+    "approved": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

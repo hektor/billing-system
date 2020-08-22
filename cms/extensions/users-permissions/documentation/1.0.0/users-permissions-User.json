@@ -1285,6 +1285,9 @@
                 },
                 "client_id": {
                   "type": "string"
+                },
+                "approved": {
+                  "type": "boolean"
                 }
               }
             }
