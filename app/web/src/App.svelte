@@ -9,7 +9,7 @@
 
   export let url = "";
 
-  const client = new ApolloClient({ uri: "http://localhost:1337/graphql" });
+  const client = new ApolloClient({ uri: process.env.API });
   setClient(client);
 </script>
 
