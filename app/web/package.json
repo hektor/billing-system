@@ -1,23 +1,30 @@
 {
   "scripts": {
-    "dev": "snowpack dev",
-    "build": "snowpack build",
+    "dev": "rollup -cw",
+    "build": "rollup -c",
+    "start": "sirv public -s",
     "test": "jest"
   },
   "dependencies": {
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
     "apollo-boost": "^0.4.9",
     "graphql": "^15.3.0",
     "graphql-tag": "^2.11.0",
-    "svelte": "^3.24.0",
-    "svelte-apollo": "^0.3.0"
+    "sirv-cli": "^1.0.6",
+    "svelte-apollo": "^0.3.0",
+    "svelte-routing": "^1.4.2"
   },
   "devDependencies": {
     "@snowpack/app-scripts-svelte": "^1.8.3",
     "@testing-library/jest-dom": "^5.5.0",
     "@testing-library/svelte": "^3.0.0",
     "jest": "^26.2.2",
+    "rollup-plugin-livereload": "^1.3.0",
+    "rollup-plugin-terser": "^7.0.0",
     "rxjs": "^6.6.2",
     "snowpack": "^2.7.7",
+    "svelte": "^3.24.0",
     "svelte-check": "^0.1.59"
   }
 }
