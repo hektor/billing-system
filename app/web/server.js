@@ -10,4 +10,4 @@ createServer((req, res) => {
     <script src="/dist/bundle.js"></script>
   `)
   res.end()
-}).listen(3000)
+}).listen(process.env.PORT)
