@@ -2,7 +2,7 @@
   "scripts": {
     "dev": "rollup -cw",
     "build": "rollup -c",
-    "start": "sirv public -s",
+    "start": "sirv public -s --host $HOST --port $PORT",
     "test": "jest"
   },
   "dependencies": {
