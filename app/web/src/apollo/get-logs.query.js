@@ -11,6 +11,7 @@ export default gql`
       startTime
       billingRate
       updated_at
+      approved
     }
   }
 `
