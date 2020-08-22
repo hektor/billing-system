@@ -1,14 +1,10 @@
-import React from 'react'
-import { useQuery } from '@apollo/react-hooks'
+import {useQuery} from '@apollo/react-hooks'
+import {ListItemPlaceholder} from '../components'
 
-const Query = ({ children, query, id }) => {
-	const { data, loading, error } = useQuery(query, {
-		variables: { id: parseInt(id) }
-	})
-
-	if (loading) return <p>Loading</p>
-	if (error) return <p>Error: {JSON.stringify(error)}</p>
-	return children({ data })
+export default ({children, query, variables}) => {
+  const {data, loading, error} = useQuery(query, {variables})
+  if (loading)
+    return [...Array(10)].map((_, id) => <ListItemPlaceholder key={id} />)
+  if (error) return <pre>Error: {JSON.stringify(error, null, 2)}</pre>
+  return children(data)
 }
-
-export default Query

@@ -1,57 +1,36 @@
-import {useState} from 'react'
-import Layout from '../../components/Layout'
+import {signup} from '../../auth'
+import {Layout, Form, Button} from '../../components'
 import AuthSwitch from './auth-switch.component'
+import Heading from './heading.component'
+import {signupForm as form} from '../../data'
+import {RiUserAddLine} from 'react-icons/ri'
+
+/*
+ * Create a new account page
+ */
 
 export default () => {
-	const [user, setUser] = useState({
-		email: '',
-		password: ''
-	})
-
-	const handleInput = e => {
-		setUser({ ...user, [e.target.name]: e.target.value })
-	}
-
-	const handleSubmit = e => {
-		e.preventDefault()
-	}
-
+	const handleSubmit = e => signup(e) 
 	return (
 		<Layout col>
-			<h1>Account aanmaken</h1>
-			<form>
-				<label htmlFor="email">Email</label>
-				<input
-					onChange={e => handleInput(e)}
-					type="email"
-					name="email"
-				/>
-				<label htmlFor="contract-type">Contract type</label>
-				<select>
-					<option>Employee</option>
-					<option>Subcontractor</option>
-				</select>
-				<label htmlFor="password">
-          Password
-				</label>
-				<input
-					onChange={e => handleInput(e)}
-					type="password"
-					name="password"
-				/>
-				<button
-					onClick={e => handleSubmit(e)}
-					type="submit"
-				>
-          Sign up
-				</button>
+			<Heading title="Get started" subtitle="Sign up"/>
+			<Form
+				fields={form.fields}
+				onSubmit={handleSubmit}
+			>
+				<Button primary type="submit" icon={<RiUserAddLine/>}>Create account</Button>
 				<AuthSwitch to="in"/>
-			</form>
-			<style>{`
-        button {
-          margin-top: auto;
-        }
-      `}</style>
+			</Form>
+			<style jsx>
+				{`
+          .heading-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            margin: 3.2rem 0 0 1.6rem;
+          }
+        `}
+			</style>
 		</Layout>
 	)
 }

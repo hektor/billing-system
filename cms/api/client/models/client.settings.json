@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "clients",
+  "info": {
+    "name": "Client"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "logs": {
+      "via": "client_id",
+      "collection": "log"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "address": {
+      "type": "json"
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    }
+  }
+}

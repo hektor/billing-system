@@ -1,61 +1,61 @@
-import { useState } from 'react'
+import {useState} from 'react'
+import Link from 'next/link'
+import {RiLoginCircleLine} from 'react-icons/ri'
 import {signin} from '../../auth'
-import Layout from '../../components/Layout'
+import {Layout, Form, Button} from '../../components'
 import AuthSwitch from './auth-switch.component'
+import Heading from './heading.component'
+import {signinForm as form}  from '../../data'
+import {RECOVER_PASSWORD} from '../../routes'
+
+/*
+ * Sign in page for existing users
+ */
 
 export default () => {
-	const [user, setUser] = useState({
-		email: '',
-		password: ''
-	})
-
-	const handleInput = e => {
-		setUser({ ...user, [e.target.name]: e.target.value })
-	}
-
-	const handleSubmit = async e => {
-		e.preventDefault()
-		signin(user)
-	}
-
+	const [errors, setErrors] = useState()
+	const handleSubmit = async e => setErrors(await signin(e))
 	return (
-		<Layout wrap col>
-			<h1>Get started</h1>
-			<form>
-				<label htmlFor="email">Email</label>
-				<input
-					onChange={e => handleInput(e)}
-					type="email"
-					name="email"
-				/>
-				<label htmlFor="password">Password</label>
-				<input
-					onChange={e => handleInput(e)}
-					type="password"
-					name="password"
-				/>
-				{/* <Link href="forgot-password">
-					<a className="forgot-password">Forgot password?</a>
-				</Link> */}
-				<button
-					onClick={e => handleSubmit(e)}
-					type="submit"
-					className='-primary-bg'
-				>
-          Log in
-				</button>
+		<Layout>
+			<Heading title="Get started" subtitle="Sign in"/>
+			{errors && errors.map((error, i) => 
+				<span className="error" key={i}>{error}</span>
+			)}
+			{errors && (
+				<div className="recover-password">
+					<label htmlFor="recover-password">Forgot password?</label>
+					<Link href={RECOVER_PASSWORD}>
+						<Button name="recover-password" title="Recover password"/>
+					</Link>
+				</div>
+			)} 
+			<Form
+				fields={form.fields}
+				onSubmit={handleSubmit}
+				generalErrors={errors} 
+			>
+				<Button primary type="submit" icon={<RiLoginCircleLine/>}>Sign in</Button>
 				<AuthSwitch to="up"/>
-			</form>
-			<style jsx>{`
-        button {
-          margin-top: auto;
+			</Form>
+			<style jsx>
+				{`
+        .error {
+          padding: 1.6rem;
+          margin: 1.6rem 0;
+          font-weight: bold;
+          color: var(--color-warning-500);
+          border: 1px solid var(--color-warning-500);
+          border-radius: var(--border-radius);
         }
 
-        .forgot-password {
-          text-align: right;
-          padding-bottom: 1.6rem;
+        .recover-password {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          padding-left: 1.6rem;
         }
-      `}</style>
+      `}
+			</style>
 		</Layout>
 	)
 }

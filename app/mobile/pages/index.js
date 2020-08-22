@@ -1,5 +1,20 @@
-import React from 'react'
-import Layout from '../components/Layout'
+import {useContext, useEffect} from 'react'
+import Router from 'next/router'
+import {Spinner} from '../components'
+import {AuthCtx} from './_app'
+import {SIGNIN, DASHBOARD} from '../routes'
 
-export default () => <Layout wrap row><h1>Home</h1></Layout>
+/*
+ * Splash page when opening app 
+ */
 
+export default () => { 
+	const {user} = useContext(AuthCtx) 
+
+  useEffect(() => {
+    if (user) Router.replace(DASHBOARD)
+    if (!user) Router.replace(SIGNIN)
+	})
+
+	return <Spinner/> 
+}

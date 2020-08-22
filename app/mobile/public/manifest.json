@@ -1,0 +1,22 @@
+{
+  "name": "Next.js PWA",
+  "short_name": "PWA",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "background_color": "#fff",
+  "description": "make your Next.js application work offline using service workers via Google's workbox",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "start_url": "/",
+  "theme_color": "#000"
+}

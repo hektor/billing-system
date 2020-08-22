@@ -1,7 +1,14 @@
+const withPWA = require('next-pwa')
 require('dotenv').config()
 
 module.exports = {
+	/*
+  * Configure next-pwa 
+  */
+	pwa: {
+		dest: 'public'
+	},
 	env: {
-		GRAPHQL_URL: process.env.GRAPHQL_URL,
+		BASE_URL: process.env.BASE_URL
 	}
 }
