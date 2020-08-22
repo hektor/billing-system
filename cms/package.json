@@ -10,18 +10,18 @@
   "dependencies": {
     "knex": "<0.20.0",
     "sqlite3": "latest",
-    "strapi": "3.0.0-beta.18.6",
-    "strapi-admin": "3.0.0-beta.18.6",
-    "strapi-connector-bookshelf": "3.0.0-beta.18.6",
-    "strapi-plugin-content-manager": "3.0.0-beta.18.6",
-    "strapi-plugin-content-type-builder": "3.0.0-beta.18.6",
-    "strapi-plugin-documentation": "3.0.0-beta.18.6",
-    "strapi-plugin-email": "3.0.0-beta.18.6",
-    "strapi-plugin-graphql": "3.0.0-beta.18.6",
-    "strapi-plugin-upload": "3.0.0-beta.18.6",
-    "strapi-plugin-users-permissions": "3.0.0-beta.18.6",
-    "strapi-provider-email-nodemailer": "^2.0.0",
-    "strapi-utils": "3.0.0-beta.18.6"
+    "strapi": "3.0.0",
+    "strapi-admin": "3.0.0",
+    "strapi-connector-bookshelf": "3.0.0",
+    "strapi-plugin-content-manager": "3.0.0",
+    "strapi-plugin-content-type-builder": "3.0.0",
+    "strapi-plugin-documentation": "3.0.0",
+    "strapi-plugin-email": "3.0.0",
+    "strapi-plugin-graphql": "3.0.0",
+    "strapi-plugin-upload": "3.0.0",
+    "strapi-plugin-users-permissions": "3.0.0",
+    "strapi-provider-email-nodemailer": "latest",
+    "strapi-utils": "3.0.0"
   },
   "author": {
     "name": "Hektor Misplon"
