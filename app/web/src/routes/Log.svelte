@@ -1,4 +1,5 @@
 <script>
+  import Printer16 from "carbon-icons-svelte/lib/Printer16";
   import { Link } from "svelte-routing";
   import { getClient, query } from "svelte-apollo";
   import { GET_LOG } from "../apollo";
@@ -33,6 +34,26 @@
   h3 {
     padding: 1.6rem 0;
   }
+
+  @media print {
+    :global(*) {
+      visibility: hidden;
+    }
+
+    .log * {
+      visibility: visible;
+    }
+  }
+
+  button > :global(svg):first-child {
+    margin-right: 0.8rem;
+  }
+
+  button {
+    margin: 1.6rem;
+    background: var(--color-primary-500);
+    color: var(--color-primary-100);
+  }
 </style>
 
 <div class="back">
@@ -59,3 +80,7 @@
     <span>{data.log.transportationCost} euros/km</span>
   </div>
 {/await}
+<button on:click={() => window.print()}>
+  <Printer16 />
+  Print
+</button>
