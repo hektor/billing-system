@@ -619,8 +619,7 @@
             }
           },
           "approved": {
-            "type": "boolean",
-            "default": false
+            "type": "boolean"
           }
         }
       },
@@ -661,8 +660,7 @@
             "type": "string"
           },
           "approved": {
-            "type": "boolean",
-            "default": false
+            "type": "boolean"
           }
         }
       }
