@@ -51,7 +51,7 @@ const postOptions = body => ({
 
 export const signup = async ({email, password}) => {
   const options = postOptions({email, password})
-  const res = await (await fetch(api.SIGNUP, postOptions(options))).json()
+  const res = await (await fetch(api.SIGNUP, options)).json()
   if (res.statusCode === 200) return handleSuccess(res)
   if (res.statusCode === 400) return handleInvalid(res)
 }
