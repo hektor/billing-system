@@ -12,7 +12,16 @@ module.exports = ({ env }) => ({
         password: env("DATABASE_PASSWORD", "strapi"),
         ssl: { rejectUnauthorized: false }
       },
-      options: {}
+      options: {
+        debug: true,
+        pool: {
+          min: 0,
+          max: 10,
+          idleTimeoutMillis: 30000,
+          createTimeoutMillis: 30000,
+          acquireTimeoutMillis: 30000
+        }
+      }
     }
   }
 });
