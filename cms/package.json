@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "knex": "<0.20.0",
+    "pg": "^8.3.2",
     "sqlite3": "latest",
     "strapi": "3.0.0",
     "strapi-admin": "3.0.0",
