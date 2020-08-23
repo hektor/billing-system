@@ -9,7 +9,7 @@
 
   export let url = "";
 
-  const client = new ApolloClient({ uri: process.env.API });
+  const client = new ApolloClient({ uri: API });
   setClient(client);
 </script>
 

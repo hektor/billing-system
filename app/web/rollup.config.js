@@ -3,6 +3,10 @@ import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import livereload from 'rollup-plugin-livereload'
 import { terser } from 'rollup-plugin-terser'
+import dotenv from 'dotenv'
+import replace from '@rollup/plugin-replace'
+
+dotenv.config()
 
 const production = !process.env.ROLLUP_WATCH
 
@@ -40,7 +44,11 @@ export default {
     file: 'public/build/bundle.js',
   },
   plugins: [
+    replace({
+      API: JSON.stringify(process.env.API),
+    }),
     svelte({
+      hydratable: true,
       // enable run-time checks when not in production
       dev: !production,
       // we'll extract any component CSS out into
