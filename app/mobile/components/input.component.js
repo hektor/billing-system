@@ -29,6 +29,7 @@ const Input = ({
       />
       {type === 'password' && (
         <button
+          type='button'
           onMouseDown={() => setInputVisibility(true)}
           onMouseUp={() => setInputVisibility(false)}
         >
