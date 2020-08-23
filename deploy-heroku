@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
-git subtree push --prefix cms heroku master
+heroku git:remote --remote heroku-cms -a onefold-cms
+heroku git:remote --remote heroku-pwa -a onefold-pwa
+heroku git:remote --remote heroku-web -a onefold-web
+git subtree push --prefix cms heroku-cms master
+git subtree push --prefix app/mobile heroku-pwa master
+git subtree push --prefix app/web heroku-web master
