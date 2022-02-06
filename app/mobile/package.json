@@ -22,7 +22,11 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start -p $PORT"
+    "start": "next start -p $PORT",
+    "fix:prettier": "prettier **/*.js --write",
+    "fix:lint": "eslint src --ext .js --fix",
+    "test:lint": "eslint src --ext .js",
+    "test:prettier": "prettier **/*.js --list-different"
   },
   "devDependencies": {
     "cypress": "^4.10.0",
