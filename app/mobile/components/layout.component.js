@@ -1,30 +1,33 @@
-import {useEffect} from 'react'
-import {globalStyles} from '../styles'
+import { useEffect } from 'react'
+import { globalStyles } from '../styles'
 
 /*
- * Layout wrapper component 
+ * Layout wrapper component
  */
 
-export default ({children, bottomNav}) => {
-
-	/*
+export default ({ children, bottomNav }) => {
+  /*
    * Set viewport height css variable
    * Get correct height with url bar on mobile browsers
    */
-	const setViewportHeight = () => document.documentElement.style.setProperty('--viewport-height', `${window.innerHeight}px`)
+  const setViewportHeight = () =>
+    document.documentElement.style.setProperty(
+      '--viewport-height',
+      `${window.innerHeight}px`,
+    )
 
-	useEffect(() => {
-		setViewportHeight() 
-		window.addEventListener('resize', setViewportHeight)
-	}, [])
+  useEffect(() => {
+    setViewportHeight()
+    window.addEventListener('resize', setViewportHeight)
+  }, [])
 
-	return (
-		<div className="container">
-			<main className="content">
-				{children}
-			</main>
-			<style jsx global>{globalStyles}</style>
-			<style jsx>{`
+  return (
+    <div className='container'>
+      <main className='content'>{children}</main>
+      <style jsx global>
+        {globalStyles}
+      </style>
+      <style jsx>{`
 				.container {
 					display: flex;
 					flex-direction: column;
@@ -55,6 +58,6 @@ export default ({children, bottomNav}) => {
 					  border-radius: var(--border-radius);
 					}
 			`}</style>
-		</div>
-	)
+    </div>
+  )
 }

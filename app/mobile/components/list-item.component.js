@@ -1,13 +1,13 @@
 import Link from 'next/link'
-import {useLoading} from '../hooks'
-import {Spinner} from '../components'
+import { useLoading } from '../hooks'
+import { Spinner } from '../components'
 
 /*
  * List item component with loading state
  */
 
-export default ({href, id, children}) => {
-  const {load, isLoading} = useLoading()
+export default ({ href, id, children }) => {
+  const { load, isLoading } = useLoading()
   return (
     <Link key={id} href={href}>
       <a className='item' onClick={load}>

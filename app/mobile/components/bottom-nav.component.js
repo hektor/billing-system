@@ -1,27 +1,36 @@
-import {useState, useEffect} from 'react'
-import {useRouter} from 'next/router'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
-import {RiClipboardLine, RiDashboardLine, RiContactsBook2Line} from 'react-icons/ri'
-import {useLoading} from '../hooks'
-import {Spinner} from '.'
-import {LOGS, DASHBOARD, CLIENTS} from '../routes'
+import {
+  RiClipboardLine,
+  RiDashboardLine,
+  RiContactsBook2Line,
+} from 'react-icons/ri'
+import { useLoading } from '../hooks'
+import { Spinner } from '.'
+import { LOGS, DASHBOARD, CLIENTS } from '../routes'
 
 /*
  * Tab component for bottom navigation
  */
 
-const Tab = ({href, title, icon}) => {
-	const {load, isLoading} = useLoading()
-	return (
-		<>
-			<Link href={href}>
-				<a onClick={`/${useRouter().pathname.split('/')[1]}` !== href && load} className={`/${useRouter().pathname.split('/')[1]}` === href && 'active'}>
-					{isLoading ? <Spinner size="32"/> : icon}
-					<span>{title}</span>
-				</a>
-			</Link>
-			<style jsx>
-				{`
+const Tab = ({ href, title, icon }) => {
+  const { load, isLoading } = useLoading()
+  return (
+    <>
+      <Link href={href}>
+        <a
+          onClick={`/${useRouter().pathname.split('/')[1]}` !== href && load}
+          className={
+            `/${useRouter().pathname.split('/')[1]}` === href && 'active'
+          }
+        >
+          {isLoading ? <Spinner size='32' /> : icon}
+          <span>{title}</span>
+        </a>
+      </Link>
+      <style jsx>
+        {`
           a {
             flex: 1;
             display: flex;
@@ -32,9 +41,9 @@ const Tab = ({href, title, icon}) => {
             align-items: center;
             justify-content: center;
             border-radius: var(--border-radius-lg);
-            border: .2rem solid var(--color-white);
+            border: 0.2rem solid var(--color-white);
             opacity: 0.5;
-            transition: .16s;
+            transition: 0.16s;
           }
 
           a:first-child {
@@ -47,8 +56,8 @@ const Tab = ({href, title, icon}) => {
             margin-left: 0;
           }
 
-          @media(min-width: 480px) {
-            a { 
+          @media (min-width: 480px) {
+            a {
               flex-direction: row;
             }
           }
@@ -65,7 +74,7 @@ const Tab = ({href, title, icon}) => {
 
           .active {
             color: var(--color-primary-700);
-            border: .2rem solid var(--color-primary-100);
+            border: 0.2rem solid var(--color-primary-100);
             opacity: 1;
           }
 
@@ -73,54 +82,68 @@ const Tab = ({href, title, icon}) => {
             content: '';
             position: absolute;
             bottom: 0.8rem;
-            height: .4rem;
+            height: 0.4rem;
             width: 3.2rem;
             border-radius: var(--border-radius);
             background: var(--color-primary-700);
           }
         `}
-			</style>
-		</>
-	)}
+      </style>
+    </>
+  )
+}
 
 /*
  * Bottom navigation
  */
 
-export default ({children}) => {
-
-	/*
+export default ({ children }) => {
+  /*
    * Track scroll position
    */
 
-	const [scrollY, setScrollY] = useState(0)
+  const [scrollY, setScrollY] = useState(0)
 
-	useEffect(() => {
-		window.addEventListener('scroll', () => setScrollY(window.pageYOffset))
-	}, [])
+  useEffect(() => {
+    window.addEventListener('scroll', () => setScrollY(window.pageYOffset))
+  }, [])
 
-	/*
+  /*
    * Tab data
    */
 
   const tabs = [
-    {href: LOGS, title: 'Logs', icon: <RiClipboardLine size="32" />},
-    {href: DASHBOARD, title: 'Dashboard', icon: <RiDashboardLine size="32" />},
-    {href: CLIENTS, title: 'Clients', icon: <RiContactsBook2Line size="32" />},
-	]
-  
-	return (
-		<>
-			<nav>
-				{tabs.map(({href, title, icon}, id) => <Tab href={href} title={title} icon={icon} key={id}/>)}
-				{children && (
-					<div className={`nav-secondary ${scrollY > 240 && 'nav-secondary-hidden'}`}>
-						{children}
-					</div>
-				)}
-			</nav>
-			<style jsx>
-				{`
+    { href: LOGS, title: 'Logs', icon: <RiClipboardLine size='32' /> },
+    {
+      href: DASHBOARD,
+      title: 'Dashboard',
+      icon: <RiDashboardLine size='32' />,
+    },
+    {
+      href: CLIENTS,
+      title: 'Clients',
+      icon: <RiContactsBook2Line size='32' />,
+    },
+  ]
+
+  return (
+    <>
+      <nav>
+        {tabs.map(({ href, title, icon }, id) => (
+          <Tab href={href} title={title} icon={icon} key={id} />
+        ))}
+        {children && (
+          <div
+            className={`nav-secondary ${
+              scrollY > 240 && 'nav-secondary-hidden'
+            }`}
+          >
+            {children}
+          </div>
+        )}
+      </nav>
+      <style jsx>
+        {`
           nav {
             z-index: 1000;
             position: fixed;
@@ -165,7 +188,7 @@ export default ({children}) => {
           }
 
      `}
-			</style>
-		</>
-	)
+      </style>
+    </>
+  )
 }

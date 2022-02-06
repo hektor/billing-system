@@ -1,16 +1,16 @@
-import {useRouter} from 'next/router'
-import {Query, GET_CLIENT} from '../apollo'
-import {Header, Button} from '../components'
-import {RiPhoneLine, RiMailLine} from 'react-icons/ri'
+import { useRouter } from 'next/router'
+import { Query, GET_CLIENT } from '../apollo'
+import { Header, Button } from '../components'
+import { RiPhoneLine, RiMailLine } from 'react-icons/ri'
 
 /*
  * Client details
  */
 
 export default () => (
-  <Query query={GET_CLIENT} variables={{id: useRouter().query.id}}>
-    {({client}) => {
-      const {name, email, phone, address} = client
+  <Query query={GET_CLIENT} variables={{ id: useRouter().query.id }}>
+    {({ client }) => {
+      const { name, email, phone, address } = client
       return (
         <>
           <Header title={name} />

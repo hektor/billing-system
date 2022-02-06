@@ -1,20 +1,20 @@
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import {useForm} from '../hooks'
-import {FormField} from '../components'
+import { useForm } from '../hooks'
+import { FormField } from '../components'
 
 /*
  * Data based form component
  */
 
-const Form = ({fields, children, onSubmit, generalErrors}) => {
+const Form = ({ fields, children, onSubmit, generalErrors }) => {
   const {
     onChange,
     values,
     errors,
     onSubmit: onFormSubmit,
     showFeedback,
-    setShowFeedback
+    setShowFeedback,
   } = useForm(fields)
 
   useEffect(() => {
@@ -52,7 +52,7 @@ Form.propTypes = {
   title: PropTypes.string,
   fields: PropTypes.arrayOf(PropTypes.object).isRequired,
   onSubmit: PropTypes.func.isRequired,
-  children: PropTypes.arrayOf(PropTypes.element)
+  children: PropTypes.arrayOf(PropTypes.element),
 }
 
 export default Form

@@ -1,16 +1,16 @@
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 import Spark from 'dailychart'
 
 /*
  * Sparkline component
  */
 
-export default ({values, length, id}) => {
+export default ({ values, length, id }) => {
   useEffect(() => {
     Spark.create(`#${id}`, {
       lineWidth: 2,
       colorPositive: 'var(--color-primary-500)',
-      colorNegative: 'var(--color-primary-500)'
+      colorNegative: 'var(--color-primary-500)',
     })
   }, [])
 

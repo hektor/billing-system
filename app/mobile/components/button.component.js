@@ -1,6 +1,14 @@
-import {Spinner} from '.'
+import { Spinner } from '.'
 
-export default ({title, type, onClick, isLoading, children, primary, icon}) => (
+export default ({
+  title,
+  type,
+  onClick,
+  isLoading,
+  children,
+  primary,
+  icon,
+}) => (
   <button onClick={onClick} type={type || 'button'}>
     {icon && !isLoading && <i>{icon}</i>}
     {children}

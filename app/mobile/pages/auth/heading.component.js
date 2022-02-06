@@ -2,7 +2,7 @@
  * Heading for authentication pages
  */
 
-export default ({title, subtitle, children}) => (
+export default ({ title, subtitle, children }) => (
   <div>
     <h1>{title}</h1>
     <h2>{subtitle}</h2>

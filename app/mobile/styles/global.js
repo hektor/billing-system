@@ -1,4 +1,4 @@
-import {getHeadingSizes} from './helpers'
+import { getHeadingSizes } from './helpers'
 import css from 'styled-jsx/css'
 
 /*

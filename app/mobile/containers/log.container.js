@@ -1,20 +1,20 @@
-import Router, {useRouter} from 'next/router'
+import Router, { useRouter } from 'next/router'
 import {
   RiTimeLine,
   RiContactsBook2Line,
   RiPinDistanceLine,
   RiMoneyEuroCircleLine,
-  RiEditLine
+  RiEditLine,
 } from 'react-icons/ri'
-import {Query, GET_LOG} from '../apollo'
-import {Header, Button, Card} from '../components'
+import { Query, GET_LOG } from '../apollo'
+import { Header, Button, Card } from '../components'
 import {
   formatDate,
   formatTime,
   calculateWorkday,
-  timeToDecimal
+  timeToDecimal,
 } from '../utils/date'
-import {LOGS, CLIENTS} from '../routes'
+import { LOGS, CLIENTS } from '../routes'
 
 /*
  * Log details
@@ -22,8 +22,8 @@ import {LOGS, CLIENTS} from '../routes'
 
 export default () => (
   <>
-    <Query query={GET_LOG} variables={{id: Number(useRouter().query.id)}}>
-      {({log}) => {
+    <Query query={GET_LOG} variables={{ id: Number(useRouter().query.id) }}>
+      {({ log }) => {
         const {
           id,
           client_id,
@@ -34,7 +34,7 @@ export default () => (
           resourcesUsed,
           billingRate,
           distance,
-          transportationCost
+          transportationCost,
         } = log
         return (
           <>
@@ -78,10 +78,14 @@ export default () => (
                   <span>
                     {Number(
                       timeToDecimal(
-                        calculateWorkday(startTime, endTime, totalBreakDuration)
+                        calculateWorkday(
+                          startTime,
+                          endTime,
+                          totalBreakDuration,
+                        ),
                       ) *
                         billingRate +
-                        distance * transportationCost
+                        distance * transportationCost,
                     ).toFixed(2)}
                   </span>
                 </Card>

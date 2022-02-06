@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 /*
@@ -93,12 +93,12 @@ Input.propTypes = {
   required: PropTypes.bool,
   error: PropTypes.string,
   value: PropTypes.string,
-  icon: PropTypes.element
+  icon: PropTypes.element,
 }
 
 Input.defaultProps = {
   icon: null,
-  placeholder: ''
+  placeholder: '',
 }
 
 export default Input

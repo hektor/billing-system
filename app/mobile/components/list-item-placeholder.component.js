@@ -4,16 +4,16 @@
  */
 
 export default () => (
-	<div className="skeleton">
-		<style jsx>
-			{`
+  <div className='skeleton'>
+    <style jsx>
+      {`
         :global(.skeleton) {
           width: 100%;
           height: 6.4rem;
           margin: 0.8rem 0;
           position: relative;
           background: var(--color-primary-100);
-          border-radius: var(--border-radius)
+          border-radius: var(--border-radius);
         }
 
         :global(.skeleton::before) {
@@ -39,6 +39,6 @@ export default () => (
           }
         }
       `}
-		</style>
-	</div>
+    </style>
+  </div>
 )

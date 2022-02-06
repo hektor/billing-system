@@ -1,10 +1,10 @@
-import {useState} from 'react'
-import {signup} from '../../auth'
-import {Layout, Form, Button} from '../../components'
+import { useState } from 'react'
+import { signup } from '../../auth'
+import { Layout, Form, Button } from '../../components'
 import AuthSwitch from './auth-switch.component'
 import Heading from './heading.component'
-import {signupForm as form} from '../../data'
-import {RiUserAddLine} from 'react-icons/ri'
+import { signupForm as form } from '../../data'
+import { RiUserAddLine } from 'react-icons/ri'
 
 /*
  * Create a new account page

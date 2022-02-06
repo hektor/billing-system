@@ -1,16 +1,23 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import Router from 'next/router'
 import {
   RiFileAddLine,
   RiFilter2Line,
   RiFilter3Line,
-  RiCloseLine
+  RiCloseLine,
 } from 'react-icons/ri'
-import {Layout, Header, BottomNav, Button, Modal, Form} from '../../components'
-import {Logs} from '../../containers'
-import {filterLogsForm} from '../../data'
-import {sortLogsForm} from '../../data'
-import {CREATE_LOG} from '../../routes'
+import {
+  Layout,
+  Header,
+  BottomNav,
+  Button,
+  Modal,
+  Form,
+} from '../../components'
+import { Logs } from '../../containers'
+import { filterLogsForm } from '../../data'
+import { sortLogsForm } from '../../data'
+import { CREATE_LOG } from '../../routes'
 
 /*
  * Log list page

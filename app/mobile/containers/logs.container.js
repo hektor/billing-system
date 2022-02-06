@@ -1,20 +1,20 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import {
   RiTimeLine,
   RiContactsBook2Line,
   RiArrowLeftLine,
-  RiArrowRightLine
+  RiArrowRightLine,
 } from 'react-icons/ri'
-import {Query, GET_LOGS} from '../apollo'
-import {formatDate} from '../utils/date'
-import {ListItem} from '../components'
-import {LOGS} from '../routes'
+import { Query, GET_LOGS } from '../apollo'
+import { formatDate } from '../utils/date'
+import { ListItem } from '../components'
+import { LOGS } from '../routes'
 
 /*
  * List of logs for this user
  */
 
-export default ({filter, sort}) => {
+export default ({ filter, sort }) => {
   const [start, setStart] = useState(0)
   return (
     <div className='list'>
@@ -33,12 +33,12 @@ export default ({filter, sort}) => {
         variables={{
           start,
           filter:
-            filter && filter.length > 0 ? {client_id: {id_in: filter}} : {},
-          sort
+            filter && filter.length > 0 ? { client_id: { id_in: filter } } : {},
+          sort,
         }}
       >
-        {({logs}) =>
-          logs.map(({id, client_id, startTime}) => (
+        {({ logs }) =>
+          logs.map(({ id, client_id, startTime }) => (
             <ListItem key={id} href={`${LOGS}/${id}`}>
               <span>{client_id.name}</span>
               <span>{formatDate(startTime)}</span>

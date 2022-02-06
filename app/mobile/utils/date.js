@@ -15,7 +15,7 @@ const weekDays = [
   'thursday',
   'friday',
   'saturday',
-  'sunday'
+  'sunday',
 ]
 
 /*
@@ -40,7 +40,7 @@ const months = [
   'September',
   'October',
   'November',
-  'December'
+  'December',
 ]
 
 /*
@@ -57,13 +57,13 @@ const dateFormat = {
   human: {
     weekday: 'long',
     day: 'numeric',
-    month: 'long'
+    month: 'long',
   },
   short: {
     weekday: 'short',
     day: 'numeric',
-    month: 'short'
-  }
+    month: 'short',
+  },
 }
 
 /*
@@ -74,7 +74,7 @@ const dateFormat = {
 export const formatDate = (date, structure) =>
   new Date(date).toLocaleDateString(
     'en-BE',
-    dateFormat[structure] || dateFormat.human
+    dateFormat[structure] || dateFormat.human,
   )
 
 /*
@@ -116,7 +116,7 @@ export const timeToDecimal = time => {
 
 export const mergeDateTime = (date, time) =>
   new Date(
-    `${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${time}:00`
+    `${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${time}:00`,
   )
 
 /*

@@ -1,4 +1,4 @@
-export default ({title, icon, children}) => (
+export default ({ title, icon, children }) => (
   <div className='card'>
     <div className='card-header'>
       {icon}

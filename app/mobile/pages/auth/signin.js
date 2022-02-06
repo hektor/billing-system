@@ -1,12 +1,12 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
-import {RiLoginCircleLine} from 'react-icons/ri'
-import {signin} from '../../auth'
-import {Layout, Form, Button} from '../../components'
+import { RiLoginCircleLine } from 'react-icons/ri'
+import { signin } from '../../auth'
+import { Layout, Form, Button } from '../../components'
 import AuthSwitch from './auth-switch.component'
 import Heading from './heading.component'
-import {signinForm as form} from '../../data'
-import {RECOVER_PASSWORD} from '../../routes'
+import { signinForm as form } from '../../data'
+import { RECOVER_PASSWORD } from '../../routes'
 
 /*
  * Sign in page for existing users

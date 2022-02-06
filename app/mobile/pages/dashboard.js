@@ -1,35 +1,35 @@
-import {useContext} from 'react'
+import { useContext } from 'react'
 import Link from 'next/link'
-import {AuthCtx} from './_app'
+import { AuthCtx } from './_app'
 import {
   Query,
   GET_LATEST_LOG,
   GET_THIS_WEEK_LOGS,
-  GET_THIS_MONTH_LOGS
+  GET_THIS_MONTH_LOGS,
 } from '../apollo'
 import {
   RiFlashlightLine,
   RiAccountCircleLine,
   RiBarChartLine,
   RiBarChartGroupedLine,
-  RiClipboardLine
+  RiClipboardLine,
 } from 'react-icons/ri'
-import {Layout, Header, BottomNav, Card, Spark} from '../components'
+import { Layout, Header, BottomNav, Card, Spark } from '../components'
 import {
   now,
   diffDays,
   calculateWorkday,
   timeToDecimal,
-  formatTime
+  formatTime,
 } from '../utils/date'
-import {ACCOUNT} from '../routes'
+import { ACCOUNT } from '../routes'
 
 /*
  * Overview landing page for authenticated users
  */
 
 export default () => {
-  const {user} = useContext(AuthCtx)
+  const { user } = useContext(AuthCtx)
   const getGreeting = () =>
     user && user.name ? 'Welcome' + user.name : 'Welcome'
 
@@ -38,13 +38,13 @@ export default () => {
   const startOfMonth = new Date(
     date.getFullYear(),
     date.getMonth(),
-    1
+    1,
   ).toISOString()
 
   const startOfWeek = () => {
     const today = new Date()
     return new Date(
-      today.setDate(today.getDate() - today.getDay())
+      today.setDate(today.getDate() - today.getDay()),
     ).toISOString()
   }
 
@@ -52,7 +52,7 @@ export default () => {
   const daysInMonth = new Date(
     date.getFullYear(),
     date.getMonth() + 1,
-    0
+    0,
   ).getDate()
 
   const currentDayInWeek = new Date().getDay()
@@ -67,7 +67,7 @@ export default () => {
         totalBreakDuration,
         billingRate,
         distance,
-        transportationCost
+        transportationCost,
       }) => {
         return {
           total:
@@ -75,21 +75,21 @@ export default () => {
               calculateWorkday(
                 new Date(startTime),
                 new Date(endTime),
-                totalBreakDuration
-              )
+                totalBreakDuration,
+              ),
             ) *
               billingRate +
             distance * transportationCost,
           day:
             period === 'month'
               ? new Date(startTime).getDate()
-              : new Date(startTime).getDay()
+              : new Date(startTime).getDay(),
         }
-      }
+      },
     )
 
   const getTotal = dayTotals =>
-    dayTotals.reduce((monthTotal, {total}) => monthTotal + total, 0)
+    dayTotals.reduce((monthTotal, { total }) => monthTotal + total, 0)
 
   const renderLatestActivity = startTime => {
     const daysAgo = diffDays(now, startTime)
@@ -123,8 +123,8 @@ export default () => {
       {/* user && formatDate(user.lastSeen) */}
       <section>
         <Query query={GET_LATEST_LOG} id={null}>
-          {({logs}) => {
-            const {startTime, endTime} = logs[0]
+          {({ logs }) => {
+            const { startTime, endTime } = logs[0]
             return (
               <Card icon={<RiFlashlightLine />} title='Latest activity'>
                 <div className='highlight'>
@@ -143,15 +143,15 @@ export default () => {
             variables={{
               limit: 7,
               startOfWeek: startOfWeek(),
-              sort: 'startTime:asc'
+              sort: 'startTime:asc',
             }}
           >
-            {({logs}) => {
+            {({ logs }) => {
               const dayTotals = getDayTotals(logs, 'week')
               const weekTotal = getTotal(dayTotals).toFixed(2)
               let values = Array(7).fill(0)
 
-              dayTotals.map(({day, total}) => {
+              dayTotals.map(({ day, total }) => {
                 values[day - 1] = total
               })
 
@@ -186,15 +186,15 @@ export default () => {
             variables={{
               limit: daysInMonth,
               startOfMonth,
-              sort: 'startTime:asc'
+              sort: 'startTime:asc',
             }}
           >
-            {({logs}) => {
+            {({ logs }) => {
               const dayTotals = getDayTotals(logs, 'month')
               const monthTotal = getTotal(dayTotals).toFixed(2)
               let values = Array(daysInMonth).fill(0)
 
-              dayTotals.map(({day, total}) => {
+              dayTotals.map(({ day, total }) => {
                 values[day - 1] = total
               })
 

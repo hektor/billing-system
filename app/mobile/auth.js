@@ -1,9 +1,9 @@
 import Router from 'next/router'
 import nextCookie from 'next-cookies'
 import cookie from 'js-cookie'
-import {SIGNIN, DASHBOARD} from './routes'
+import { SIGNIN, DASHBOARD } from './routes'
 
-import {api} from './config'
+import { api } from './config'
 
 /*
  * Flatten messages array from response
@@ -11,8 +11,8 @@ import {api} from './config'
 
 const flattenMessages = messages => {
   let flattened = []
-  messages.map(({messages}) =>
-    messages.map(({message}) => flattened.push(message))
+  messages.map(({ messages }) =>
+    messages.map(({ message }) => flattened.push(message)),
   )
   return flattened
 }
@@ -21,9 +21,9 @@ const flattenMessages = messages => {
  * Handle a succesful authentication request
  */
 
-const handleSuccess = ({jwt, user}) => {
-  cookie.set('token', jwt, {expires: 1})
-  cookie.set('user', user, {expires: 1})
+const handleSuccess = ({ jwt, user }) => {
+  cookie.set('token', jwt, { expires: 1 })
+  cookie.set('user', user, { expires: 1 })
   Router.replace(DASHBOARD)
   return null
 }
@@ -32,7 +32,7 @@ const handleSuccess = ({jwt, user}) => {
  * Handle a failed authentication request
  */
 
-const handleInvalid = ({/* statusCode, error, */ message}) =>
+const handleInvalid = ({ /* statusCode, error, */ message }) =>
   flattenMessages(message)
 
 /*
@@ -41,16 +41,16 @@ const handleInvalid = ({/* statusCode, error, */ message}) =>
 
 const postOptions = body => ({
   method: 'POST',
-  headers: {'Content-Type': 'application/json'},
-  body: JSON.stringify(body)
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(body),
 })
 
 /*
  * Handle a signup request
  */
 
-export const signup = async ({email, password}) => {
-  const options = postOptions({email, password})
+export const signup = async ({ email, password }) => {
+  const options = postOptions({ email, password })
   const res = await fetch(api.SIGNUP, options)
   if (res.statusCode === 200) return handleSuccess(await res.json())
   if (res.statusCode !== 200) return handleInvalid(await res.json())
@@ -60,14 +60,14 @@ export const signup = async ({email, password}) => {
  * Handle a signin request
  */
 
-export const signin = async ({email, password}) => {
-  const options = postOptions({identifier: email, password})
+export const signin = async ({ email, password }) => {
+  const options = postOptions({ identifier: email, password })
   const res = await fetch(api.SIGNIN, options)
   if (res.status === 200) return handleSuccess(await res.json())
   if (res.status === 400) return handleInvalid(await res.json())
   if (res.status === 429)
     return [
-      'Too many failed signin attempts, try again later or reset password'
+      'Too many failed signin attempts, try again later or reset password',
     ]
 }
 
@@ -75,17 +75,17 @@ export const signin = async ({email, password}) => {
  * Handle a password recovery request
  */
 
-export const sendRecoveryLink = async ({email}) => {
-  const res = await fetch(api.FORGOT_PASSWORD, postOptions({email}))
+export const sendRecoveryLink = async ({ email }) => {
+  const res = await fetch(api.FORGOT_PASSWORD, postOptions({ email }))
   if (res.status === 400)
     return {
       message: 'We could not send a recovery link at this time',
-      type: 'warning'
+      type: 'warning',
     }
   if (res.status === 200)
     return {
       message: 'We sent a recovery link to this email address',
-      type: 'success'
+      type: 'success',
     }
 }
 
@@ -93,21 +93,25 @@ export const sendRecoveryLink = async ({email}) => {
  * Handle a password reset request
  */
 
-export const resetPassword = async ({password, passwordConfirmation, code}) => {
+export const resetPassword = async ({
+  password,
+  passwordConfirmation,
+  code,
+}) => {
   const res = await fetch(
     api.RESET_PASSWORD,
-    postOptions({password, passwordConfirmation, code})
+    postOptions({ password, passwordConfirmation, code }),
   )
   if (res.status === 400)
-    return {message: 'This recovery link is invalid', type: 'warning'}
+    return { message: 'This recovery link is invalid', type: 'warning' }
 
   if (res.status === 200) return handleSuccess(await res.json())
 }
 
 export const auth = ctx => {
-  const {token} = nextCookie(ctx)
+  const { token } = nextCookie(ctx)
   if (ctx.req && !token) {
-    ctx.res.writeHead(302, {Location: '/signin'})
+    ctx.res.writeHead(302, { Location: '/signin' })
     ctx.res.end()
     return
   }

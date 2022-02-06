@@ -1,11 +1,11 @@
-import {useRouter} from 'next/router'
-import {Query, GET_LOG} from '../apollo'
-import {Header, Button} from '../components'
+import { useRouter } from 'next/router'
+import { Query, GET_LOG } from '../apollo'
+import { Header, Button } from '../components'
 import {
   formatDate,
   formatTime,
   calculateWorkday,
-  timeToDecimal
+  timeToDecimal,
 } from '../utils/date'
 
 /*
@@ -14,8 +14,8 @@ import {
 
 export default () => (
   <>
-    <Query query={GET_LOG} variables={{id: Number(useRouter().query.id)}}>
-      {({log}) => {
+    <Query query={GET_LOG} variables={{ id: Number(useRouter().query.id) }}>
+      {({ log }) => {
         const {
           id,
           client_id,
@@ -26,7 +26,7 @@ export default () => (
           resourcesUsed,
           billingRate,
           distance,
-          transportationCost
+          transportationCost,
         } = log
         return (
           <>

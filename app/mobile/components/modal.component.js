@@ -3,13 +3,15 @@
  * To be toggled from parent
  */
 
-export default ({toggle, children, bottom}) => (
-	<div className={`modal-container ${toggle ? 'container-open' : 'container-closed'}`}>
-		<div className={`modal ${toggle ? 'open' : 'closed'}`}>
-			{children}
-		</div>
-		<style>
-			{`
+export default ({ toggle, children, bottom }) => (
+  <div
+    className={`modal-container ${
+      toggle ? 'container-open' : 'container-closed'
+    }`}
+  >
+    <div className={`modal ${toggle ? 'open' : 'closed'}`}>{children}</div>
+    <style>
+      {`
         .modal-container {
           position: fixed;
           z-index: 100;
@@ -61,6 +63,6 @@ export default ({toggle, children, bottom}) => (
           transform: translateY(100vh) scale(0);
         }
       `}
-		</style>
-	</div>
+    </style>
+  </div>
 )

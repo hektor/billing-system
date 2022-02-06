@@ -1,8 +1,8 @@
-import App from './App.svelte'
+import App from "./App.svelte";
 
 const app = new App({
   hydrate: true,
   target: document.body,
-})
+});
 
-export default app
+export default app;

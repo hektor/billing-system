@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import gql from "graphql-tag";
 
 /*
  * Get logs for this week with billing properties
@@ -6,7 +6,7 @@ import gql from 'graphql-tag'
 
 export default gql`
   query ThisWeekLogs($startOfWeek: DateTime!, $limit: Int!, $sort: String!) {
-    logs(limit: $limit, where: {startTime_gt: $startOfWeek}, sort: $sort) {
+    logs(limit: $limit, where: { startTime_gt: $startOfWeek }, sort: $sort) {
       startTime
       endTime
       totalBreakDuration
@@ -15,4 +15,4 @@ export default gql`
       transportationCost
     }
   }
-`
+`;

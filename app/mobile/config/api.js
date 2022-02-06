@@ -1,6 +1,6 @@
-import {env} from '.'
+import { env } from '.'
 
-const {BASE_URL} = env
+const { BASE_URL } = env
 
 /*
  * Define API endpoints for current environment
@@ -12,5 +12,5 @@ export default {
   SIGNIN: `${BASE_URL}/auth/local`,
   SIGNUP: `${BASE_URL}/auth/local/register`,
   FORGOT_PASSWORD: `${BASE_URL}/auth/forgot-password`,
-  RESET_PASSWORD: `${BASE_URL}/auth/reset-password`
+  RESET_PASSWORD: `${BASE_URL}/auth/reset-password`,
 }
