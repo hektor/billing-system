@@ -11,22 +11,14 @@
     "browser": true,
     "node": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "prettier",
-    "prettier/react"
-  ],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
   "plugins": ["prettier", "react", "react-hooks"],
   "rules": {
     "react/prop-types": 0,
     "react/react-in-jsx-scope": "off",
     "react/display-name": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "error",
-
-    "array-bracket-spacing": ["error", "never"],
-    "object-curly-spacing": ["error", "never"]
+    "react-hooks/exhaustive-deps": "error"
   },
   "settings": {
     "react": {
