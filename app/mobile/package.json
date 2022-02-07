@@ -11,13 +11,13 @@
     "graphql-tag": "^2.10.1",
     "isomorphic-unfetch": "^3.0.0",
     "js-cookie": "^2.2.1",
-    "next": "latest",
+    "next": "12",
     "next-cookies": "^2.0.3",
     "next-pwa": "^3.0.1",
     "next-with-apollo": "latest",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-icons": "^3.10.0"
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-icons": "4"
   },
   "scripts": {
     "dev": "next",
