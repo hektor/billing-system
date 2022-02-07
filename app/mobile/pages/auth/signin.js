@@ -27,7 +27,7 @@ export default () => {
       {errors && (
         <div className='recover-password'>
           <label htmlFor='recover-password'>Forgot password?</label>
-          <Link href={RECOVER_PASSWORD}>
+          <Link href={RECOVER_PASSWORD} passHref>
             <Button name='recover-password' title='Recover password' />
           </Link>
         </div>

@@ -12,7 +12,7 @@ export default ({ values, length, id }) => {
       colorPositive: 'var(--color-primary-500)',
       colorNegative: 'var(--color-primary-500)',
     })
-  }, [])
+  }, [id])
 
   return (
     <div
